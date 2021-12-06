@@ -8,7 +8,7 @@ const Greeting = () => {
   return (
     <div>
       <CgProfile />
-      <p>Hello {user.id}</p>
+      <p>Hello {user.email}</p>
       <p>My courses</p>
     </div>
   );

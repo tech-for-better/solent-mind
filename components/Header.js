@@ -7,7 +7,7 @@ const Header = () => {
     <div>
       <Image
         src="/logo/solent.png"
-        width={180}
+        width={200}
         height={40}
         alt="solent mind organisation logo"
       />
