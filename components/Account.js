@@ -12,7 +12,7 @@ export default function Account({ session }) {
   async function getProfile() {
     try {
       setLoading(true);
-      const user = supabase.auth.users();
+      const user = supabase.auth.user();
 
       let { data, error, status } = await supabase
         .from('users')
@@ -37,7 +37,7 @@ export default function Account({ session }) {
   async function updateProfile({ username }) {
     try {
       setLoading(true);
-      const user = supabase.auth.users();
+      const user = supabase.auth.user();
 
       const updates = {
         id: user.id,
