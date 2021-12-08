@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { supabase } from '../utils/supabaseClient';
 
-const MyCourses = () => {
-  // will get user.id from auth
+async function getServerSideProps() {
+  const user = await supabase.auth.user();
+  const { data, error } = await supabase
+    .from('enrolments')
+    .select('user_id, course_id, classes("name")')
+    .eq('user_id', userID);
 
-  // const user = supabase.auth.user();
+  console.log('user 🚀', user);
+  console.log('data 🚀', data);
+  return {
+    props: { user, data },
+  };
+}
 
-  //
-
-  return <div></div>;
-};
-
-export default MyCourses;
+export default getStaticProps;
