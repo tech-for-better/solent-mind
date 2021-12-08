@@ -7,6 +7,7 @@ module.exports = {
       BLUE: '#006ECA',
       DARKPINK: '#B01A76',
       YELLOW: '#FFB703',
+      WHITE: '#FEFEFE',
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
