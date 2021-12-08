@@ -9,9 +9,9 @@ const Header = () => {
         src="/logo/solent.png"
         width={200}
         height={40}
-        alt="solent mind organisation logo"
+        alt="solent mind organization logo"
       />
-      <GiHamburgerMenu />
+      {/* <GiHamburgerMenu /> */}
     </div>
   );
 };
