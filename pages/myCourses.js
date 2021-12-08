@@ -36,7 +36,7 @@ export default function MyCourses() {
                 key={data.course_id}
                 className="border border-BLUE p-2 rounded mb-4"
               >
-                <div className="flex flex-row justify-between ">
+                <div className="flex flex-row justify-between mb-2">
                   <div className="font-bold">
                     {data.classes.name.length > 25
                       ? `${data.classes.name.slice(0, 25)} ...`
