@@ -6,8 +6,12 @@ import { FaInstagram, FaTwitterSquare, FaFacebookSquare } from 'react-icons/fa';
 const contact = () => {
   return (
     <div className="font-sans">
-      <div className="flex flex-row place-content-end p-4 cursor-pointer">
-        <GiHamburgerMenu size={32} style={{ color: '#B01A76' }} />
+      <div className="flex flex-row place-content-end p-4">
+        <GiHamburgerMenu
+          className="cursor-pointer"
+          size={32}
+          style={{ color: '#B01A76' }}
+        />
       </div>
 
       <section className="flex justify-center">
