@@ -8,6 +8,7 @@ module.exports = {
       DARKPINK: '#B01A76',
       YELLOW: '#FFB703',
       WHITE: '#FEFEFE'
+
     },
     fontFamily: {
       sans: ['Montserrat', 'sans-serif'],
