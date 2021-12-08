@@ -1,6 +1,5 @@
 import React from 'react';
 import { supabase } from '../utils/supabaseClient';
-import getClasses from '../utils/getClasses';
 import Header from '../components/Header';
 import Greeting from '../components/Greeting';
 
