@@ -23,9 +23,6 @@ export default function MyCourses() {
     fetchData();
   }, []);
 
-  console.log('enrolData', enrolData);
-  console.log('userData', userData);
-
   return (
     <>
       <Header />
