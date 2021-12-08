@@ -42,7 +42,7 @@ export default function MyCourses() {
         Hello 
         {userData ? ` ${userData.email}` : 'User'}
       </p>
-      <p>Your Class: {enrolData ? `${enrolData[0].classes.name}` : ``}</p>
+      <p>Your Class: {enrolData ? `${enrolData[0]?.classes.name}` : ``}</p>
     </>
   );
 }
