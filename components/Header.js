@@ -5,18 +5,18 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <div className="flex flex-row justify-between m-4 pr-4">
+    <div className="flex flex-row items-center justify-between mt-6">
       <Link href="/myCourses">
         <a>
           <Image
             src="/logo/solent.png"
-            width={200}
-            height={40}
+            width={180}
+            height={50}
             alt="solent mind organisation logo"
           />
         </a>
       </Link>
-      <div className="flex flex-col">
+      <div className="flex flex-col mr-6 text-lg text-DARKPINK">
         <GiHamburgerMenu />
       </div>
     </div>
