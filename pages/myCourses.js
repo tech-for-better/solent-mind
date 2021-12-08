@@ -5,22 +5,6 @@ import Header from '../components/Header';
 import Greeting from '../components/Greeting';
 
 export default function MyCourses() {
-  // const [session, setSession] = React.useState(null);
-  // const [userClasses, setUserClasses] = React.useState(null);
-
-  // React.useEffect(() => {
-  //   setSession(supabase.auth.session());
-
-  //   supabase.auth.onAuthStateChange((_event, session) => {
-  //     setSession(session);
-  //   });
-  //   console.log({ session });
-  // }, []);
-
-  // React.useEffect(() => {
-  //   getClasses({ setUserClasses });
-  //   console.log({ userClasses });
-  // }, [session]);
   const [userData, setUserData] = React.useState(null);
   const [enrolData, setEnrolData] = React.useState(null);
 
