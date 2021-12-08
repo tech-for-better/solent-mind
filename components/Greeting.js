@@ -1,11 +1,11 @@
 import React from 'react';
 import { CgProfile } from 'react-icons/cg';
+import { supabase } from '../utils/supabaseClient';
 
-const Greeting = ({ username }) => {
+const Greeting = () => {
   return (
     <div>
       <CgProfile />
-      <p>Hello User!</p>
       <p>My courses</p>
     </div>
   );
