@@ -33,13 +33,13 @@ export default function MyCourses() {
         Hello
         {userData ? ` ${userData.email}` : 'User'}
       </p>
-      <p className="text-PURPLE">
+      <ul className="text-PURPLE">
         {enrolData && enrolData[0]
           ? enrolData.map((data) => (
-              <p key={data.course_id}>{data.classes.name}</p>
+              <li key={data.course_id}>{data.classes.name}</li>
             ))
           : 'You are not enrolled in any classes!'}
-      </p>
+      </ul>
     </>
   );
 }
