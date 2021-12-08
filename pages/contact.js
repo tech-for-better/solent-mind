@@ -49,6 +49,13 @@ const contact = () => {
         <FaInstagram size={32} style={{ color: '#5F55B9' }} />
         <FaFacebookSquare size={32} style={{ color: '#5F55B9' }} />
       </section>
+
+      <section className="flex flex-col mt-8">
+        <p>Solent Mind</p>
+        <p>15-16 The Avenue</p>
+        <p>Southampton</p>
+        <p>SO17 1XF</p>
+      </section>
     </div>
   );
 };
