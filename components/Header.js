@@ -1,5 +1,5 @@
 import React from 'react';
-import { GiHamburgerMenu } from 'react-icons/Gi';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import Image from 'next/image';
 
 const Header = () => {
@@ -11,7 +11,9 @@ const Header = () => {
         height={40}
         alt="solent mind organisation logo"
       />
-      <GiHamburgerMenu />
+      <div>
+        <GiHamburgerMenu />
+      </div>
     </div>
   );
 };
