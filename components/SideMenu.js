@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { FaInstagram, FaTwitterSquare, FaFacebookSquare } from 'react-icons/fa';
 import { IoIosClose } from 'react-icons/Io';
 
-export const SideMenu = ({ setOpen }) => {
+export const SideMenu = ({ open, setOpen }) => {
   return (
     <div className="flex flex-col place-content-end h-screen w-80 bg-DARKPINK bg-opacity-90 rounded-l-lg text-WHITE">
       <section className="flex flex-row place-content-end p-2">
@@ -15,7 +15,7 @@ export const SideMenu = ({ setOpen }) => {
           className={
             open
               ? 'transform rotate-0 transition ease-in'
-              : 'transform rotate-45 transition ease-in' + ' cursor-pointer'
+              : 'transform rotate-45 transition ease-out' + ' cursor-pointer'
           }
         />
       </section>

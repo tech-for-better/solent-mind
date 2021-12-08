@@ -17,7 +17,7 @@ const Contact = () => {
             className={
               open
                 ? 'transform rotate-90 transition ease-in'
-                : 'transform rotate-0' + ' cursor-pointer'
+                : 'transform rotate-0 transition ease-out' + ' cursor-pointer'
             }
             size={32}
             style={open ? { color: '#FFFFFF' } : { color: '#B01A76' }}
@@ -94,7 +94,7 @@ const Contact = () => {
             : 'transform translate-x-full absolute top-0 right-0 transition ease-in'
         }
       >
-        <SideMenu setOpen={setOpen} />
+        <SideMenu open={open} setOpen={setOpen} />
       </div>
     </div>
   );
