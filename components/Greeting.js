@@ -3,8 +3,6 @@ import { CgProfile } from 'react-icons/cg';
 import { supabase } from '../utils/supabaseClient';
 
 const Greeting = () => {
- 
-
   return (
     <div>
       <CgProfile />
