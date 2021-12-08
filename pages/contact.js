@@ -18,17 +18,23 @@ const contact = () => {
         />
       </section>
 
-      <section className="flex justify-center mb-4">
+      <section className="flex justify-center">
         <p>
           If you feel low, anxious or need someone to talk to, speak to trained
           mental health advisors through our support line:
         </p>
       </section>
 
-      <section className="flex flex-col justify-center m-auto w-96 bg-PURPLE rounded-lg text-WHITE">
-        <p className="mt-4">Telephone: 023 8017 9049 </p>
-        <p className="mt-4">Weekdays: 9am-7pm </p>
-        <p className="mt-4">Weekends: 10am-2pm </p>
+      <section className="flex flex-col justify-center m-auto w-96 bg-PURPLE rounded-lg text-WHITE mt-8">
+        <p className="m-4">Telephone: 023 8017 9049 </p>
+        <p className="m-4">Weekdays: 9am-7pm </p>
+        <p className="m-4">Weekends: 10am-2pm </p>
+      </section>
+
+      <section className="flex flex-col justify-center m-auto w-96 border-2 border-PURPLE shadow-md rounded-lg mt-8">
+        <p className="m-4">For all other general, administrative enquires:</p>
+        <p className="m-4">Telephone: 023 8202 7810</p>
+        <p className="m-4">Email: info@solentmind.org.uk *</p>
       </section>
     </div>
   );
