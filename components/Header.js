@@ -6,7 +6,7 @@ import Link from 'next/link';
 const Header = () => {
   return (
     <div className="flex flex-row items-center justify-between mt-6">
-      <Link href="/myCourses" className="cursor-pointer">
+      <Link href="/myCourses">
         <a>
           <Image
             src="/logo/solent.png"
