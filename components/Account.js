@@ -2,42 +2,42 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../utils/supabaseClient';
 import Image from 'next/image';
 
-export default function Account({ userData, setUserData }) {
+export default function Account({ userProfile, setUserProfile }) {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState(null);
   const [avatar, setAvatar] = useState(null);
   const [username, setUsername] = useState(null);
   const [loggedinAt, setLoggedinAt] = useState(null);
 
-  useEffect(() => {
-    getProfile();
-  }, []);
+  // useEffect(() => {
+  //   getProfile();
+  // }, []);
 
-  async function getProfile() {
-    try {
-      setLoading(true);
-      const user = supabase.auth.user();
+  // async function getProfile() {
+  //   try {
+  //     setLoading(true);
+  //     const user = supabase.auth.user();
 
-      let { data, error, status } = await supabase
-        .from('profiles')
-        .select('username, avatar')
-        .eq('id', user.id)
-        .single();
+  //     let { data, error, status } = await supabase
+  //       .from('profiles')
+  //       .select('username, avatar')
+  //       .eq('id', user.id)
+  //       .single();
 
-      if (error && status !== 406) {
-        throw error;
-      }
+  //     if (error && status !== 406) {
+  //       throw error;
+  //     }
 
-      if (data) {
-        setUsername(data.username);
-        setAvatar(data.avatar);
-      }
-    } catch (error) {
-      alert(error.message);
-    } finally {
-      setLoading(false);
-    }
-  }
+  //     if (data) {
+  //       setUsername(data.username);
+  //       setAvatar(data.avatar);
+  //     }
+  //   } catch (error) {
+  //     alert(error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
 
   // async function updateProfile({ username }) {
   //   try {
@@ -62,15 +62,17 @@ export default function Account({ userData, setUserData }) {
   //     setLoading(false);
   //   }
   // }
-  console.log(avatar);
+  console.log('userProfile on Account :', userProfile);
   return (
     <>
-      <div>Welcome {username}!</div>
+      Hello
+      {/* <div>Welcome {username}!</div>
       <div>You last signed in at</div>
       {/* <Image src={avatar} alt={username} width={500} height={500} /> */}
-      <div>
+      {/* <div>
         <button onClick={() => supabase.auth.signOut()}>Sign Out</button>
-      </div>
+      </div> */}{' '}
+      */
     </>
   );
 }
