@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 
-export default function Announcements() {
+const Announcements = () => {
   return (
     <>
       <Header />
@@ -9,3 +9,4 @@ export default function Announcements() {
     </>
   );
 }
+export default function Announcements;
