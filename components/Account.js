@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
 import { supabase } from '../utils/supabaseClient';
 import Image from 'next/image';
 
-export default function Account({ userProfile, setUserProfile }) {
+const Account = ({ userProfile }) => {
   return (
     <>
       <div>
@@ -23,4 +22,6 @@ export default function Account({ userProfile, setUserProfile }) {
       </div>
     </>
   );
-}
+};
+
+export default Account;

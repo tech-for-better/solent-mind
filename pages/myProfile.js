@@ -1,21 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Greeting from '../components/Greeting';
 import Account from '../components/Account';
 import Main from '../components/Main';
-
-
-
 import Tabs from '../components/Tabs';
 import { supabase } from '../utils/supabaseClient';
 
 const MyProfile = ({ supabase }) => {
-  const [userData, setUserData] = React.useState(null);
+  const [userData, setUserData] = useState(null);
   const contents = [
     { topic: 'My booked courses', url: '/myCourses' },
     { topic: 'Upcoming courses', url: '/courses' },
   ];
-  const [userProfile, setUserProfile] = React.useState(null);
+  const [userProfile, setUserProfile] = useState(null);
 
   async function fetchData() {
     const user = await supabase.auth.user();
@@ -30,7 +27,7 @@ const MyProfile = ({ supabase }) => {
     setUserProfile(data);
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -49,6 +46,5 @@ const MyProfile = ({ supabase }) => {
     </>
   );
 };
-
 
 export default MyProfile;

@@ -3,7 +3,7 @@ import Account from '../components/Account';
 import Main from '../components/Main';
 import Header from '../components/Header';
 
-export default function Home({ supabase, session }) {
+export default function Home({ session }) {
   return (
     <>
       <Header />
