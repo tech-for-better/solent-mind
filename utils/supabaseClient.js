@@ -16,4 +16,4 @@ export const useSupabase = () => {
   return session;
 };
 
-// export default useSupabase;
+export const DEFAULT_AVATARS_BUCKET = 'avatars';
