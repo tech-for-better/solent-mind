@@ -4,8 +4,10 @@ import Header from '../components/Header';
 import Greeting from '../components/Greeting';
 import Account from '../components/Account';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
+import Main from '../components/Main';
 
 const MyProfile = ({ supabase }) => {
+
   const [userData, setUserData] = React.useState(null);
 
   async function fetchData() {
@@ -23,8 +25,9 @@ const MyProfile = ({ supabase }) => {
       <Header />
 
       <Greeting user={userData ? ` ${userData.email}` : 'User'} />
-      <div className="flex flex-col m-auto w-2/3 lg:w-3/5">
+      <Main>
         <h1 className="mt-8 text-2xl p-4"> My Profile</h1>
+
 
         <Account userData={userData} setUserData={setUserData} />
         <div className="bg-PURPLE shadow-md"></div>
@@ -50,7 +53,7 @@ const MyProfile = ({ supabase }) => {
             </div>
           </li>
         </ul>
-      </div>
+      </Main>
     </>
   );
 };
