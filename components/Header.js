@@ -40,7 +40,7 @@ const Header = () => {
         className={
           open
             ? 'transform translate-x-1/5 fixed top-0 right-0 transition ease-in'
-            : 'transform translate-x-full absolute top-0 right-0 transition ease-in'
+            : 'hidden top-0 right-0 transition ease-in'
         }
       >
         <SideMenu open={open} setOpen={setOpen} />

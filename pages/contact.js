@@ -9,7 +9,7 @@ const Contact = () => {
   return (
     <div className="font-sans">
       <div className="relative">
-        <div className="flex flex-row place-content-end p-6 mt-4">
+        <div className="flex justify-end p-6 mt-4">
           <GiHamburgerMenu
             onClick={() => {
               setOpen(true);
@@ -90,8 +90,8 @@ const Contact = () => {
       <div
         className={
           open
-            ? 'transform translate-x-1/5 fixed top-0 right-0 transition ease-in'
-            : 'transform translate-x-full absolute top-0 right-0 transition ease-in'
+            ? 'transform translate-x-1/5 absolute top-0 right-0 transition ease-in'
+            : 'hidden absolute top-0 right-0 transition ease-in'
         }
       >
         <SideMenu open={open} setOpen={setOpen} />

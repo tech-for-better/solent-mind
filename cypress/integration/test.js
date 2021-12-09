@@ -20,6 +20,15 @@ describe('Route Tests', () => {
   it('Navigates to the courses page', () => {
     cy.visit('http://localhost:3000/courses');
   });
+  it('Navigates to the contact page', () => {
+    cy.visit('http://localhost:3000/contact');
+  });
+  it('Navigates to the about us page', () => {
+    cy.visit('http://localhost:3000/aboutUs');
+  });
+  it('Navigates to the profile page', () => {
+    cy.visit('http://localhost:3000/myProfile');
+  });
 });
 
 describe('My Courses Tests', () => {
@@ -45,5 +54,12 @@ describe('Dynamic Course Routes Tests', () => {
       .click()
       .url()
       .should('eq', 'http://localhost:3000/courses/Understanding%20Depression');
+  });
+});
+
+describe('Hamburger Test', () => {
+  it('Shows navbar when hamburger is clicked', () => {
+    cy.visit('http://localhost:3000/contact');
+    cy.get('svg').first().click();
   });
 });
