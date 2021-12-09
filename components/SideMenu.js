@@ -26,7 +26,7 @@ export const SideMenu = ({ open, setOpen }) => {
         <Link href="/myCourses">
           <a>My Courses</a>
         </Link>
-        <Link href="/bookCourse">
+        <Link href="/courses">
           <a>Book Course</a>
         </Link>
         <Link href="/resources">

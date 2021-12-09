@@ -1,12 +1,14 @@
 import Link from 'next/link';
 import Header from '../components/Header';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
+import Main from '../components/Main';
 
 const AboutUs = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-col m-auto w-2/3 lg:w-3/5">
+
+      <Main>
         <h1 className="mt-8 text-2xl p-4">ABOUT US</h1>
         <div className="bg-PURPLE shadow-md">
           <div className="text-WHITE p-4">
@@ -57,7 +59,7 @@ const AboutUs = () => {
             </div>
           </li>
         </ul>
-      </div>
+      </Main>
     </>
   );
 };
