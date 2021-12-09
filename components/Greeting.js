@@ -1,6 +1,5 @@
 import React from 'react';
 import { CgProfile } from 'react-icons/cg';
-import { supabase } from '../utils/supabaseClient';
 
 const Greeting = ({ user }) => {
   return (

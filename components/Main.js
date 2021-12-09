@@ -1,6 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
-import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
 const Main = ({ children }) => {
   return (
