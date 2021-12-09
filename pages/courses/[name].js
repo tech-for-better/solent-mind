@@ -29,7 +29,7 @@ export async function getStaticPaths() {
   };
 }
 
-export default function CoursesName({ data }) {
+const CoursesName = ({ data }) => {
   return (
     <>
       <Header />
@@ -38,4 +38,5 @@ export default function CoursesName({ data }) {
       ))}
     </>
   );
-}
+};
+export default CoursesName;
