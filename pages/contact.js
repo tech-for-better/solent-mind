@@ -90,8 +90,8 @@ const Contact = () => {
       <div
         className={
           open
-            ? 'transform translate-x-1/5 fixed top-0 right-0 transition ease-in'
-            : 'transform translate-x-full absolute top-0 right-0 transition ease-in'
+            ? 'transform translate-x-1/5 absolute top-0 right-0 transition ease-in'
+            : 'hidden absolute top-0 right-0 transition ease-in'
         }
       >
         <SideMenu open={open} setOpen={setOpen} />
