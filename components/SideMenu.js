@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { FaInstagram, FaTwitterSquare, FaFacebookSquare } from 'react-icons/fa';
-import { IoIosClose } from 'react-icons/Io';
+import { IoIosClose } from 'react-icons/io';
 
 export const SideMenu = ({ open, setOpen }) => {
   return (
