@@ -20,25 +20,25 @@ export const SideMenu = ({ open, setOpen }) => {
         />
       </section>
       <section className="flex flex-col p-6 space-y-8 text-lg">
-        <Link href="">
+        <Link href="/myProfile">
           <a>Profile</a>
         </Link>
-        <Link href="">
+        <Link href="/myCourses">
           <a>My Courses</a>
         </Link>
-        <Link href="">
+        <Link href="/bookCourse">
           <a>Book Course</a>
         </Link>
-        <Link href="">
+        <Link href="/resources">
           <a>Resources</a>
         </Link>
-        <Link href="">
+        <Link href="/aboutUs">
           <a>About Us</a>
         </Link>
-        <Link href="">
+        <Link href="/myProgress">
           <a>My Progress</a>
         </Link>
-        <Link href="">
+        <Link href="/contact">
           <a>Contact</a>
         </Link>
       </section>
