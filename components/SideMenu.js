@@ -14,8 +14,8 @@ export const SideMenu = ({ open, setOpen }) => {
           size={48}
           className={
             open
-              ? 'transform rotate-0 transition ease-in'
-              : 'transform rotate-45 transition ease-out' + ' cursor-pointer'
+              ? 'transform rotate-0 transition ease-in cursor-pointer'
+              : 'transform rotate-45 transition ease-out'
           }
         />
       </section>
