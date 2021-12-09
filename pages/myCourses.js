@@ -18,7 +18,6 @@ export default function MyCourses() {
       .select('user_id, course_id, classes("name", "short_description")')
       .eq('user_id', user.id);
     setEnrolData(data);
-    console.log('Enrol data is: ', data);
   }
 
   React.useEffect(() => {
