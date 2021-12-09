@@ -7,7 +7,10 @@ const Greeting = ({ user }) => {
       <div className="rounded-full inline-block bg-WHITE text-DARKPINK mt-10 text-5xl	">
         <CgProfile />
       </div>
-      <p className="text-WHITE">Hello{user}</p>
+      <p className="text-WHITE">
+        <p>Hello</p>
+        <p>{user}</p>
+      </p>
     </div>
   );
 };

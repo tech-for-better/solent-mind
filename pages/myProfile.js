@@ -3,7 +3,11 @@ import Header from '../components/Header';
 import Greeting from '../components/Greeting';
 import Account from '../components/Account';
 import Main from '../components/Main';
+
+
+
 import Tabs from '../components/Tabs';
+import { supabase } from '../utils/supabaseClient';
 
 const MyProfile = ({ supabase }) => {
   const [userData, setUserData] = React.useState(null);
@@ -11,11 +15,19 @@ const MyProfile = ({ supabase }) => {
     { topic: 'My booked courses', url: '/myCourses' },
     { topic: 'Upcoming courses', url: '/courses' },
   ];
+  const [userProfile, setUserProfile] = React.useState(null);
 
   async function fetchData() {
     const user = await supabase.auth.user();
-
     setUserData(user);
+
+    const { data, error, status } = await supabase
+      .from('profiles')
+      .select('username, avatar')
+      .eq('id', user.id)
+      .single();
+
+    setUserProfile(data);
   }
 
   React.useEffect(() => {
@@ -28,12 +40,15 @@ const MyProfile = ({ supabase }) => {
       <Greeting user={userData ? ` ${userData.email}` : 'User'} />
       <Main>
         <h1 className="mt-8 text-2xl p-4"> My Profile</h1>
-        <Account userData={userData} setUserData={setUserData} />
+
+        <Account userProfile={userProfile} setUserProfile={setUserProfile} />
+
         <div className="bg-PURPLE shadow-md"></div>
         <Tabs contents={contents} />
       </Main>
     </>
   );
 };
+
 
 export default MyProfile;
