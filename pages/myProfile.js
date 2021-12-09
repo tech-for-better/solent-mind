@@ -6,7 +6,8 @@ import Account from '../components/Account';
 import { supabase } from '../utils/supabaseClient';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
-export default function myProfile() {
+const MyProfile = () => {
+
   const [userData, setUserData] = React.useState(null);
 
   async function fetchData() {
@@ -55,3 +56,6 @@ export default function myProfile() {
     </>
   );
 }
+
+
+export default MyProfile
