@@ -1,13 +1,29 @@
-import Link from 'next/link';
 import Header from '../components/Header';
-import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import Main from '../components/Main';
+import Tabs from '../components/Tabs';
 
 const AboutUs = () => {
+  const contents = [
+    {
+      topic: 'What we do',
+      url: 'https://www.solentmind.org.uk/about-us/what-we-do/',
+    },
+    {
+      topic: 'Who we are',
+      url: 'https://www.solentmind.org.uk/about-us/who-we-are/',
+    },
+    {
+      topic: 'Reports & accounts',
+      url: 'https://www.solentmind.org.uk/about-us/reports-and-accounts/',
+    },
+    {
+      topic: 'Policies',
+      url: 'https://www.solentmind.org.uk/about-us/policies/',
+    },
+  ];
   return (
     <>
       <Header />
-
       <Main>
         <h1 className="mt-8 text-2xl p-4">ABOUT US</h1>
         <div className="bg-PURPLE shadow-md">
@@ -17,48 +33,7 @@ const AboutUs = () => {
             plan to achieve it.
           </div>
         </div>
-        <ul className=" p-4">
-          <li className="border border-BLUE p-2 rounded mb-4 shadow-md">
-            <div className="flex flex-row justify-between font-bold items-center">
-              <div>What we do </div>
-              <Link href="https://www.solentmind.org.uk/about-us/what-we-do/">
-                <a>
-                  <BsFillArrowRightCircleFill className="text-lg text-PURPLE" />
-                </a>
-              </Link>
-            </div>
-          </li>
-          <li className="border border-BLUE p-2 rounded mb-4 shadow-md">
-            <div className="flex flex-row justify-between font-bold items-center">
-              <div>Who we are </div>
-              <Link href="https://www.solentmind.org.uk/about-us/who-we-are/">
-                <a>
-                  <BsFillArrowRightCircleFill className="text-lg text-PURPLE" />
-                </a>
-              </Link>
-            </div>
-          </li>
-          <li className="border border-BLUE p-2 rounded mb-4 shadow-md">
-            <div className="flex flex-row justify-between font-bold items-center">
-              <div>Reports & accounts </div>
-              <Link href="https://www.solentmind.org.uk/about-us/reports-and-accounts/">
-                <a>
-                  <BsFillArrowRightCircleFill className="text-lg text-PURPLE" />
-                </a>
-              </Link>
-            </div>
-          </li>
-          <li className="border border-BLUE p-2 rounded mb-4 shadow-md">
-            <div className="flex flex-row justify-between font-bold items-center">
-              <div>Policies </div>
-              <Link href="https://www.solentmind.org.uk/about-us/policies/">
-                <a>
-                  <BsFillArrowRightCircleFill className="text-lg text-PURPLE" />
-                </a>
-              </Link>
-            </div>
-          </li>
-        </ul>
+        <Tabs contents={contents} />
       </Main>
     </>
   );
