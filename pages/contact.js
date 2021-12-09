@@ -9,7 +9,7 @@ const Contact = () => {
   return (
     <div className="font-sans">
       <div className="relative">
-        <div className="flex flex-row place-content-end p-4">
+        <div className="flex flex-row place-content-end p-6 mt-4">
           <GiHamburgerMenu
             onClick={() => {
               setOpen(true);
@@ -24,7 +24,7 @@ const Contact = () => {
           />
         </div>
 
-        <section className="flex justify-center">
+        <section className="flex justify-center -mt-8">
           <Image
             src="/logo/solent.png"
             width={400}
