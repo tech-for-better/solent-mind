@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import Greeting from '../components/Greeting';
 import Account from '../components/Account';
 import { supabase } from '../utils/supabaseClient';
-
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
 export default function myProfile() {
@@ -44,7 +43,7 @@ export default function myProfile() {
           <li className="border border-BLUE p-2 rounded mb-4 shadow-md">
             <div className="flex flex-row justify-between font-bold items-center">
               <div>Upcoming courses </div>
-              <Link href="/allCourses">
+              <Link href="/courses">
                 <a>
                   <BsFillArrowRightCircleFill className="text-lg text-PURPLE" />
                 </a>
