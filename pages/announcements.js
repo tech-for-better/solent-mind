@@ -9,4 +9,4 @@ const Announcements = () => {
     </>
   );
 }
-export default function Announcements;
+export default Announcements;
