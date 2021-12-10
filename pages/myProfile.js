@@ -11,6 +11,7 @@ const MyProfile = ({ supabase }) => {
   const contents = [
     { topic: 'My booked courses', url: '/myCourses' },
     { topic: 'Upcoming courses', url: '/courses' },
+    { topic: 'My Progress', url: '/myProgress' },
   ];
   const [userProfile, setUserProfile] = useState(null);
 
