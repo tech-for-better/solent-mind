@@ -4,8 +4,6 @@ import Greeting from '../components/Greeting';
 import Account from '../components/Account';
 import Main from '../components/Main';
 
-
-
 import Tabs from '../components/Tabs';
 import { supabase } from '../utils/supabaseClient';
 
@@ -41,7 +39,11 @@ const MyProfile = ({ supabase }) => {
       <Main>
         <h1 className="mt-8 text-2xl p-4"> My Profile</h1>
 
-        <Account userProfile={userProfile} setUserProfile={setUserProfile} />
+        <Account
+          userProfile={userProfile}
+          setUserProfile={setUserProfile}
+          userData={userData}
+        />
 
         <div className="bg-PURPLE shadow-md"></div>
         <Tabs contents={contents} />
@@ -49,6 +51,5 @@ const MyProfile = ({ supabase }) => {
     </>
   );
 };
-
 
 export default MyProfile;

@@ -1,13 +1,29 @@
-import { useState, useEffect } from 'react';
 import { supabase } from '../utils/supabaseClient';
 import Image from 'next/image';
 
-export default function Account({ userProfile, setUserProfile }) {
+export default function Account({ userProfile, userData }) {
+  const handleUpload = async (event) => {
+    const avatarFile = event.target.files[0];
+
+    const { data, error } = await supabase.storage
+      .from('avatars')
+      .upload(`public/${userData.id}.png`, avatarFile, {
+        cacheControl: '3600',
+        upsert: false,
+      });
+
+    if (error) alert(error?.message);
+
+    console.log(data);
+
+    return true;
+  };
+
   return (
     <>
       <div>
         {userProfile === null ? (
-          'Loding'
+          'Loading'
         ) : (
           <div>
             <p>Welcome {userProfile.username}</p>{' '}
@@ -16,6 +32,12 @@ export default function Account({ userProfile, setUserProfile }) {
               alt={`image of ${userProfile.username}`}
               width={500}
               height={500}
+            />
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={handleUpload}
             />
             <button onClick={() => supabase.auth.signOut()}>Sign Out</button>
           </div>
