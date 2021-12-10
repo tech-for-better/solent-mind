@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Main from '../components/Main';
 
-export default function Announcements() {
+const Resources = () => {
   return (
     <>
       <Header />
@@ -11,4 +11,6 @@ export default function Announcements() {
       </Main>
     </>
   );
-}
+};
+
+export default Resources;

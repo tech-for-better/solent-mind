@@ -1,3 +1,9 @@
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // returning false here prevents Cypress from
+  // failing the test
+  return false;
+});
+
 describe('Example Test', () => {
   it('Does not do much!', () => {
     expect(true).to.equal(true);
@@ -29,6 +35,9 @@ describe('Route Tests', () => {
   it('Navigates to the profile page', () => {
     cy.visit('http://localhost:3000/myProfile');
   });
+  it('Navigates to the my progress page', () => {
+    cy.visit('http://localhost:3000/myProgress');
+  });
 });
 
 describe('My Courses Tests', () => {
@@ -41,16 +50,15 @@ describe('My Courses Tests', () => {
 describe('Dynamic Course Routes Tests', () => {
   it('Navigates to the Life After Lockdown Page', () => {
     cy.visit('http://localhost:3000/courses');
-    cy.get('a')
-      .first()
+    cy.contains('a', 'Life After Lockdown')
       .click()
       .url()
       .should('eq', 'http://localhost:3000/courses/Life%20After%20Lockdown');
+    // .should('eq', 'http://localhost:3000/courses/Life%20After%20Lockdown');
   });
   it('Navigates to the Understanding Depression page', () => {
     cy.visit('http://localhost:3000/courses');
-    cy.get('a')
-      .should('have.text', 'Understanding Depression')
+    cy.contains('a', 'Understanding Depression')
       .click()
       .url()
       .should('eq', 'http://localhost:3000/courses/Understanding%20Depression');
