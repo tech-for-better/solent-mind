@@ -3,13 +3,14 @@ import Header from '../../components/Header';
 import { supabase } from '../../utils/supabaseClient';
 import Link from 'next/link';
 import Main from '../../components/Main';
+import PageHeader from '../../components/PageHeader';
 
 const allCourses = ({ courses }) => {
   return (
     <>
       <Header />
       <Main>
-        <h1 className="mt-8 text-2xl p-4">Upcoming courses</h1>
+        <PageHeader>Upcoming courses</PageHeader>
         <ul className=" p-4">
           {courses.map((course) => (
             <li

@@ -1,13 +1,14 @@
 import React from 'react';
 import Header from '../components/Header';
 import Main from '../components/Main';
+import PageHeader from '../components/PageHeader';
 
 const Resources = () => {
   return (
     <>
       <Header />
       <Main>
-        <h1>Resources</h1>
+        <PageHeader>Resources</PageHeader>
       </Main>
     </>
   );
