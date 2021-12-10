@@ -6,7 +6,7 @@ const Account = ({ userProfile }) => {
     <>
       <div>
         {userProfile === null ? (
-          'Loding'
+          'Loading'
         ) : (
           <div>
             <p>Welcome {userProfile.username}</p>{' '}
