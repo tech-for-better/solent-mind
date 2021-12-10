@@ -1,7 +1,7 @@
 import { supabase } from '../utils/supabaseClient';
 import Image from 'next/image';
 
-export default function Account({ userProfile, userData }) {
+const Account = ({ userProfile, userData }) => {
   const handleUpload = async (event) => {
     const avatarFile = event.target.files[0];
 
@@ -45,4 +45,6 @@ export default function Account({ userProfile, userData }) {
       </div>
     </>
   );
-}
+};
+
+export default Account;

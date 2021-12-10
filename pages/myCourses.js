@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import Auth from '../components/Auth';
+import React, { useState } from 'react';
 import Header from '../components/Header';
 import Greeting from '../components/Greeting';
 import { supabase } from '../utils/supabaseClient';
 import Main from '../components/Main';
 
-export default function MyCourses() {
-  const [userData, setUserData] = React.useState(null);
-  const [enrolData, setEnrolData] = React.useState(null);
+const MyCourses = () => {
+  const [userData, setUserData] = useState(null);
+  const [enrolData, setEnrolData] = useState(null);
 
   async function fetchData() {
     const user = await supabase.auth.user();
@@ -57,4 +56,6 @@ export default function MyCourses() {
       </Main>
     </>
   );
-}
+};
+
+export default MyCourses;

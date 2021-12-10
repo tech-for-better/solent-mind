@@ -2,7 +2,18 @@ import React from 'react';
 import { supabase } from '../../utils/supabaseClient';
 import Header from '../../components/Header';
 
-export async function getStaticProps({ params }) {
+const CoursesName = ({ data }) => {
+  return (
+    <>
+      <Header />
+      {data.map((course) => (
+        <p key={course.name}>{course.name}</p>
+      ))}
+    </>
+  );
+};
+
+export async function getStaticProps() {
   const { data, error } = await supabase.from('classes').select('name');
 
   return {
@@ -27,14 +38,4 @@ export async function getStaticPaths() {
   };
 }
 
-const CoursesName = ({ data }) => {
-  return (
-    <>
-      <Header />
-      {data.map((course) => (
-        <p key={course.name}>{course.name}</p>
-      ))}
-    </>
-  );
-};
 export default CoursesName;
