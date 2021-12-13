@@ -6,7 +6,6 @@ import Main from '../../components/Main';
 import PageHeader from '../../components/PageHeader';
 import Image from 'next/image';
 
-
 const allCourses = ({ courses }) => {
   return (
     <>
@@ -15,10 +14,7 @@ const allCourses = ({ courses }) => {
         <PageHeader>Upcoming courses</PageHeader>
         <ul className=" p-4">
           {courses.map((course) => (
-            <li
-              key={course.course_id}
-              className="border border-BLUE p-2 rounded mb-4"
-            >
+            <li key={course.id} className="border border-BLUE p-2 rounded mb-4">
               <div className="flex flex-row justify-between mb-2">
                 <div className="font-bold">
                   <Link href="/courses/[name]" as={`/courses/${course.name}`}>
@@ -46,7 +42,7 @@ const allCourses = ({ courses }) => {
 export default allCourses;
 
 export async function getStaticProps() {
-  const { data } = await supabase.from('classes').select();
+  const { data } = await supabase.from('classes').select('*');
   return {
     props: {
       courses: data,
