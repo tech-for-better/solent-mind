@@ -3,6 +3,7 @@ import Header from '../../components/Header';
 import { supabase } from '../../utils/supabaseClient';
 import Link from 'next/link';
 import Main from '../../components/Main';
+import Image from 'next/image';
 
 const allCourses = ({ courses }) => {
   return (
@@ -23,9 +24,14 @@ const allCourses = ({ courses }) => {
                   </Link>
                 </div>
               </div>
-
+              <Image
+                src={course.image}
+                alt={`image of ${course.name}`}
+                width={200}
+                height={100}
+              />
               <div className="font-thin font-montserrat">
-                {course.short_description}
+                {course.description}
               </div>
             </li>
           ))}
