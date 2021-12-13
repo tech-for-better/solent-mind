@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../utils/supabaseClient';
 import Header from '../../components/Header';
+import PageHeader from '../../components/PageHeader';
+import Main from '../../components/Main';
+import Greeting from '../../components/Greeting';
 import Tabs from '../../components/Tabs';
 
 const CoursesName = ({ name }) => {
@@ -21,17 +24,22 @@ const CoursesName = ({ name }) => {
   return (
     <>
       <Header />
-      {courseData ? (
-        courseData.map((course) => (
-          <>
-            <p key={course.name}>{course.name}</p>
-            <p>{course.description}</p>
-          </>
-        ))
-      ) : (
-        <p>Loading...</p>
 
-      )}
+      <Main>
+        {courseData ? (
+          courseData.map((course) => (
+            <>
+              <PageHeader key={course.name}>{course.name}</PageHeader>
+
+              <p>{course.date}</p>
+              <p>{course.duration}</p>
+              <p>{course.description}</p>
+            </>
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
+      </Main>
     </>
   );
 };
