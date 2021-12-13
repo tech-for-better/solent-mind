@@ -1,52 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '../../utils/supabaseClient';
 import Header from '../../components/Header';
 import Tabs from '../../components/Tabs';
 
-const CoursesName = ({ data }) => {
-  const enrolled = true;
+const CoursesName = ({ name }) => {
+  const [courseData, setCourseData] = useState();
+
+  async function fetchCourseData() {
+    const { data, error } = await supabase
+      .from('classes')
+      .select('*')
+      .eq('name', name);
+
+    setCourseData(data);
+  }
+  useEffect(() => {
+    fetchCourseData();
+  }, []);
+
   return (
     <>
       <Header />
-
-      {data.map((course) => (
-        <p key={course.name}>{course.name}</p>
-      ))}
-      {enrolled ? (
-        <button className="bg-PURPLE">Unenrol</button>
+      {courseData ? (
+        courseData.map((course) => (
+          <>
+            <p key={course.name}>{course.name}</p>
+            <p>{course.description}</p>
+          </>
+        ))
       ) : (
-        <button className="bg-DARKPINK">Book</button>
+        <p>Loading...</p>
+
       )}
     </>
   );
 };
+
 // check
 // update course cur_capacity +1
 // enrolments table user_id -> course_id
 
-export async function getStaticProps() {
-  const { data, error } = await supabase.from('classes').select('name');
-
-  return {
-    props: {
-      data,
-    },
-  };
-}
-
 export async function getStaticPaths() {
   const { data, error } = await supabase.from('classes').select('name');
-  const paths = data.map((course) => {
-    return {
-      params: {
-        name: course.name,
-      },
-    };
-  });
   return {
-    paths,
+    paths: data.map((course) => {
+      return {
+        params: {
+          name: course.name,
+        },
+      };
+    }),
     fallback: false,
   };
 }
+export async function getStaticProps(context) {
+  const name = context.params.name;
 
+  return {
+    props: { name: name },
+  };
+}
 export default CoursesName;

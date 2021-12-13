@@ -7,19 +7,8 @@ import PageHeader from '../../components/PageHeader';
 import Image from 'next/image';
 import Tabs from '../../components/Tabs';
 
-export async function getStaticProps() {
-  const { data } = await supabase.from('classes').select('*');
-  console.log(data);
-  return {
-    props: {
-      courses: data,
-    },
-  };
-}
 
 const AllCourses = ({ courses }) => {
-  // const [enrolled, setEnrolled] = useState(false);
-
   return (
     <>
       <Header />
@@ -50,4 +39,17 @@ const AllCourses = ({ courses }) => {
   );
 };
 
+
+export async function getStaticProps() {
+  const { data } = await supabase.from('classes').select('*');
+  return {
+    props: {
+      courses: data,
+    },
+  };
+}
+
+
+
 export default AllCourses;
+
