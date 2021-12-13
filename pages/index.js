@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import redirect from 'nextjs-redirect';
 
 export default function Home({ session }) {
-  const Redirect = redirect('http://localhost:3000/myCourses');
+  const Redirect = redirect('/myCourses');
 
   return (
     <>
@@ -17,7 +17,6 @@ export default function Home({ session }) {
           <Auth />
         ) : (
           <Redirect>
-            {' '}
             <p className="text-center">Logging you in...</p>
           </Redirect>
         )}

@@ -4,10 +4,12 @@ import Greeting from '../components/Greeting';
 import Account from '../components/Account';
 import Main from '../components/Main';
 import Tabs from '../components/Tabs';
-import { supabase } from '../utils/supabaseClient';
 import PageHeader from '../components/PageHeader';
+import redirect from 'nextjs-redirect';
+import Auth from '../components/Auth';
 
-const MyProfile = ({ supabase }) => {
+const MyProfile = ({ supabase, session }) => {
+  const Redirect = redirect('/');
   const [userData, setUserData] = useState(null);
   const contents = [
     { topic: 'My booked courses', url: '/myCourses' },
@@ -30,24 +32,32 @@ const MyProfile = ({ supabase }) => {
   }
 
   useEffect(() => {
-    fetchData();
+    if (session) {
+      fetchData();
+    }
   }, []);
 
   return (
     <>
       <Header />
-      <Greeting user={userData ? ` ${userData.email}` : 'User'} />
       <Main>
-        <PageHeader>My Profile</PageHeader>
+        {!session ? (
+          <Auth />
+        ) : (
+          <>
+            <Greeting user={userData ? ` ${userData.email}` : 'User'} />
+            <PageHeader>My Profile</PageHeader>
 
-        <Account
-          userProfile={userProfile}
-          setUserProfile={setUserProfile}
-          userData={userData}
-        />
+            <Account
+              userProfile={userProfile}
+              setUserProfile={setUserProfile}
+              userData={userData}
+            />
 
-        <div className="bg-PURPLE shadow-md"></div>
-        <Tabs contents={contents} />
+            <div className="bg-PURPLE shadow-md"></div>
+            <Tabs contents={contents} />
+          </>
+        )}
       </Main>
     </>
   );
