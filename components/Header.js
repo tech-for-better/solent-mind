@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SideMenu } from '../components/SideMenu';
+import SideMenu from '../components/SideMenu';
 
 const Header = () => {
   const [open, setOpen] = useState(false);

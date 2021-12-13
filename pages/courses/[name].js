@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '../../utils/supabaseClient';
 import Header from '../../components/Header';
+import Tabs from '../../components/Tabs';
 
 const CoursesName = ({ name }) => {
   const [courseData, setCourseData] = useState();
@@ -13,7 +14,7 @@ const CoursesName = ({ name }) => {
 
     setCourseData(data);
   }
-  React.useEffect(() => {
+  useEffect(() => {
     fetchCourseData();
   }, []);
 
@@ -29,10 +30,15 @@ const CoursesName = ({ name }) => {
         ))
       ) : (
         <p>Loading...</p>
+
       )}
     </>
   );
 };
+
+// check
+// update course cur_capacity +1
+// enrolments table user_id -> course_id
 
 export async function getStaticPaths() {
   const { data, error } = await supabase.from('classes').select('name');
@@ -40,7 +46,7 @@ export async function getStaticPaths() {
     paths: data.map((course) => {
       return {
         params: {
-          name: course.name.trim(),
+          name: course.name,
         },
       };
     }),

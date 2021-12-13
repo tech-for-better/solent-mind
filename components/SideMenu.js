@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { FaInstagram, FaTwitterSquare, FaFacebookSquare } from 'react-icons/fa';
 import { IoIosClose } from 'react-icons/io';
 
-export const SideMenu = ({ open, setOpen }) => {
+const SideMenu = ({ open, setOpen }) => {
   return (
     <div className="flex flex-col place-content-end h-screen w-80 bg-DARKPINK bg-opacity-90 rounded-l-lg text-WHITE">
       <section className="flex flex-row place-content-end p-4 mt-4">
@@ -51,3 +51,5 @@ export const SideMenu = ({ open, setOpen }) => {
     </div>
   );
 };
+
+export default SideMenu;
