@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaInstagram, FaTwitterSquare, FaFacebookSquare } from 'react-icons/fa';
-import { SideMenu } from '../components/SideMenu';
+import SideMenu from '../components/SideMenu';
 
 const Contact = () => {
   const [open, setOpen] = useState(false);
