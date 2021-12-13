@@ -1,28 +1,9 @@
 import Header from '../components/Header';
 import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
-import Tabs from '../components/Tabs';
-import { BsFillArrowRightCircleFill } from 'react-icons/bs';
+import AboutUsTab from '../components/AboutUsTab';
 
 const AboutUs = () => {
-  const contents = [
-    {
-      topic: 'What we do',
-      url: 'https://www.solentmind.org.uk/about-us/what-we-do/',
-    },
-    {
-      topic: 'Who we are',
-      url: 'https://www.solentmind.org.uk/about-us/who-we-are/',
-    },
-    {
-      topic: 'Reports & accounts',
-      url: 'https://www.solentmind.org.uk/about-us/reports-and-accounts/',
-    },
-    {
-      topic: 'Policies',
-      url: 'https://www.solentmind.org.uk/about-us/policies/',
-    },
-  ];
   return (
     <>
       <Header />
@@ -35,9 +16,7 @@ const AboutUs = () => {
             plan to achieve it.
           </div>
         </div>
-        <Tabs contents={contents}>
-          <BsFillArrowRightCircleFill className="text-lg text-PURPLE" />
-        </Tabs>
+        <AboutUsTab />
       </Main>
     </>
   );
