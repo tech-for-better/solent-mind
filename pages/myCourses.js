@@ -16,7 +16,7 @@ const MyCourses = ({ session }) => {
     setUserData(user);
     const { data, error } = await supabase
       .from('enrolments')
-      .select('user_id, course_id, classes("name", "short_description")')
+      .select('user_id, course_id, classes("name", "description")')
       .eq('user_id', user.id);
     setEnrolData(data);
   }
@@ -54,7 +54,7 @@ const MyCourses = ({ session }) => {
                         </span>
                       </div>
                       <div className="font-thin font-montserrat">
-                        {data.classes.short_description}
+                        {data.classes.description}
                       </div>
                     </li>
                   ))
