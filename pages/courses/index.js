@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Main from '../../components/Main';
 import PageHeader from '../../components/PageHeader';
 import Image from 'next/image';
-import Tabs from '../../components/Tabs';
+import CourseTab from '../../components/CourseTab';
 
 const AllCourses = ({ courses }) => {
   return (
@@ -13,24 +13,7 @@ const AllCourses = ({ courses }) => {
       <Header />
       <Main>
         <PageHeader>Upcoming courses</PageHeader>
-        <ul className=" p-4">
-          {courses.map((course) => (
-            <Tabs contents={courses} key={course.course_id}>
-              <div className="flex flex-row justify-between mb-2">
-                <div className="font-bold">{course.name}</div>
-              </div>
-              <Image
-                src={course.image}
-                alt={`image of ${course.name}`}
-                width={200}
-                height={100}
-              />
-              <div className="font-thin font-montserrat">
-                {course.description}
-              </div>
-            </Tabs>
-          ))}
-        </ul>
+        <CourseTab courses={courses} />
       </Main>
     </>
   );
