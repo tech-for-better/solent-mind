@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Greeting from '../components/Greeting';
 import { supabase } from '../utils/supabaseClient';
 import Main from '../components/Main';
+import PageHeader from '../components/PageHeader';
 
 const MyCourses = () => {
   const [userData, setUserData] = useState(null);
@@ -28,7 +29,7 @@ const MyCourses = () => {
       <Header />
       <Greeting user={userData ? ` ${userData.email}` : 'User'} />
       <Main>
-        <h1 className="mt-8 text-2xl p-4">My Courses</h1>
+        <PageHeader>My Courses</PageHeader>
         <ul className=" p-4">
           {enrolData && enrolData[0]
             ? enrolData.map((data) => (

@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Greeting from '../components/Greeting';
 import Main from '../components/Main';
 import { supabase } from '../utils/supabaseClient';
+import PageHeader from '../components/PageHeader';
 
 const Progress = () => {
   const [userData, setUserData] = React.useState(null);
@@ -19,7 +20,7 @@ const Progress = () => {
       <Header />
       <Greeting user={userData ? ` ${userData.email}` : 'User'} />
       <Main>
-        <h1 className="mt-8 text-2xl p-4"> My Progress</h1>
+        <PageHeader>My Progress</PageHeader>
       </Main>
     </>
   );

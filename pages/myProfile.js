@@ -5,6 +5,7 @@ import Account from '../components/Account';
 import Main from '../components/Main';
 import Tabs from '../components/Tabs';
 import { supabase } from '../utils/supabaseClient';
+import PageHeader from '../components/PageHeader';
 
 const MyProfile = ({ supabase }) => {
   const [userData, setUserData] = useState(null);
@@ -37,7 +38,7 @@ const MyProfile = ({ supabase }) => {
       <Header />
       <Greeting user={userData ? ` ${userData.email}` : 'User'} />
       <Main>
-        <h1 className="mt-8 text-2xl p-4"> My Profile</h1>
+        <PageHeader>My Profile</PageHeader>
 
         <Account
           userProfile={userProfile}
