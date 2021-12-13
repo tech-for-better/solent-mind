@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Greeting from '../components/Greeting';
 import Main from '../components/Main';
@@ -7,13 +7,13 @@ import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
 
 const Progress = ({ session }) => {
-  const [userData, setUserData] = React.useState(null);
+  const [userData, setUserData] = useState(null);
   async function fetchData() {
     const user = await supabase.auth.user();
     setUserData(user);
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchData();
   }, []);
   return (

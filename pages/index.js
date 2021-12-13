@@ -3,7 +3,7 @@ import Main from '../components/Main';
 import Header from '../components/Header';
 import redirect from 'nextjs-redirect';
 
-export default function Home({ session }) {
+const Home = ({ session }) => {
   const Redirect = redirect('/myCourses');
 
   return (
@@ -23,4 +23,6 @@ export default function Home({ session }) {
       </Main>
     </>
   );
-}
+};
+
+export default Home;
