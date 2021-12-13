@@ -1,21 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { supabase } from '../../utils/supabaseClient';
 import Header from '../../components/Header';
 import { useRouter } from 'next/router';
 
-const CoursesName = ({ data }) => {
-  const router = useRouter();
-  const { name } = router.query;
-  console.log(name);
-  // return (
-  //   <>
-  //     <Header />
-  //     {data.map((course) => (
-  //       <p key={course.name}>{course.name}</p>
-  //     ))}
-  //   </>
-  // );
-  return <>{name}</>;
+const CoursesName = ({ name }) => {
+  const [courseData, setCourseData] = useState(null);
+
+  async function fetchCourseData() {
+    const { data, error } = await supabase
+      .from('classes')
+      .select('*')
+      .eq('name', name);
+    setCourseData(data);
+  }
+  React.useEffect(() => {
+    fetchCourseData();
+  }, []);
+
+  console.log(courseData);
+  return (
+    <>
+      <Header />
+      {courseData.map((course) => (
+        <>
+          <p key={course.name}>{course.name}</p>
+          <p>{course.description}</p>
+        </>
+      ))}
+    </>
+  );
 };
 
 export async function getStaticPaths() {
@@ -31,15 +44,11 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+export async function getStaticProps(context) {
+  const pid = context.params.name;
 
-export async function getStaticProps({ name }) {
-  const { data, error } = await supabase.from('classes').select('*');
-
-  console.log(data);
   return {
-    props: {
-      data,
-    },
+    props: { name: pid },
   };
 }
 export default CoursesName;
