@@ -5,19 +5,16 @@ const Tabs = ({ contents }) => {
   return (
     <ul className=" p-4">
       {contents.map((content) => (
-        <li
-          key={content.topic}
-          className="border border-BLUE p-2 rounded mb-4 shadow-md"
-        >
-          <div className="flex flex-row justify-between font-bold items-center">
-            <div>{content.topic} </div>
-            <Link href={content.url}>
-              <a>
+        <Link href='/' key={content.topic}>
+          <a>
+            <li className="border border-BLUE p-2 rounded mb-4 shadow-md">
+              <div className="flex flex-row justify-between font-bold items-center">
+                <div>{content.topic} </div>
                 <BsFillArrowRightCircleFill className="text-lg text-PURPLE" />
-              </a>
-            </Link>
-          </div>
-        </li>
+              </div>
+            </li>
+          </a>
+        </Link>
       ))}
     </ul>
   );
