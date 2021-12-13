@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../utils/supabaseClient';
 import Header from '../../components/Header';
-import PageHeader from '../../components/PageHeader';
 import Main from '../../components/Main';
 import Greeting from '../../components/Greeting';
 import Tabs from '../../components/Tabs';
@@ -21,7 +20,7 @@ const CoursesName = ({ name }) => {
   useEffect(() => {
     fetchCourseData();
   }, []);
-  courseData;
+  
   return (
     <>
       <Header />
