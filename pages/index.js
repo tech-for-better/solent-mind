@@ -1,9 +1,11 @@
 import Auth from '../components/Auth';
-import Account from '../components/Account';
 import Main from '../components/Main';
 import Header from '../components/Header';
+import redirect from 'nextjs-redirect';
 
 export default function Home({ session }) {
+  const Redirect = redirect('http://localhost:3000/myCourses');
+
   return (
     <>
       <Header />
@@ -14,7 +16,10 @@ export default function Home({ session }) {
         {!session ? (
           <Auth />
         ) : (
-          <Account key={session.user.id} session={session} />
+          <Redirect>
+            {' '}
+            <p className="text-center">Logging you in...</p>
+          </Redirect>
         )}
       </Main>
     </>
