@@ -2,6 +2,7 @@ import Header from '../components/Header';
 import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import Tabs from '../components/Tabs';
+import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
 const AboutUs = () => {
   const contents = [
@@ -34,7 +35,9 @@ const AboutUs = () => {
             plan to achieve it.
           </div>
         </div>
-        <Tabs contents={contents} />
+        <Tabs contents={contents}>
+          <BsFillArrowRightCircleFill className="text-lg text-PURPLE" />
+        </Tabs>
       </Main>
     </>
   );

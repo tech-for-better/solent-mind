@@ -7,7 +7,6 @@ import PageHeader from '../../components/PageHeader';
 import Image from 'next/image';
 import Tabs from '../../components/Tabs';
 
-
 const AllCourses = ({ courses }) => {
   return (
     <>
@@ -17,20 +16,18 @@ const AllCourses = ({ courses }) => {
         <ul className=" p-4">
           {courses.map((course) => (
             <Tabs contents={courses} key={course.course_id}>
-              <li className="border border-BLUE p-2 rounded mb-4">
-                <div className="flex flex-row justify-between mb-2">
-                  <div className="font-bold">{course.name}</div>
-                </div>
-                <Image
-                  src={course.image}
-                  alt={`image of ${course.name}`}
-                  width={200}
-                  height={100}
-                />
-                <div className="font-thin font-montserrat">
-                  {course.description}
-                </div>
-              </li>
+              <div className="flex flex-row justify-between mb-2">
+                <div className="font-bold">{course.name}</div>
+              </div>
+              <Image
+                src={course.image}
+                alt={`image of ${course.name}`}
+                width={200}
+                height={100}
+              />
+              <div className="font-thin font-montserrat">
+                {course.description}
+              </div>
             </Tabs>
           ))}
         </ul>
@@ -38,7 +35,6 @@ const AllCourses = ({ courses }) => {
     </>
   );
 };
-
 
 export async function getStaticProps() {
   const { data } = await supabase.from('classes').select('*');
@@ -49,7 +45,4 @@ export async function getStaticProps() {
   };
 }
 
-
-
 export default AllCourses;
-
