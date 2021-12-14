@@ -20,15 +20,15 @@ const Contact = () => {
                 : 'transform rotate-0 transition ease-out' + ' cursor-pointer'
             }
             size={32}
-            style={open ? { color: '#FFFFFF' } : { color: '#B01A76' }}
+            style={open ? { color: '#FFFFFF' } : { color: '#FF0071' }}
           />
         </div>
 
-        <section className="flex justify-center -mt-8">
+        <section className="flex justify-center mb-8">
           <Image
             src="/logo/solent.png"
-            width={400}
-            height={100}
+            width={300}
+            height={161}
             alt="solent mind organization logo"
           />
         </section>

@@ -5,7 +5,7 @@ import { IoIosClose } from 'react-icons/io';
 
 const SideMenu = ({ open, setOpen }) => {
   return (
-    <div className="flex flex-col place-content-end h-screen w-80 bg-DARKPINK bg-opacity-90 rounded-l-lg text-WHITE">
+    <div className="flex flex-col place-content-end h-screen w-80 bg-PEACH bg-opacity-90 rounded-l-lg text-BLACK">
       <section className="flex flex-row place-content-end p-4 mt-4">
         <IoIosClose
           onClick={() => {
