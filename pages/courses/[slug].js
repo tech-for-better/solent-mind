@@ -29,9 +29,18 @@ const CoursesName = ({ slug, session }) => {
   }, []);
 
   const bookCourse = async () => {
-    const { data, error } = await supabase
-      .from('enrolments')
-      .insert([{ user_id: `${userData.id}`, course_id: courseData[0].id }])
+    if (courseData[0].cur_capacity < courseData[0].max_capacity) {
+      const { data, error } = await supabase
+        .from('enrolments')
+        .insert([{ user_id: `${userData.id}`, course_id: courseData[0].id }]);
+
+      const { capacityData, capacityError } = await supabase
+        .from('classes')
+        .update({ cur_capacity: courseData[0].cur_capacity + 1 })
+        .match({ id: courseData[0].id });
+    } else {
+      alert('Course fully booked!');
+    }
   };
 
   useEffect(() => {
