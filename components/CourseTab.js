@@ -4,13 +4,9 @@ import Image from 'next/image';
 import EnrolTag from './EnrolTag';
 
 const CourseTab = ({ courses, enrolledArr }) => {
-  // const enrolledArr = enrolledCourses.map(Object.values).flat();
   return (
     <div>
-      <ul className=" p-4">
-        {/* {courses.map((course) => (
-          <Link href={`/courses/${course.slug}`} key={course.course_id}>
-            <a> */}
+      <ul className="p-4">
         {
           <li
             contents={courses}
@@ -26,16 +22,13 @@ const CourseTab = ({ courses, enrolledArr }) => {
               width={200}
               height={100}
             />
-            <p>{course.date}</p>
+            <p>{course.date}Hello</p>
             <div
               className="font-thin font-montserrat"
               dangerouslySetInnerHTML={{ __html: course.description }}
             />
           </li>
         }
-        {/* </a>
-          </Link>
-        ))} */}
       </ul>
     </div>
   );
