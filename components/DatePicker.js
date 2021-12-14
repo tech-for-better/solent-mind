@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import EnrolTag from './EnrolTag';
 
-export default function DatePicker({ courses, enroll }) {
+const DatePicker = ({ courses, enroll }) => {
   const [month, setMonth] = useState(null);
 
   return (
@@ -92,3 +92,5 @@ export default function DatePicker({ courses, enroll }) {
     </>
   );
 }
+
+export default DatePicker;
