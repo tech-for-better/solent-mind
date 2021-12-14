@@ -9,7 +9,7 @@ const CourseTab = ({ courses }) => {
     <div>
       <ul className=" p-4">
         {courses.map((course) => (
-          <Link href={`/courses/${course.name}`} key={course.course_id}>
+          <Link href={`/courses/${course.slug}`} key={course.course_id}>
             <a>
               <li
                 contents={courses}
