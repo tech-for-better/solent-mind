@@ -9,7 +9,7 @@ const CourseTab = ({ courses }) => {
     <div>
       <ul className=" p-4">
         {courses.map((course) => (
-          <Link href={`/courses/${course.name}`} key={course.course_id}>
+          <Link href={`/courses/${course.slug}`} key={course.course_id}>
             <a>
               <li
                 contents={courses}
@@ -25,9 +25,10 @@ const CourseTab = ({ courses }) => {
                   width={200}
                   height={100}
                 />
-                <div className="font-thin font-montserrat">
-                  {course.description}
-                </div>
+                <div
+                  className="font-thin font-montserrat"
+                  dangerouslySetInnerHTML={{ __html: course.description }}
+                />
               </li>
             </a>
           </Link>

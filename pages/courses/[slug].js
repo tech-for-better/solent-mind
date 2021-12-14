@@ -2,25 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../../utils/supabaseClient';
 import Header from '../../components/Header';
 import Main from '../../components/Main';
-import Greeting from '../../components/Greeting';
-import Tabs from '../../components/Tabs';
 import Image from 'next/image';
 
-const CoursesName = ({ name }) => {
+const CoursesName = ({ slug }) => {
   const [courseData, setCourseData] = useState();
 
   async function fetchCourseData() {
     const { data, error } = await supabase
       .from('classes')
       .select('*')
-      .eq('name', name);
+      .eq('slug', slug);
 
     setCourseData(data);
   }
   useEffect(() => {
     fetchCourseData();
   }, []);
-  
+
   return (
     <>
       <Header />
@@ -45,7 +43,7 @@ const CoursesName = ({ name }) => {
               <p className="mt-1">Start time: {course.start_time}</p>
               <p>Length of class: {course.duration}</p>
               <p>Spaces left: {course.max_capacity - course.cur_capacity}</p>
-              <p className="mt-5 text-sm">{course.description}</p>
+              <p dangerouslySetInnerHTML={{ __html: course.description }} />
             </div>
           ))
         ) : (
@@ -61,12 +59,12 @@ const CoursesName = ({ name }) => {
 // enrolments table user_id -> course_id
 
 export async function getStaticPaths() {
-  const { data, error } = await supabase.from('classes').select('name');
+  const { data, error } = await supabase.from('classes').select('slug');
   return {
     paths: data.map((course) => {
       return {
         params: {
-          name: course.name,
+          slug: course.slug,
         },
       };
     }),
@@ -74,10 +72,10 @@ export async function getStaticPaths() {
   };
 }
 export async function getStaticProps(context) {
-  const name = context.params.name;
+  const slug = context.params.slug;
 
   return {
-    props: { name: name },
+    props: { slug: slug },
   };
 }
 export default CoursesName;
