@@ -11,11 +11,11 @@ const Header = () => {
     <>
       <div className="flex flex-row items-center justify-between mt-6">
         <Link href="/myCourses">
-          <a>
+          <a className="ml-4">
             <Image
               src="/logo/solent.png"
-              width={180}
-              height={50}
+              width={150}
+              height={80}
               alt="solent mind organisation logo"
             />
           </a>
@@ -31,7 +31,7 @@ const Header = () => {
                 : 'transform rotate-0 transition ease-out' + ' cursor-pointer'
             }
             size={32}
-            style={open ? { color: '#FFFFFF' } : { color: '#B01A76' }}
+            style={open ? { color: '#FFFFFF' } : { color: '#FF0071' }}
           />
         </div>
       </div>

@@ -3,12 +3,13 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
-      PURPLE: '#5F55B9',
-      BLUE: '#006ECA',
-      DARKPINK: '#B01A76',
+      PURPLE: '#8149FF',
+      BLUE: '#9Da8FF',
+      DARKPINK: '#FF0071',
       YELLOW: '#FFB703',
-      WHITE: '#FEFEFE'
-
+      PEACH: '#FFCDD9',
+      GREEN: '71F5C4',
+      WHITE: '#FEFEFE',
     },
     fontFamily: {
       sans: ['Montserrat', 'sans-serif'],
