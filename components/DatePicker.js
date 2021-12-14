@@ -10,8 +10,8 @@ const DatePicker = ({ courses, enrolledCourses }) => {
 
   return (
     <>
-      <fieldset className=" pl-4">
-        <legend className="mb-2">Select classes by month</legend>
+      <fieldset className=" pl-4 pb-3 border border-BLUE rounded mb-4 shadow-md">
+        <legend className="mb-2 text-lg">Select classes by month</legend>
 
         <label className="mr-2" htmlFor="January">
           January
@@ -66,12 +66,9 @@ const DatePicker = ({ courses, enrolledCourses }) => {
             .map((course) => (
               <Link href={`/courses/${course.slug}`} key={course.id}>
                 <a>
-                  <li
-                    // contents={courses}
-                    className="border border-BLUE p-2 rounded mb-4 shadow-md"
-                  >
+                  <li className="border border-BLUE p-7 rounded mb-4 shadow-md">
                     <div className="flex flex-row justify-between mb-2">
-                      <div className="font-bold">{course.name}</div>
+                      <div className="font-bold text-lg">{course.name}</div>
                       <EnrolTag enroll={enrolledArr.includes(course.id)} />
                     </div>
                     <Image
@@ -80,9 +77,11 @@ const DatePicker = ({ courses, enrolledCourses }) => {
                       width={200}
                       height={100}
                     />
-                    <p className="mt-1">Course date: {course.date}</p>
+                    <div className="mt-2 mb-2 font-bold">
+                      Course date: {course.date}
+                    </div>
                     <div
-                      className="font-thin font-montserrat"
+                      className="font-montserrat text-base leading-6 "
                       dangerouslySetInnerHTML={{ __html: course.description }}
                     />
                   </li>
