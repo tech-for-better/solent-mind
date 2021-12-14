@@ -4,8 +4,9 @@ import Header from '../../components/Header';
 import Main from '../../components/Main';
 import Image from 'next/image';
 
-const CoursesName = ({ slug }) => {
+const CoursesName = ({ slug, session }) => {
   const [courseData, setCourseData] = useState();
+  const [userData, setUserData] = useState();
 
   async function fetchCourseData() {
     const { data, error } = await supabase
@@ -15,10 +16,27 @@ const CoursesName = ({ slug }) => {
 
     setCourseData(data);
   }
+
+  async function fetchData() {
+    const user = await supabase.auth.user();
+    setUserData(user);
+  }
+
+  useEffect(() => {
+    if (session) {
+      fetchData();
+    }
+  }, []);
+
+  const bookCourse = async () => {
+    const { data, error } = await supabase
+      .from('enrolments')
+      .insert([{ user_id: `${userData.id}`, course_id: courseData[0].id }])
+  };
+
   useEffect(() => {
     fetchCourseData();
   }, []);
-
   return (
     <>
       <Header />
@@ -53,15 +71,16 @@ const CoursesName = ({ slug }) => {
           <p>Loading...</p>
         )}
 
-        <button className='bg-DARKPINK p-2 rounded text-WHITE'>Book</button>
+        <button
+          className="bg-DARKPINK p-2 rounded text-WHITE"
+          onClick={bookCourse}
+        >
+          Book
+        </button>
       </Main>
     </>
   );
 };
-
-// check
-// update course cur_capacity +1
-// enrolments table user_id -> course_id
 
 export async function getStaticPaths() {
   const { data, error } = await supabase.from('classes').select('slug');
@@ -76,6 +95,7 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+
 export async function getStaticProps(context) {
   const slug = context.params.slug;
 
@@ -83,4 +103,5 @@ export async function getStaticProps(context) {
     props: { slug: slug },
   };
 }
+
 export default CoursesName;
