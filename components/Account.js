@@ -14,8 +14,6 @@ const Account = ({ userProfile, userData }) => {
 
     if (error) alert(error?.message);
 
-    console.log(data);
-
     return true;
   };
 
