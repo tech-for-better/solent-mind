@@ -1,8 +1,8 @@
 import React from 'react';
 import DatePicker from './DatePicker';
 
-const CourseTab = ({ courses }) => {
-  const enroll = false;
+const CourseTab = ({ courses, enrolledCourses }) => {
+  const enrolledArr = enrolledCourses.map(Object.values).flat();
   return (
     <>
       <DatePicker courses={courses} enroll={enroll} />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Greeting from '../components/Greeting';
 import { supabase } from '../utils/supabaseClient';
@@ -14,6 +14,7 @@ const MyCourses = ({ session }) => {
     const user = await supabase.auth.user();
 
     setUserData(user);
+
     const { data, error } = await supabase
       .from('enrolments')
       .select('user_id, course_id, classes("name", "description")')
@@ -21,7 +22,7 @@ const MyCourses = ({ session }) => {
     setEnrolData(data);
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchData();
   }, []);
 
