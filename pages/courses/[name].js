@@ -51,6 +51,8 @@ const CoursesName = ({ name }) => {
         ) : (
           <p>Loading...</p>
         )}
+
+        <button className='bg-DARKPINK p-2 rounded text-WHITE'>Book</button>
       </Main>
     </>
   );
