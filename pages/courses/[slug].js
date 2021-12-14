@@ -43,6 +43,18 @@ const CoursesName = ({ slug, session }) => {
     }
   };
 
+  const removeCourse = async () => {
+    const { data, error } = await supabase
+      .from('enrolments')
+      .delete()
+      .match({ user_id: `${userData.id}`, course_id: courseData[0].id });
+
+    const { capacityData, capacityError } = await supabase
+      .from('classes')
+      .update({ cur_capacity: courseData[0].cur_capacity - 1 })
+      .match({ id: courseData[0].id });
+  };
+
   useEffect(() => {
     fetchCourseData();
   }, []);
@@ -85,6 +97,12 @@ const CoursesName = ({ slug, session }) => {
           onClick={bookCourse}
         >
           Book
+        </button>
+        <button
+          className="bg-BLUE p-2 rounded text-WHITE"
+          onClick={removeCourse}
+        >
+          Unbook
         </button>
       </Main>
     </>
