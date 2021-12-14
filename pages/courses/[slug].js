@@ -32,7 +32,6 @@ const CoursesName = ({ slug, session }) => {
     const { data, error } = await supabase
       .from('enrolments')
       .insert([{ user_id: `${userData.id}`, course_id: courseData[0].id }])
-      .single();
   };
 
   useEffect(() => {
