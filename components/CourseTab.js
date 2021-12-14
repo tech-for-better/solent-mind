@@ -5,7 +5,7 @@ const CourseTab = ({ courses, enrolledCourses }) => {
   const enrolledArr = enrolledCourses.map(Object.values).flat();
   return (
     <>
-      <DatePicker courses={courses} enroll={enroll} />
+      <DatePicker courses={courses} enroll={enrolledArr.includes(course.id)} />
     </>
   );
 };
