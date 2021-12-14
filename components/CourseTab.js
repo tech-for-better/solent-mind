@@ -3,8 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import EnrolTag from './EnrolTag';
 
-const CourseTab = ({ courses }) => {
-  const enroll = false;
+const CourseTab = ({ courses, enrolledCourses }) => {
+  const enrolledArr = enrolledCourses.map(Object.values).flat();
   return (
     <div>
       <ul className=" p-4">
@@ -17,7 +17,7 @@ const CourseTab = ({ courses }) => {
               >
                 <div className="flex flex-row justify-between mb-2">
                   <div className="font-bold">{course.name}</div>
-                  <EnrolTag enroll={enroll} />
+                  <EnrolTag enroll={enrolledArr.includes(course.id)} />
                 </div>
                 <Image
                   src={course.image}

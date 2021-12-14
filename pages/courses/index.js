@@ -17,7 +17,9 @@ const AllCourses = ({ courses }) => {
       .from('enrolments')
       .select('course_id')
       .eq('user_id', user.id);
+    console.log('data from index:', data);
     setEnrolledCourses(data);
+    console.log('enfolledCourses:', enrolledCourses);
   };
   useEffect(() => {
     fetchData();
@@ -28,7 +30,7 @@ const AllCourses = ({ courses }) => {
       <Header />
       <Main>
         <PageHeader>Upcoming courses</PageHeader>
-        <CourseTab courses={courses} />
+        <CourseTab courses={courses} enrolledCourses={enrolledCourses} />
       </Main>
     </>
   );

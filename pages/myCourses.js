@@ -14,6 +14,7 @@ const MyCourses = ({ session }) => {
     const user = await supabase.auth.user();
 
     setUserData(user);
+
     const { data, error } = await supabase
       .from('enrolments')
       .select('user_id, course_id, classes("name", "description")')
