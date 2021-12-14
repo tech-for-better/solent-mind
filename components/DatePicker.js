@@ -2,7 +2,6 @@ import { React, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import EnrolTag from './EnrolTag';
-import CourseTab from './CourseTab';
 
 const DatePicker = ({ courses, enrolledCourses }) => {
   const [month, setMonth] = useState(null);
@@ -66,10 +65,7 @@ const DatePicker = ({ courses, enrolledCourses }) => {
             .map((course) => (
               <Link href={`/courses/${course.slug}`} key={course.id}>
                 <a>
-                  <li
-                    // contents={courses}
-                    className="border border-BLUE p-2 rounded mb-4 shadow-md"
-                  >
+                  <li className="border border-BLUE p-2 rounded mb-4 shadow-md">
                     <div className="flex flex-row justify-between mb-2">
                       <div className="font-bold">{course.name}</div>
                       <EnrolTag enroll={enrolledArr.includes(course.id)} />

@@ -3,7 +3,6 @@ import Header from '../../components/Header';
 import { supabase } from '../../utils/supabaseClient';
 import Main from '../../components/Main';
 import PageHeader from '../../components/PageHeader';
-import CourseTab from '../../components/CourseTab';
 import DatePicker from '../../components/DatePicker';
 
 const AllCourses = ({ courses }) => {
@@ -28,7 +27,6 @@ const AllCourses = ({ courses }) => {
       <Main>
         <PageHeader>Upcoming courses</PageHeader>
         <DatePicker courses={courses} enrolledCourses={enrolledCourses} />
-        {/* <CourseTab courses={courses} enrolledCourses={enrolledCourses} /> */}
       </Main>
     </>
   );

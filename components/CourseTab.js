@@ -1,16 +1,11 @@
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import EnrolTag from './EnrolTag';
 
 const CourseTab = ({ courses, enrolledArr }) => {
-  // const enrolledArr = enrolledCourses.map(Object.values).flat();
   return (
     <div>
       <ul className=" p-4">
-        {/* {courses.map((course) => (
-          <Link href={`/courses/${course.slug}`} key={course.course_id}>
-            <a> */}
         {
           <li
             contents={courses}
@@ -33,9 +28,6 @@ const CourseTab = ({ courses, enrolledArr }) => {
             />
           </li>
         }
-        {/* </a>
-          </Link>
-        ))} */}
       </ul>
     </div>
   );

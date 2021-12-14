@@ -7,6 +7,7 @@ import Image from 'next/image';
 const CoursesName = ({ slug, session }) => {
   const [courseData, setCourseData] = useState();
   const [userData, setUserData] = useState();
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
 
   async function fetchCourseData() {
     const { data, error } = await supabase
@@ -17,6 +18,16 @@ const CoursesName = ({ slug, session }) => {
     setCourseData(data);
   }
 
+  const fetchEnrolmentData = async () => {
+    const user = await supabase.auth.user();
+    const { data } = await supabase
+      .from('enrolments')
+      .select('course_id')
+      .eq('user_id', user.id);
+
+    setEnrolledCourses(data);
+  };
+
   async function fetchData() {
     const user = await supabase.auth.user();
     setUserData(user);
@@ -25,25 +36,31 @@ const CoursesName = ({ slug, session }) => {
   useEffect(() => {
     if (session) {
       fetchData();
+      fetchEnrolmentData();
     }
+    fetchCourseData();
   }, []);
 
+  const enrolledArr = enrolledCourses.map(Object.values).flat();
+
   const bookCourse = async () => {
-    if (courseData[0].cur_capacity < courseData[0].max_capacity) {
-      const { data, error } = await supabase
-        .from('enrolments')
-        .insert([
-          {
-            user_id: `${userData.id}`,
-            course_id: courseData[0].id,
-            user_course_id: `${userData.id}${courseData[0].id}`,
-          },
-        ]);
+    if (
+      courseData.length &&
+      courseData[0].cur_capacity < courseData[0].max_capacity
+    ) {
+      const { data, error } = await supabase.from('enrolments').insert([
+        {
+          user_id: `${userData.id}`,
+          course_id: courseData[0].id,
+          user_course_id: `${userData.id}${courseData[0].id}`,
+        },
+      ]);
 
       const { capacityData, capacityError } = await supabase
         .from('classes')
         .update({ cur_capacity: courseData[0].cur_capacity + 1 })
         .match({ id: courseData[0].id });
+      window.location.reload();
     } else {
       alert('Course fully booked!');
     }
@@ -59,11 +76,14 @@ const CoursesName = ({ slug, session }) => {
       .from('classes')
       .update({ cur_capacity: courseData[0].cur_capacity - 1 })
       .match({ id: courseData[0].id });
+
+    window.location.reload();
   };
 
   useEffect(() => {
     fetchCourseData();
   }, []);
+
   return (
     <>
       <Header />
@@ -97,19 +117,21 @@ const CoursesName = ({ slug, session }) => {
         ) : (
           <p>Loading...</p>
         )}
-
-        <button
-          className="bg-DARKPINK p-2 rounded text-WHITE"
-          onClick={bookCourse}
-        >
-          Book
-        </button>
-        <button
-          className="bg-BLUE p-2 rounded text-WHITE"
-          onClick={removeCourse}
-        >
-          Unbook
-        </button>
+        {!enrolledCourses.length || !enrolledArr.includes(courseData[0].id) ? (
+          <button
+            className="bg-DARKPINK p-2 rounded text-WHITE"
+            onClick={bookCourse}
+          >
+            Book
+          </button>
+        ) : (
+          <button
+            className="bg-BLUE p-2 rounded text-WHITE"
+            onClick={removeCourse}
+          >
+            Unbook
+          </button>
+        )}
       </Main>
     </>
   );
