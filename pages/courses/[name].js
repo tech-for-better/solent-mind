@@ -20,7 +20,7 @@ const CoursesName = ({ name }) => {
   useEffect(() => {
     fetchCourseData();
   }, []);
-  
+
   return (
     <>
       <Header />
@@ -45,7 +45,7 @@ const CoursesName = ({ name }) => {
               <p className="mt-1">Start time: {course.start_time}</p>
               <p>Length of class: {course.duration}</p>
               <p>Spaces left: {course.max_capacity - course.cur_capacity}</p>
-              <p className="mt-5 text-sm">{course.description}</p>
+              <p dangerouslySetInnerHTML={{ __html: course.description }} />
             </div>
           ))
         ) : (

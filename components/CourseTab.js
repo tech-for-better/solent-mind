@@ -25,9 +25,10 @@ const CourseTab = ({ courses }) => {
                   width={200}
                   height={100}
                 />
-                <div className="font-thin font-montserrat">
-                  {course.description}
-                </div>
+                <div
+                  className="font-thin font-montserrat"
+                  dangerouslySetInnerHTML={{ __html: course.description }}
+                />
               </li>
             </a>
           </Link>
