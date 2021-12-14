@@ -2,25 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
-const AboutUsTab = () => {
-  const contents = [
-    {
-      topic: 'What we do',
-      url: 'https://www.solentmind.org.uk/about-us/what-we-do/',
-    },
-    {
-      topic: 'Who we are',
-      url: 'https://www.solentmind.org.uk/about-us/who-we-are/',
-    },
-    {
-      topic: 'Reports & accounts',
-      url: 'https://www.solentmind.org.uk/about-us/reports-and-accounts/',
-    },
-    {
-      topic: 'Policies',
-      url: 'https://www.solentmind.org.uk/about-us/policies/',
-    },
-  ];
+const AboutUsTab = ({ contents }) => {
   return (
     <ul className=" p-4">
       {contents.map((content) => (
