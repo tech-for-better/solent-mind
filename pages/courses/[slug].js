@@ -32,7 +32,13 @@ const CoursesName = ({ slug, session }) => {
     if (courseData[0].cur_capacity < courseData[0].max_capacity) {
       const { data, error } = await supabase
         .from('enrolments')
-        .insert([{ user_id: `${userData.id}`, course_id: courseData[0].id }]);
+        .insert([
+          {
+            user_id: `${userData.id}`,
+            course_id: courseData[0].id,
+            user_course_id: `${userData.id}${courseData[0].id}`,
+          },
+        ]);
 
       const { capacityData, capacityError } = await supabase
         .from('classes')
