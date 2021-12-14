@@ -4,6 +4,7 @@ import { supabase } from '../../utils/supabaseClient';
 import Main from '../../components/Main';
 import PageHeader from '../../components/PageHeader';
 import CourseTab from '../../components/CourseTab';
+import DatePicker from '../../components/DatePicker';
 
 const AllCourses = ({ courses }) => {
   const [enrolledCourses, setEnrolledCourses] = useState([]);
@@ -26,7 +27,8 @@ const AllCourses = ({ courses }) => {
       <Header />
       <Main>
         <PageHeader>Upcoming courses</PageHeader>
-        <CourseTab courses={courses} enrolledCourses={enrolledCourses} />
+        <DatePicker courses={courses} enrolledCourses={enrolledCourses} />
+        {/* <CourseTab courses={courses} enrolledCourses={enrolledCourses} /> */}
       </Main>
     </>
   );
