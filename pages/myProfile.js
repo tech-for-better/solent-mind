@@ -10,6 +10,9 @@ import Image from 'next/image';
 const MyProfile = ({ supabase, session }) => {
   const [userData, setUserData] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
+  const [imageLink, setImageLink] = useState(
+    'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png'
+  );
 
   const userNameRef = React.createRef();
 
@@ -51,6 +54,7 @@ const MyProfile = ({ supabase, session }) => {
         },
       ])
       .match({ id: userData.id });
+    window.location.reload();
   };
 
   async function fetchData() {
@@ -59,11 +63,14 @@ const MyProfile = ({ supabase, session }) => {
 
     const { data, error, status } = await supabase
       .from('profiles')
-      .select('username')
+      .select('username, avatar')
       .eq('id', user.id)
       .single();
 
     setUserProfile(data);
+    if (data.avatar !== null) {
+      setImageLink(data.avatar);
+    }
   }
 
   useEffect(() => {
@@ -82,14 +89,9 @@ const MyProfile = ({ supabase, session }) => {
           <div>
             <Greeting user={userData ? ` ${userData.email}` : 'User'} />
             <PageHeader>My Profile</PageHeader>
-            <Image
-              src={
-                'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png'
-              }
-              alt={''}
-              width={100}
-              height={100}
-            />
+
+            <Image src={imageLink} alt={''} width={100} height={100} />
+
             <form>
               <div className="md:flex md:items-center mb-6">
                 <div className="md:w-1/3">
@@ -105,7 +107,9 @@ const MyProfile = ({ supabase, session }) => {
                     className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                     id="inline-full-name"
                     type="text"
-                    placeholder="Your username"
+                    placeholder={
+                      !userProfile ? 'Your username' : userProfile.username
+                    }
                     ref={userNameRef}
                   ></input>
                 </div>
@@ -132,7 +136,6 @@ const MyProfile = ({ supabase, session }) => {
                 </div>
               </div>
             </form>
-
             <div className="bg-PURPLE shadow-md"></div>
             <Tabs contents={contents} />
           </div>
