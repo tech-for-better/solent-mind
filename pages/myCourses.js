@@ -5,6 +5,7 @@ import { supabase } from '../utils/supabaseClient';
 import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
+import Image from 'next/image';
 
 const MyCourses = ({ session }) => {
   const [userData, setUserData] = useState(null);
@@ -17,7 +18,7 @@ const MyCourses = ({ session }) => {
 
     const { data, error } = await supabase
       .from('enrolments')
-      .select('user_id, course_id, classes("name", "description")')
+      .select('user_id, course_id, classes("name", "description", "image")')
       .eq('user_id', user.id);
     setEnrolData(data);
   }
@@ -50,10 +51,17 @@ const MyCourses = ({ session }) => {
                             ? `${data.classes.name.slice(0, 25)} ...`
                             : data.classes.name}
                         </div>
+
                         <span className="bg-GREEN pr-2 pl-2 rounded-full">
                           Enrolled
                         </span>
                       </div>
+                      <Image
+                        src={data.classes.image}
+                        alt={`image of ${data.classes.name}`}
+                        width={200}
+                        height={100}
+                      />
                       <div
                         className="font-thin font-montserrat"
                         dangerouslySetInnerHTML={{
