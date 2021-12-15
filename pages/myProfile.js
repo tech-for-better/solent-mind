@@ -10,7 +10,6 @@ import Image from 'next/image';
 const MyProfile = ({ supabase, session }) => {
   const [userData, setUserData] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
-  const [avatar, setAvatar] = useState(null);
 
   const userNameRef = React.createRef();
 
