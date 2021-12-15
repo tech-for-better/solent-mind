@@ -9,29 +9,27 @@ const CoursesName = ({ slug, session }) => {
   const [userData, setUserData] = useState();
   const [enrolledCourses, setEnrolledCourses] = useState([]);
 
-  async function fetchCourseData() {
+  const fetchCourseData = async () => {
     const { data, error } = await supabase
       .from('classes')
       .select('*')
       .eq('slug', slug);
-
     setCourseData(data);
-  }
+  };
 
   const fetchEnrolmentData = async () => {
     const user = await supabase.auth.user();
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from('enrolments')
       .select('course_id')
       .eq('user_id', user.id);
-
     setEnrolledCourses(data);
   };
 
-  async function fetchData() {
+  const fetchData = async () => {
     const user = await supabase.auth.user();
     setUserData(user);
-  }
+  };
 
   useEffect(() => {
     if (session) {
@@ -80,10 +78,6 @@ const CoursesName = ({ slug, session }) => {
     window.location.reload();
   };
 
-  useEffect(() => {
-    fetchCourseData();
-  }, []);
-
   return (
     <>
       <Header />
@@ -112,25 +106,26 @@ const CoursesName = ({ slug, session }) => {
                 className="mt-5 text-sm"
                 dangerouslySetInnerHTML={{ __html: course.description }}
               />
+              {!enrolledCourses.length ||
+              !enrolledArr.includes(courseData[0].id) ? (
+                <button
+                  className="bg-DARKPINK p-2 rounded text-WHITE"
+                  onClick={bookCourse}
+                >
+                  Book
+                </button>
+              ) : (
+                <button
+                  className="bg-BLUE p-2 rounded text-WHITE"
+                  onClick={removeCourse}
+                >
+                  Unbook
+                </button>
+              )}
             </div>
           ))
         ) : (
           <p>Loading...</p>
-        )}
-        {!enrolledCourses.length || !enrolledArr.includes(courseData[0].id) ? (
-          <button
-            className="bg-DARKPINK p-2 rounded text-WHITE"
-            onClick={bookCourse}
-          >
-            Book
-          </button>
-        ) : (
-          <button
-            className="bg-BLUE p-2 rounded text-WHITE"
-            onClick={removeCourse}
-          >
-            Unbook
-          </button>
         )}
       </Main>
     </>
