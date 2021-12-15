@@ -5,6 +5,7 @@ import Tabs from '../components/Tabs';
 import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
 import Image from 'next/image';
+import Modal from '../components/Modal';
 
 const MyProfile = ({ supabase, session }) => {
   const [userData, setUserData] = useState(null);
@@ -12,6 +13,10 @@ const MyProfile = ({ supabase, session }) => {
   const [imageLink, setImageLink] = useState(
     'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png'
   );
+
+  let [isOpen, setIsOpen] = useState(false);
+  let [title, setTitle] = useState('');
+  let [description, setDescription] = useState('');
 
   const userNameRef = React.createRef();
 
@@ -53,7 +58,6 @@ const MyProfile = ({ supabase, session }) => {
         },
       ])
       .match({ id: userData.id });
-    window.location.reload();
   };
 
   async function fetchData() {
@@ -91,6 +95,12 @@ const MyProfile = ({ supabase, session }) => {
             </div>
             <div className="text-center m-2">
               <Image src={imageLink} alt={''} width={100} height={100} />
+              <Modal
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                title={title}
+                description={description}
+              />
             </div>
 
             <form className="flex flex-col items-center">
@@ -126,12 +136,17 @@ const MyProfile = ({ supabase, session }) => {
                 id="single"
                 accept="image/*"
                 onChange={handleUpload}
-                className="m-auto mt-2"
+                className="m-auto mt-2 text-center"
               />
               <div className="md:flex md:items-center mb-6">
                 <div className="md:w-2/3">
                   <button
-                    onClick={updateProfileData}
+                    onClick={async () => {
+                      await updateProfileData();
+                      await setTitle('Profile updated');
+                      await setDescription("You've updated your profile");
+                      await setIsOpen(true);
+                    }}
                     className="button block bg-DARKPINK text-WHITE pb-2 pt-2 pr-4 pl-4 rounded-xl mt-6"
                     type="button"
                   >
