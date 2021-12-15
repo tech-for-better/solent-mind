@@ -3,11 +3,15 @@ import { supabase } from '../../utils/supabaseClient';
 import Header from '../../components/Header';
 import Main from '../../components/Main';
 import Image from 'next/image';
+import Modal from '../../components/Modal';
 
 const CoursesName = ({ slug, session }) => {
   const [courseData, setCourseData] = useState();
   const [userData, setUserData] = useState();
   const [enrolledCourses, setEnrolledCourses] = useState([]);
+  let [isOpen, setIsOpen] = useState(false);
+  let [title, setTitle] = useState('');
+  let [description, setDescription] = useState('');
 
   const fetchCourseData = async () => {
     const { data, error } = await supabase
@@ -58,7 +62,8 @@ const CoursesName = ({ slug, session }) => {
         .from('classes')
         .update({ cur_capacity: courseData[0].cur_capacity + 1 })
         .match({ id: courseData[0].id });
-      window.location.reload();
+
+      // window.location.reload();
     } else {
       alert('Course fully booked!');
     }
@@ -106,11 +111,25 @@ const CoursesName = ({ slug, session }) => {
                 className="mt-5 text-sm"
                 dangerouslySetInnerHTML={{ __html: course.description }}
               />
+              <Modal
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                title={title}
+                description={description}
+              />
+
               {!enrolledCourses.length ||
               !enrolledArr.includes(courseData[0].id) ? (
                 <button
                   className="bg-DARKPINK p-2 rounded text-WHITE"
-                  onClick={bookCourse}
+                  onClick={async () => {
+                    await bookCourse();
+                    await setTitle('Booking successful!');
+                    await setDescription(
+                      `You have been successfully enrolled in ${courseData[0].name}!`
+                    );
+                    await setIsOpen(true);
+                  }}
                 >
                   Book
                 </button>

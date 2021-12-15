@@ -9,6 +9,7 @@
     "test": "cypress open"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.2",
     "@supabase/supabase-js": "^1.28.5",
     "cypress": "^9.1.0",
     "next": "^12.0.7",
