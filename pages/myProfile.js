@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Greeting from '../components/Greeting';
-import Account from '../components/Account';
 import Main from '../components/Main';
 import Tabs from '../components/Tabs';
 import PageHeader from '../components/PageHeader';
@@ -10,9 +9,10 @@ import Auth from '../components/Auth';
 import Image from 'next/image';
 
 const MyProfile = ({ supabase, session }) => {
-  const Redirect = redirect('/');
   const [userData, setUserData] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
+
+  const userNameRef = React.createRef();
 
   const contents = [
     { topic: 'My booked courses', url: '/myCourses' },
@@ -20,16 +20,16 @@ const MyProfile = ({ supabase, session }) => {
     { topic: 'My Progress', url: '/myProgress' },
   ];
 
-  const updateProfileData = () => {
-    console.log(userData);
-
-    // await supabase.from('profiles').update([
-    //   {
-    //     username: ${userData.id},
-    //     avatar: courseData[0].id,
-
-    //   },
-    // ]).match({ id: userData.id });
+  const updateProfileData = async () => {
+    await supabase
+      .from('profiles')
+      .update([
+        {
+          username: userNameRef.current.value,
+          // avatar: courseData[0].id,
+        },
+      ])
+      .match({ id: userData.id });
   };
 
   async function fetchData() {
@@ -38,10 +38,11 @@ const MyProfile = ({ supabase, session }) => {
 
     const { data, error, status } = await supabase
       .from('profiles')
-      .select('username, avatar')
+      .select('username')
       .eq('id', user.id)
       .single();
 
+    console.log('data:', data);
     setUserProfile(data);
   }
 
@@ -85,6 +86,7 @@ const MyProfile = ({ supabase, session }) => {
                     id="inline-full-name"
                     type="text"
                     placeholder="Your username"
+                    ref={userNameRef}
                   ></input>
                 </div>
               </div>
@@ -105,13 +107,6 @@ const MyProfile = ({ supabase, session }) => {
                 </div>
               </div>
             </form>
-
-            {/* 
-            <Account
-              userProfile={userProfile}
-              setUserProfile={setUserProfile}
-              userData={userData}
-            /> */}
 
             <div className="bg-PURPLE shadow-md"></div>
             <Tabs contents={contents} />
