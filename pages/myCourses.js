@@ -54,9 +54,12 @@ const MyCourses = ({ session }) => {
                           Enrolled
                         </span>
                       </div>
-                      <div className="font-thin font-montserrat">
-                        {data.classes.description}
-                      </div>
+                      <div
+                        className="font-thin font-montserrat"
+                        dangerouslySetInnerHTML={{
+                          __html: data.classes.description,
+                        }}
+                      />
                     </li>
                   ))
                 : 'You are not enrolled in any classes!'}

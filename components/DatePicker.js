@@ -2,7 +2,6 @@ import { React, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import EnrolTag from './EnrolTag';
-import CourseTab from './CourseTab';
 
 const DatePicker = ({ courses, enrolledCourses }) => {
   const [month, setMonth] = useState(null);
