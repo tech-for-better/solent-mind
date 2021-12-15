@@ -21,7 +21,7 @@ const Auth = () => {
 
   return (
     <Main>
-      <section className="flex flex-col items-center text-center">
+      <section className="flex flex-col items-center text-center mt-8">
         <h1 className="header m-2 mt-10 text-bold text-2xl">
           Welcome to <span className="text-PURPLE">Solent Mind</span>
         </h1>

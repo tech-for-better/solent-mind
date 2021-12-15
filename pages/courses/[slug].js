@@ -30,15 +30,13 @@ const CoursesName = ({ slug, session }) => {
 
   const bookCourse = async () => {
     if (courseData[0].cur_capacity < courseData[0].max_capacity) {
-      const { data, error } = await supabase
-        .from('enrolments')
-        .insert([
-          {
-            user_id: `${userData.id}`,
-            course_id: courseData[0].id,
-            user_course_id: `${userData.id}${courseData[0].id}`,
-          },
-        ]);
+      const { data, error } = await supabase.from('enrolments').insert([
+        {
+          user_id: `${userData.id}`,
+          course_id: courseData[0].id,
+          user_course_id: `${userData.id}${courseData[0].id}`,
+        },
+      ]);
 
       const { capacityData, capacityError } = await supabase
         .from('classes')
@@ -92,24 +90,25 @@ const CoursesName = ({ slug, session }) => {
                 className="mt-5 text-sm"
                 dangerouslySetInnerHTML={{ __html: course.description }}
               />
+              <div className="flex flex-row justify-between mt-8">
+                <button
+                  className="bg-DARKPINK p-2 rounded text-WHITE"
+                  onClick={bookCourse}
+                >
+                  Book
+                </button>
+                <button
+                  className="bg-BLUE p-2 rounded text-WHITE"
+                  onClick={removeCourse}
+                >
+                  Unbook
+                </button>
+              </div>
             </div>
           ))
         ) : (
           <p>Loading...</p>
         )}
-
-        <button
-          className="bg-DARKPINK p-2 rounded text-WHITE"
-          onClick={bookCourse}
-        >
-          Book
-        </button>
-        <button
-          className="bg-BLUE p-2 rounded text-WHITE"
-          onClick={removeCourse}
-        >
-          Unbook
-        </button>
       </Main>
     </>
   );

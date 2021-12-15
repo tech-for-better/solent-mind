@@ -9,7 +9,7 @@ const Contact = () => {
   return (
     <div className="font-sans">
       <div className="relative">
-        <div className="flex justify-end p-6 mt-4">
+        <div className="flex justify-end p-6 mt-4 mr-2">
           <GiHamburgerMenu
             onClick={() => {
               setOpen(true);
@@ -20,15 +20,15 @@ const Contact = () => {
                 : 'transform rotate-0 transition ease-out' + ' cursor-pointer'
             }
             size={32}
-            style={open ? { color: '#FFFFFF' } : { color: '#FF0071' }}
+            style={open ? { color: '#FFFFFF' } : { color: '#1618be' }}
           />
         </div>
 
-        <section className="flex justify-center mb-8">
+        <section className="flex justify-center mb-8 -mt-8">
           <Image
             src="/logo/solent.png"
-            width={300}
-            height={161}
+            width={250}
+            height={134}
             alt="solent mind organization logo"
           />
         </section>
@@ -41,7 +41,7 @@ const Contact = () => {
             </p>
           </section>
 
-          <section className="flex flex-col justify-center m-auto w-96 bg-PURPLE rounded-md shadow-lg text-WHITE mt-8">
+          <section className="flex flex-col justify-center m-auto w-96 bg-BLUE rounded-md shadow-lg text-WHITE mt-8">
             <p className="m-4">
               Telephone: <span className="underline">023 8017 9049</span>
             </p>
@@ -55,7 +55,7 @@ const Contact = () => {
             </p>
           </section>
 
-          <section className="flex flex-col justify-center m-auto w-96 border-2 border-PURPLE shadow-lg rounded-md mt-8">
+          <section className="flex flex-col justify-center m-auto w-96 border-2 border-BLUE shadow-lg rounded-md mt-8">
             <p className="text-sm m-4">
               For all other general, administrative enquires:
             </p>
@@ -72,9 +72,9 @@ const Contact = () => {
           </section>
 
           <section className="flex justify-between w-96 mt-4 m-auto">
-            <FaTwitterSquare size={32} style={{ color: '#5F55B9' }} />
-            <FaInstagram size={32} style={{ color: '#5F55B9' }} />
-            <FaFacebookSquare size={32} style={{ color: '#5F55B9' }} />
+            <FaTwitterSquare size={32} style={{ color: '#FF0071' }} />
+            <FaInstagram size={32} style={{ color: '#FF0071' }} />
+            <FaFacebookSquare size={32} style={{ color: '#FF0071' }} />
           </section>
 
           <section className="flex flex-col mt-8">

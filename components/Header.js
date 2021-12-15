@@ -8,8 +8,8 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <div className="flex flex-row items-center justify-between mt-6">
+    <div className="sm:w-11/12 ml-auto mr-auto">
+      <div className="flex flex-row items-center justify-between mt-4">
         <Link href="/myCourses">
           <a className="ml-4">
             <Image
@@ -20,20 +20,19 @@ const Header = () => {
             />
           </a>
         </Link>
-        <div className="flex flex-col mr-6 text-lg text-DARKPINK">
-          <GiHamburgerMenu
-            onClick={() => {
-              setOpen(true);
-            }}
-            className={
-              open
-                ? 'transform rotate-90 transition ease-in'
-                : 'transform rotate-0 transition ease-out' + ' cursor-pointer'
-            }
-            size={32}
-            style={open ? { color: '#FFFFFF' } : { color: '#FF0071' }}
-          />
-        </div>
+
+        <GiHamburgerMenu
+          onClick={() => {
+            setOpen(true);
+          }}
+          className={
+            open
+              ? 'transform rotate-90 transition ease-in'
+              : 'transform rotate-0 transition ease-out' + ' cursor-pointer'
+          }
+          size={32}
+          style={open ? { color: '#FFFFFF' } : { color: '#1618be' }}
+        />
       </div>
       {/* SLIDE MENU */}
       <div
@@ -45,7 +44,7 @@ const Header = () => {
       >
         <SideMenu open={open} setOpen={setOpen} />
       </div>
-    </>
+    </div>
   );
 };
 

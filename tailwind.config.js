@@ -8,8 +8,10 @@ module.exports = {
       DARKPINK: '#FF0071',
       YELLOW: '#FFB703',
       PEACH: '#FFCDD9',
-      GREEN: '71F5C4',
+      GREEN: '#71F5C4',
       WHITE: '#FEFEFE',
+      ROYALBLUE: '#1618be',
+      BLACK: '#000000'
     },
     fontFamily: {
       sans: ['Montserrat', 'sans-serif'],
