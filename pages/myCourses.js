@@ -42,7 +42,7 @@ const MyCourses = ({ session }) => {
                 ? enrolData.map((data) => (
                     <li
                       key={data.course_id}
-                      className="border border-BLUE p-2 rounded mb-4"
+                      className="bg-BLUE p-4 rounded-xl mb-4 shadow-md cursor-pointer hover:bg-PEACH hover:bg-opacity-60"
                     >
                       <div className="flex flex-row justify-between mb-2">
                         <div className="font-bold">
@@ -50,7 +50,7 @@ const MyCourses = ({ session }) => {
                             ? `${data.classes.name.slice(0, 25)} ...`
                             : data.classes.name}
                         </div>
-                        <span className="bg-PURPLE pr-2 pl-2 text-WHITE rounded-full">
+                        <span className="bg-GREEN pr-2 pl-2 rounded-full">
                           Enrolled
                         </span>
                       </div>

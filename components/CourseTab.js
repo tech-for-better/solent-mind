@@ -5,7 +5,7 @@ import EnrolTag from './EnrolTag';
 const CourseTab = ({ courses, enrolledArr }) => {
   return (
     <div>
-      <ul className=" p-4">
+      <ul className="p-4">
         {
           <li
             contents={courses}
@@ -21,7 +21,7 @@ const CourseTab = ({ courses, enrolledArr }) => {
               width={200}
               height={100}
             />
-            <p>{course.date}</p>
+            <p>{course.date}Hello</p>
             <div
               className="font-thin font-montserrat"
               dangerouslySetInnerHTML={{ __html: course.description }}

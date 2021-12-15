@@ -5,13 +5,13 @@ import { IoIosClose } from 'react-icons/io';
 
 const SideMenu = ({ open, setOpen }) => {
   return (
-    <div className="flex flex-col place-content-end h-screen w-80 bg-DARKPINK bg-opacity-90 rounded-l-lg text-WHITE">
-      <section className="flex flex-row place-content-end p-4 mt-4">
+    <div className="flex flex-col place-content-end h-screen w-80 bg-PEACH bg-opacity-90 z-10 rounded-l-lg text-BLACK">
+      <section className="flex flex-row place-content-end p-6 mt-2 sm:mr-0 md:mr-4">
         <IoIosClose
           onClick={() => {
             setOpen(false);
           }}
-          size={48}
+          size={58}
           className={
             open
               ? 'transform rotate-0 transition ease-in cursor-pointer'
@@ -21,25 +21,25 @@ const SideMenu = ({ open, setOpen }) => {
       </section>
       <section className="flex flex-col p-6 space-y-8 text-lg">
         <Link href="/myProfile">
-          <a>Profile</a>
+          <a className="hover:text-ROYALBLUE">Profile</a>
         </Link>
         <Link href="/myCourses">
-          <a>My Courses</a>
+          <a className="hover:text-ROYALBLUE">My Courses</a>
         </Link>
         <Link href="/courses">
-          <a>Book Course</a>
+          <a className="hover:text-ROYALBLUE">Book Course</a>
         </Link>
         <Link href="/resources">
-          <a>Resources</a>
+          <a className="hover:text-ROYALBLUE">Resources</a>
         </Link>
         <Link href="/aboutUs">
-          <a>About Us</a>
+          <a className="hover:text-ROYALBLUE">About Us</a>
         </Link>
         <Link href="/myProgress">
-          <a>My Progress</a>
+          <a className="hover:text-ROYALBLUE">My Progress</a>
         </Link>
         <Link href="/contact">
-          <a>Contact</a>
+          <a className="hover:text-ROYALBLUE">Contact</a>
         </Link>
       </section>
 
