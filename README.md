@@ -4,6 +4,8 @@ A [Tech For Better project](https://www.foundersandcoders.com/tech-for-better/) 
 
 <img src='./public/logo/solent.png' width=200>
 
+(_for detailed project documentation, please look [here](Documentation.md)_ ✨)
+
 ## Team 🪴
 
 [Anna Cunnane](https://github.com/Moggach)

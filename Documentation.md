@@ -152,3 +152,67 @@ export default MyDocument;
 ## Estimation vs Actuals 📐
 
 - Completed tasks → E 13 / A 16
+
+# BUILD - WEEK 2 🧱
+
+- passing the `url` in the `Tabs` component
+
+```jsx
+const Tabs = ({ contents, url, children }) => {
+  return (
+    <ul className=" p-4">
+      {contents.map((content) => (
+        <Link
+          href={content.url ? content.url : `/courses/${content.name}`}
+          key={content.topic}
+        >
+          <a target={content.url ? '_blank' : ''}>
+            <li className="border border-BLUE p-2 rounded mb-4 shadow-md">
+              <div className="flex flex-row justify-between font-bold items-center">
+                <div>
+                  {content.topic ? <>{content.topic}</> : <>{children}</>}
+                </div>
+              </div>
+            </li>
+          </a>
+        </Link>
+      ))}
+    </ul>
+  );
+};
+```
+
+our `Tabs` component ended up having lots of information that is currently making less reusable. We are considering restructuring our code to move this info in the respective pages (About Us & Courses)
+
+### 👑 Implementing Booking functionality
+
+- we check the courses the user is currently enrolled in:
+
+```jsx
+const fetchData = async () => {
+  const user = await supabase.auth.user();
+  console.log('USER is: ', user);
+  const { data } = await supabase
+    .from('enrolments')
+    .select('course_id')
+    .eq('user_id', user.id);
+  console.log('data from index:', data);
+  setEnrolledCourses(data);
+  console.log('enfolledCourses:', enrolledCourses);
+};
+useEffect(() => {
+  fetchData();
+}, []);
+```
+
+- we take all enrolled courses and flatten their ids into an array:
+
+```jsx
+const enrolledArr = enrolledCourses.map(Object.values).flat();
+```
+
+- and we pass the `includes()` statement into the `EnrolTag`:
+
+```jsx
+<EnrolTag enroll={enrolledArr.includes(course.id)} />
+```
