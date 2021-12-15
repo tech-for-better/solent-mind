@@ -42,7 +42,6 @@ const MyProfile = ({ supabase, session }) => {
       .eq('id', user.id)
       .single();
 
-    console.log('data:', data);
     setUserProfile(data);
   }
 
