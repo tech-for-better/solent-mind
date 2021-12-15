@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
-import Greeting from '../components/Greeting';
 import Main from '../components/Main';
 import Tabs from '../components/Tabs';
 import PageHeader from '../components/PageHeader';
@@ -87,16 +86,18 @@ const MyProfile = ({ supabase, session }) => {
           <Auth />
         ) : (
           <div>
-            <Greeting user={userData ? ` ${userData.email}` : 'User'} />
-            <PageHeader>My Profile</PageHeader>
+            <div className="text-center">
+              <PageHeader>My Profile</PageHeader>
+            </div>
+            <div className="text-center m-2">
+              <Image src={imageLink} alt={''} width={100} height={100} />
+            </div>
 
-            <Image src={imageLink} alt={''} width={100} height={100} />
-
-            <form>
-              <div className="md:flex md:items-center mb-6">
+            <form className="flex flex-col items-center">
+              <div className="md:flex md:items-center mb-4">
                 <div className="md:w-1/3">
                   <label
-                    className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                    className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4 text-center"
                     htmlFor="inline-full-name"
                   >
                     Username
@@ -104,7 +105,7 @@ const MyProfile = ({ supabase, session }) => {
                 </div>
                 <div className="md:w-2/3">
                   <input
-                    className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                    className=" border border-DARKPINK pb-2 pt-2 pr-6 pl-6 focus:outline-none focus:ring-2 focus:ring-DARKPINK rounded"
                     id="inline-full-name"
                     type="text"
                     placeholder={
@@ -114,21 +115,24 @@ const MyProfile = ({ supabase, session }) => {
                   ></input>
                 </div>
               </div>
-              <label className="button primary block" htmlFor="single">
-                Upload a profile picture
+              <label
+                className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4 mt-6"
+                htmlFor="single"
+              >
+                Upload your profile picture
               </label>
               <input
                 type="file"
                 id="single"
                 accept="image/*"
                 onChange={handleUpload}
+                className="m-auto mt-2"
               />
-              <div className="md:flex md:items-center">
-                <div className="md:w-1/3"></div>
+              <div className="md:flex md:items-center mb-6">
                 <div className="md:w-2/3">
                   <button
                     onClick={updateProfileData}
-                    className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                    className="button block bg-DARKPINK text-WHITE pb-2 pt-2 pr-4 pl-4 rounded-xl mt-6"
                     type="button"
                   >
                     Update
