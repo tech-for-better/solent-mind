@@ -4,7 +4,6 @@ import Greeting from '../components/Greeting';
 import Main from '../components/Main';
 import Tabs from '../components/Tabs';
 import PageHeader from '../components/PageHeader';
-import redirect from 'nextjs-redirect';
 import Auth from '../components/Auth';
 import Image from 'next/image';
 
@@ -20,13 +19,35 @@ const MyProfile = ({ supabase, session }) => {
     { topic: 'My Progress', url: '/myProgress' },
   ];
 
+  const handleUpload = async (event) => {
+    const avatarFile = event.target.files[0];
+
+    const { data, error } = await supabase.storage
+      .from('avatars')
+      .upload(`public/${avatarFile.name}`, avatarFile, {
+        cacheControl: '3600',
+        upsert: false,
+      });
+
+    if (error) alert(error?.message);
+
+    const { imageData, imageError } = await supabase
+      .from('profiles')
+      .update([
+        {
+          avatar: `https://bstlldhfipmjeqohhmmo.supabase.in/storage/v1/object/public/avatars/public/${avatarFile.name}`,
+        },
+      ])
+      .match({ id: userData.id });
+    return true;
+  };
+
   const updateProfileData = async () => {
     await supabase
       .from('profiles')
       .update([
         {
           username: userNameRef.current.value,
-          // avatar: courseData[0].id,
         },
       ])
       .match({ id: userData.id });
@@ -92,7 +113,12 @@ const MyProfile = ({ supabase, session }) => {
               <label className="button primary block" htmlFor="single">
                 Upload a profile picture
               </label>
-              <input type="file" id="single" accept="image/*" />
+              <input
+                type="file"
+                id="single"
+                accept="image/*"
+                onChange={handleUpload}
+              />
               <div className="md:flex md:items-center">
                 <div className="md:w-1/3"></div>
                 <div className="md:w-2/3">

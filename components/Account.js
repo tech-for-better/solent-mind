@@ -2,21 +2,6 @@ import { supabase } from '../utils/supabaseClient';
 import Image from 'next/image';
 
 const Account = ({ userProfile, userData }) => {
-  const handleUpload = async (event) => {
-    const avatarFile = event.target.files[0];
-
-    const { data, error } = await supabase.storage
-      .from('avatars')
-      .upload(`public/${userData.id}.png`, avatarFile, {
-        cacheControl: '3600',
-        upsert: false,
-      });
-
-    if (error) alert(error?.message);
-
-    return true;
-  };
-
   return (
     <>
       <div>
