@@ -1,37 +1,13 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 
-const BookingModal = ({ isOpen, setIsOpen }) => {
-  //   let [isOpen, setIsOpen] = useState(true)
-
-  //   function closeModal() {
-  //     setIsOpen(false);
-  //   }
-
-  //   function openModal() {
-  //     setIsOpen(true);
-  //   }
-
+const BookingModal = ({ isOpen, setIsOpen, courseName }) => {
   return (
     <>
-      {/* <div className="fixed inset-0 flex items-center justify-center">
-        <button
-          type="button"
-          //   onClick={openModal}
-          onClick={() => {
-            setIsOpen(true);
-          }}
-          className="px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-        >
-          Open dialog
-        </button>
-      </div> */}
-
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
-          //   onClose={closeModal}
           onClose={() => {
             setIsOpen(false);
           }}
@@ -74,8 +50,7 @@ const BookingModal = ({ isOpen, setIsOpen }) => {
                 </Dialog.Title>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">
-                    Your payment has been successfully submitted. We’ve sent you
-                    an email with all of the details of your order.
+                    You have been successfully enrolled in <b>{courseName}</b>!
                   </p>
                 </div>
 
@@ -83,7 +58,6 @@ const BookingModal = ({ isOpen, setIsOpen }) => {
                   <button
                     type="button"
                     className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-DARKPINK border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                    // onClick={closeModal}
                     onClick={async () => {
                       await setIsOpen(false);
                       window.location.reload();

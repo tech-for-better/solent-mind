@@ -86,7 +86,6 @@ const CoursesName = ({ slug, session }) => {
       <Header />
 
       <Main>
-        <BookingModal isOpen={isOpen} setIsOpen={setIsOpen} />
         {courseData ? (
           courseData.map((course) => (
             <div
@@ -110,6 +109,12 @@ const CoursesName = ({ slug, session }) => {
                 className="mt-5 text-sm"
                 dangerouslySetInnerHTML={{ __html: course.description }}
               />
+              <BookingModal
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                courseName={courseData[0].name}
+              />
+
               {!enrolledCourses.length ||
               !enrolledArr.includes(courseData[0].id) ? (
                 <button
