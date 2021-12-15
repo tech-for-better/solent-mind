@@ -12,7 +12,6 @@ const CoursesName = ({ slug, session }) => {
   let [isOpen, setIsOpen] = useState(false);
   let [title, setTitle] = useState('');
   let [description, setDescription] = useState('');
-  // const [fullClass, setFullClass] = useState(false);
 
   let fullClass = false;
 
@@ -65,10 +64,8 @@ const CoursesName = ({ slug, session }) => {
         .from('classes')
         .update({ cur_capacity: courseData[0].cur_capacity + 1 })
         .match({ id: courseData[0].id });
-      // setFullClass(false);
       fullClass = false;
     } else {
-      // await setFullClass(true);
       fullClass = true;
     }
   };
