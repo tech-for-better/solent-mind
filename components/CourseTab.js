@@ -22,7 +22,7 @@ const CourseTab = ({ courses, enrolledArr }) => {
               width={200}
               height={100}
             />
-            <p>{course.date}Hello</p>
+            <p>{course.date}</p>
             <div
               className="font-thin font-montserrat"
               dangerouslySetInnerHTML={{ __html: course.description }}

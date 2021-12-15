@@ -7,16 +7,30 @@ import Tabs from '../components/Tabs';
 import PageHeader from '../components/PageHeader';
 import redirect from 'nextjs-redirect';
 import Auth from '../components/Auth';
+import Image from 'next/image';
 
 const MyProfile = ({ supabase, session }) => {
   const Redirect = redirect('/');
   const [userData, setUserData] = useState(null);
+  const [userProfile, setUserProfile] = useState(null);
+
   const contents = [
     { topic: 'My booked courses', url: '/myCourses' },
     { topic: 'Upcoming courses', url: '/courses' },
     { topic: 'My Progress', url: '/myProgress' },
   ];
-  const [userProfile, setUserProfile] = useState(null);
+
+  const updateProfileData = () => {
+    console.log(userData);
+
+    // await supabase.from('profiles').update([
+    //   {
+    //     username: ${userData.id},
+    //     avatar: courseData[0].id,
+
+    //   },
+    // ]).match({ id: userData.id });
+  };
 
   async function fetchData() {
     const user = await supabase.auth.user();
@@ -44,10 +58,17 @@ const MyProfile = ({ supabase, session }) => {
         {!session ? (
           <Auth />
         ) : (
-          <>
+          <div>
             <Greeting user={userData ? ` ${userData.email}` : 'User'} />
             <PageHeader>My Profile</PageHeader>
-
+            <Image
+              src={
+                'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png'
+              }
+              alt={''}
+              width={100}
+              height={100}
+            />
             <form>
               <div className="md:flex md:items-center mb-6">
                 <div className="md:w-1/3">
@@ -75,6 +96,7 @@ const MyProfile = ({ supabase, session }) => {
                 <div className="md:w-1/3"></div>
                 <div className="md:w-2/3">
                   <button
+                    onClick={updateProfileData}
                     className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                     type="button"
                   >
@@ -93,7 +115,7 @@ const MyProfile = ({ supabase, session }) => {
 
             <div className="bg-PURPLE shadow-md"></div>
             <Tabs contents={contents} />
-          </>
+          </div>
         )}
       </Main>
     </>
