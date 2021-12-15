@@ -17,7 +17,9 @@ const Home = ({ session }) => {
           <Auth />
         ) : (
           <Redirect>
-            <p className="text-center">Logging you in...</p>
+            <p className="text-center text-3xl text-PURPLE mt-32">
+              Logging you in... 👋{' '}
+            </p>
           </Redirect>
         )}
       </Main>

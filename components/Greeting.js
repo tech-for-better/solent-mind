@@ -3,13 +3,9 @@ import { CgProfile } from 'react-icons/cg';
 
 const Greeting = ({ user }) => {
   return (
-    <div className="flex flex-row items-center justify-between bg-PURPLE h-12 pl-4 pr-14">
-      <div className="rounded-full inline-block bg-WHITE text-DARKPINK mt-10 text-5xl	">
-        <CgProfile />
-      </div>
-      <p className="text-WHITE">
-        <p>Hello</p>
-        <p>{user}</p>
+    <div className="flex flex-row justify-center mt-8">
+      <p className="text-3xl ml-auto mr-auto">
+        Hello, <span className="text-DARKPINK">{user}</span>!
       </p>
     </div>
   );
