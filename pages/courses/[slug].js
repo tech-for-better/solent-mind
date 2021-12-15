@@ -3,13 +3,15 @@ import { supabase } from '../../utils/supabaseClient';
 import Header from '../../components/Header';
 import Main from '../../components/Main';
 import Image from 'next/image';
-import BookingModal from '../../components/BookingModal';
+import Modal from '../../components/Modal';
 
 const CoursesName = ({ slug, session }) => {
   const [courseData, setCourseData] = useState();
   const [userData, setUserData] = useState();
   const [enrolledCourses, setEnrolledCourses] = useState([]);
   let [isOpen, setIsOpen] = useState(false);
+  let [title, setTitle] = useState('');
+  let [description, setDescription] = useState('');
 
   const fetchCourseData = async () => {
     const { data, error } = await supabase
@@ -109,10 +111,11 @@ const CoursesName = ({ slug, session }) => {
                 className="mt-5 text-sm"
                 dangerouslySetInnerHTML={{ __html: course.description }}
               />
-              <BookingModal
+              <Modal
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
-                courseName={courseData[0].name}
+                title={title}
+                description={description}
               />
 
               {!enrolledCourses.length ||
@@ -121,6 +124,10 @@ const CoursesName = ({ slug, session }) => {
                   className="bg-DARKPINK p-2 rounded text-WHITE"
                   onClick={async () => {
                     await bookCourse();
+                    await setTitle('Booking successful!');
+                    await setDescription(
+                      `You have been successfully enrolled in ${courseData[0].name}!`
+                    );
                     await setIsOpen(true);
                   }}
                 >

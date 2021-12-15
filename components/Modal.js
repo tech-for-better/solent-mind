@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 
-const BookingModal = ({ isOpen, setIsOpen, courseName }) => {
+const Modal = ({ isOpen, setIsOpen, title, description }) => {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -22,7 +22,7 @@ const BookingModal = ({ isOpen, setIsOpen, courseName }) => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0" />
+              <Dialog.Overlay className="static inset-0" />
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
@@ -46,12 +46,10 @@ const BookingModal = ({ isOpen, setIsOpen, courseName }) => {
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
                 >
-                  Booking successful!
+                  {title}
                 </Dialog.Title>
                 <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    You have been successfully enrolled in <b>{courseName}</b>!
-                  </p>
+                  <p className="text-sm text-gray-500">{description}</p>
                 </div>
 
                 <div className="mt-4">
@@ -75,4 +73,4 @@ const BookingModal = ({ isOpen, setIsOpen, courseName }) => {
   );
 };
 
-export default BookingModal;
+export default Modal;
