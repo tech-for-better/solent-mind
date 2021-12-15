@@ -3,11 +3,13 @@ import { supabase } from '../../utils/supabaseClient';
 import Header from '../../components/Header';
 import Main from '../../components/Main';
 import Image from 'next/image';
+import BookingModal from '../../components/BookingModal';
 
 const CoursesName = ({ slug, session }) => {
   const [courseData, setCourseData] = useState();
   const [userData, setUserData] = useState();
   const [enrolledCourses, setEnrolledCourses] = useState([]);
+  let [isOpen, setIsOpen] = useState(false);
 
   const fetchCourseData = async () => {
     const { data, error } = await supabase
@@ -58,7 +60,8 @@ const CoursesName = ({ slug, session }) => {
         .from('classes')
         .update({ cur_capacity: courseData[0].cur_capacity + 1 })
         .match({ id: courseData[0].id });
-      window.location.reload();
+
+      // window.location.reload();
     } else {
       alert('Course fully booked!');
     }
@@ -83,6 +86,7 @@ const CoursesName = ({ slug, session }) => {
       <Header />
 
       <Main>
+        <BookingModal isOpen={isOpen} setIsOpen={setIsOpen} />
         {courseData ? (
           courseData.map((course) => (
             <div
@@ -110,7 +114,10 @@ const CoursesName = ({ slug, session }) => {
               !enrolledArr.includes(courseData[0].id) ? (
                 <button
                   className="bg-DARKPINK p-2 rounded text-WHITE"
-                  onClick={bookCourse}
+                  onClick={async () => {
+                    await bookCourse();
+                    await setIsOpen(true);
+                  }}
                 >
                   Book
                 </button>
