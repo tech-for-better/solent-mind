@@ -6,15 +6,22 @@ A [Tech For Better project](https://www.foundersandcoders.com/tech-for-better/) 
 
 (_for detailed project documentation, please look [here](Documentation.md)_ ✨)
 
+## Table of contents 🔖
+
+- [Team](#team)
+- [What are we building?](#what-are-we-building)
+
 ## Team 🪴
 
-[Anna Cunnane](https://github.com/Moggach)
-[Michael Williams](https://github.com/MJOW1999)
-[Danilo Cupido](https://github.com/danilo-cupido)
-[Jihye Pak](https://github.com/jijip41)
-[Elena Marinaki](https://github.com/elenamarinaki)
+- [Anna Cunnane](https://github.com/Moggach)
+- [Michael Williams](https://github.com/MJOW1999)
+- [Danilo Cupido](https://github.com/danilo-cupido)
+- [Jihye Pak](https://github.com/jijip41)
+- [Elena Marinaki](https://github.com/elenamarinaki)
 
 ## What are we building? 🧱
+
+[(Back to top ⬆️)](#table-of-contents)
 
 - Our application offers a platform for the students of [_**Solent Recovery College**_](https://www.solentmind.org.uk/) to sign-up/log-in, view and book courses related to mental health.
 - Each user can have a quick overview of the available courses, the ones they have joined and their progress, as well as make a new booking.
