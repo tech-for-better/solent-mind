@@ -8,10 +8,14 @@ A [Tech For Better project](https://www.foundersandcoders.com/tech-for-better/) 
 
 ## Table of contents 🔖
 
-- [Team](#team)
-- [What are we building?](#what-are-we-building)
+- [Team](#team) 🪴
+- [What are we building?](#what-are-we-building) 🧱
+- [Features](#features) ⚡️
+- [Tech Stack](#tech-stack) 🥞
 
 ## Team 🪴
+
+[(Back to top ⬆️)](#table-of-contents)
 
 - [Anna Cunnane](https://github.com/Moggach)
 - [Michael Williams](https://github.com/MJOW1999)
@@ -27,10 +31,9 @@ A [Tech For Better project](https://www.foundersandcoders.com/tech-for-better/) 
 - Each user can have a quick overview of the available courses, the ones they have joined and their progress, as well as make a new booking.
 - Our goal is to build an easily accessible platform for our target group, to enhance their experience, as well as facilitate the organisers in scheduling and managing the participants.
 
-<img src='./images/myCourses.png' width=300>
-<img src='./images/contactPage.png' width=300>
+## Features ⚡️
 
-## Features 🪶
+[(Back to top ⬆️)](#table-of-contents)
 
 How can you use the application?
 
@@ -41,3 +44,25 @@ How can you use the application?
 - Un-enrol from a course if they cannot attend any more
 - See information about the college
 - Find contact details about the college
+
+<img src='./images/myCourses.png' width=300>
+<img src='./images/bookingModal.png' width=300>
+<img src='./images/contactPage.png' width=300>
+
+## Tech Stack 🥞
+
+[(Back to top ⬆️)](#table-of-contents)
+
+<img src='./images/tech_stack.png' width=400>
+
+### Dependencies 🔗
+
+- react
+- react-dom
+- react-icons
+- react-router-dom
+- nextjs-redirect
+- next
+- cypress
+- @supabase/supabase-js
+- @headlessui/react
