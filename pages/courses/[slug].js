@@ -12,7 +12,9 @@ const CoursesName = ({ slug, session }) => {
   let [isOpen, setIsOpen] = useState(false);
   let [title, setTitle] = useState('');
   let [description, setDescription] = useState('');
-  const [fullClass, setFullClass] = useState(false);
+  // const [fullClass, setFullClass] = useState(false);
+
+  let fullClass = false;
 
   const fetchCourseData = async () => {
     const { data, error } = await supabase
@@ -63,10 +65,11 @@ const CoursesName = ({ slug, session }) => {
         .from('classes')
         .update({ cur_capacity: courseData[0].cur_capacity + 1 })
         .match({ id: courseData[0].id });
-      setFullClass(false);
+      // setFullClass(false);
+      fullClass = false;
     } else {
-      await setFullClass(true);
-      console.log(fullClass);
+      // await setFullClass(true);
+      fullClass = true;
     }
   };
 
@@ -122,17 +125,14 @@ const CoursesName = ({ slug, session }) => {
                 <button
                   className="bg-DARKPINK p-2 rounded text-WHITE"
                   onClick={async () => {
-                    // await bookCourse();
-                    console.log(fullClass);
+                    await bookCourse();
                     if (!fullClass) {
-                      await bookCourse();
                       await setTitle('Booking successful!');
                       await setDescription(
                         `You have been successfully enrolled in ${courseData[0].name}!`
                       );
                       await setIsOpen(true);
                     } else {
-                      await bookCourse();
                       await setTitle('Class unavailable');
                       await setDescription(
                         `${courseData[0].name} is currently full, try again later!`

@@ -5,6 +5,7 @@ import { supabase } from '../utils/supabaseClient';
 import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
+import Link from 'next/link';
 
 const MyCourses = ({ session }) => {
   const [userData, setUserData] = useState(null);
@@ -20,6 +21,7 @@ const MyCourses = ({ session }) => {
       .select('user_id, course_id, classes("name", "description")')
       .eq('user_id', user.id);
     setEnrolData(data);
+    console.log(data)
   }
 
   useEffect(() => {
@@ -40,6 +42,7 @@ const MyCourses = ({ session }) => {
             <ul className=" p-4">
               {enrolData && enrolData[0]
                 ? enrolData.map((data) => (
+                  <Link key={data.course_id} href={`/courses/${data.slug}`}>
                     <li
                       key={data.course_id}
                       className="bg-BLUE p-4 rounded-xl mb-4 shadow-md cursor-pointer hover:bg-PEACH hover:bg-opacity-60"
@@ -61,6 +64,7 @@ const MyCourses = ({ session }) => {
                         }}
                       />
                     </li>
+                    </Link>
                   ))
                 : 'You are not enrolled in any classes!'}
             </ul>
