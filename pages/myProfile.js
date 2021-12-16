@@ -96,7 +96,7 @@ const MyProfile = ({ supabase, session }) => {
           <Auth />
         ) : (
           <div>
-            <div className="text-center">
+            <div>
               <PageHeader>My Profile</PageHeader>
             </div>
             <BackButton />
@@ -117,10 +117,10 @@ const MyProfile = ({ supabase, session }) => {
             </div>
 
             <form className="flex flex-col items-center">
-              <div className="md:flex md:items-center">
-                <div className="flex flex-col md:w-1/3 mt-4">
+              <div className="md:items-center">
+                <div className="flex flex-col mt-4">
                   <label
-                    className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4 text-center "
+                    className="block text-gray-500 font-bold mb-1 md:mb-0 pr-4 text-center "
                     htmlFor="inline-full-name"
                   >
                     Username
