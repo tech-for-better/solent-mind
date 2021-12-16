@@ -102,12 +102,11 @@ const MyProfile = ({ supabase, session }) => {
             <BackButton />
             <div className="text-center m-2">
               <Image
-                className="img"
+                className="img round"
                 src={imageLink}
                 alt={''}
                 width={100}
                 height={100}
-                class="rounded-full"
               />
               <Modal
                 isOpen={isOpen}
