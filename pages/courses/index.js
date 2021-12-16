@@ -4,8 +4,8 @@ import { supabase } from '../../utils/supabaseClient';
 import Main from '../../components/Main';
 import PageHeader from '../../components/PageHeader';
 import DatePicker from '../../components/DatePicker';
-import SignOut from '../../components/SignOut';
 import BackButton from '../../components/BackButton';
+import Head from 'next/head';
 
 const AllCourses = ({ courses, session }) => {
   const [enrolledCourses, setEnrolledCourses] = useState([]);
@@ -25,15 +25,14 @@ const AllCourses = ({ courses, session }) => {
 
   return (
     <>
-
+      <Head>
+        <title>Book Courses</title>
+      </Head>
       <Header session={session} />
-
       <Main>
         <PageHeader>Upcoming courses</PageHeader>
         <BackButton />
         <DatePicker courses={courses} enrolledCourses={enrolledCourses} />
-
-        <SignOut />
       </Main>
     </>
   );

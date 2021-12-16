@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Modal from '../components/Modal';
 import SignOut from '../components/SignOut';
 import BackButton from '../components/BackButton';
+import Head from 'next/head';
 
 const MyProfile = ({ supabase, session }) => {
   const [userData, setUserData] = useState(null);
@@ -86,18 +87,22 @@ const MyProfile = ({ supabase, session }) => {
 
   return (
     <>
+      <Head>
+        <title>My Profile</title>
+      </Head>
       <Header session={session} />
       <Main>
         {!session ? (
           <Auth />
         ) : (
           <div>
-            <div className="text-center">
+            <div>
               <PageHeader>My Profile</PageHeader>
             </div>
             <BackButton />
             <div className="text-center m-2">
               <Image
+                className="img"
                 src={imageLink}
                 alt={''}
                 width={100}
@@ -113,10 +118,10 @@ const MyProfile = ({ supabase, session }) => {
             </div>
 
             <form className="flex flex-col items-center">
-              <div className="md:flex md:items-center">
-                <div className="flex flex-col md:w-1/3 mt-4">
+              <div className="md:items-center">
+                <div className="flex flex-col mt-4">
                   <label
-                    className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4 text-center "
+                    className="block text-gray-500 font-bold mb-1 md:mb-0 pr-4 text-center "
                     htmlFor="inline-full-name"
                   >
                     Username
@@ -170,9 +175,6 @@ const MyProfile = ({ supabase, session }) => {
             <Tabs contents={contents} />
           </div>
         )}
-
-        <SignOut />
-
       </Main>
     </>
   );

@@ -5,10 +5,10 @@ import { supabase } from '../utils/supabaseClient';
 import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
-import SignOut from '../components/SignOut';
 import BackButton from '../components/BackButton';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const MyCourses = ({ session }) => {
   const [userData, setUserData] = useState(null);
@@ -34,6 +34,9 @@ const MyCourses = ({ session }) => {
 
   return (
     <>
+      <Head>
+        <title>My Courses</title>
+      </Head>
       <Header session={session} />
 
       {!session ? (
@@ -54,7 +57,7 @@ const MyCourses = ({ session }) => {
                     >
                       <li
                         key={data.course_id}
-                        className="bg-BLUE p-4 rounded-xl mb-4 shadow-md cursor-pointer hover:bg-PEACH hover:bg-opacity-60"
+                        className="border border-BLUE p-4 rounded-xl mb-4 shadow-md cursor-pointer hover:bg-PEACH hover:bg-opacity-60"
                       >
                         <div className="flex flex-row justify-between mb-2">
                           <div className="font-bold">
@@ -68,6 +71,7 @@ const MyCourses = ({ session }) => {
                         </div>
 
                         <Image
+                          className="img"
                           src={data.classes.image}
                           alt={`image of ${data.classes.name}`}
                           width={200}
@@ -84,7 +88,6 @@ const MyCourses = ({ session }) => {
                   ))
                 : 'You are not enrolled in any classes!'}
             </ul>
-            <SignOut />
           </Main>
         </>
       )}

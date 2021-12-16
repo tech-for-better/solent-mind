@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Modal from '../../components/Modal';
 import BackButton from '../../components/BackButton';
 import ModalAlert from '../../components/ModalAlert';
+import Head from 'next/head';
 
 const CoursesName = ({ slug, session }) => {
   const [courseData, setCourseData] = useState();
@@ -91,6 +92,15 @@ const CoursesName = ({ slug, session }) => {
 
   return (
     <>
+      <Head>
+        {courseData ? (
+          courseData.map((course) => (
+            <title key={course.id}>{course.name}</title>
+          ))
+        ) : (
+          <title>Solent Mind Recovery College</title>
+        )}
+      </Head>
       <Header session={session} />
 
       <Main>
@@ -104,6 +114,7 @@ const CoursesName = ({ slug, session }) => {
               <h1 className="mb-5 font-bold text-2xl">{course.name}</h1>
 
               <Image
+                className="img"
                 src={course.image}
                 alt={`image of ${course.name}`}
                 width={200}
@@ -159,7 +170,7 @@ const CoursesName = ({ slug, session }) => {
                 </button>
               ) : (
                 <button
-                  className="bg-BLUE p-2 rounded text-WHITE"
+                  className="bg-BLUE p-2 rounded"
                   onClick={async () => {
                     await removeCourse();
                     await setTitle('Unenrolled!');

@@ -1,11 +1,19 @@
 import { supabase } from '../utils/supabaseClient';
+import Link from 'next/link';
 
 const SignOut = () => {
   return (
-    <button className="" onClick={() => supabase.auth.signOut()}>
-      <span className="bg-DARKPINK bg-opacity-90 p-4 rounded-full text-WHITE">
-        Sign Out
-      </span>
+    <button
+      className=""
+      onClick={() => {
+        supabase.auth.signOut();
+      }}
+    >
+      <Link href="/">
+        <a className="p-2 rounded-full border border-DARKPINK text-sm hover:bg-DARKPINK hover:text-WHITE">
+          Sign Out
+        </a>
+      </Link>
     </button>
   );
 };

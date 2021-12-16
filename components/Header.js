@@ -9,7 +9,7 @@ const Header = ({ session }) => {
 
   return (
     <div className="sm:w-11/12 ml-auto mr-auto">
-      <div className="flex flex-row items-center justify-between mt-4">
+      <div className="flex flex-row items-center justify-between mt-4 mr-4">
         <Link href="/myCourses">
           <a className="ml-4">
             <Image
