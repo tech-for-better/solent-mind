@@ -13,6 +13,8 @@ const CoursesName = ({ slug, session }) => {
   let [title, setTitle] = useState('');
   let [description, setDescription] = useState('');
 
+  let fullClass = false;
+
   const fetchCourseData = async () => {
     const { data, error } = await supabase
       .from('classes')
@@ -62,10 +64,9 @@ const CoursesName = ({ slug, session }) => {
         .from('classes')
         .update({ cur_capacity: courseData[0].cur_capacity + 1 })
         .match({ id: courseData[0].id });
-
-      // window.location.reload();
+      fullClass = false;
     } else {
-      alert('Course fully booked!');
+      fullClass = true;
     }
   };
 
@@ -79,8 +80,6 @@ const CoursesName = ({ slug, session }) => {
       .from('classes')
       .update({ cur_capacity: courseData[0].cur_capacity - 1 })
       .match({ id: courseData[0].id });
-
-    window.location.reload();
   };
 
   return (
@@ -124,11 +123,19 @@ const CoursesName = ({ slug, session }) => {
                   className="bg-DARKPINK p-2 rounded text-WHITE"
                   onClick={async () => {
                     await bookCourse();
-                    await setTitle('Booking successful!');
-                    await setDescription(
-                      `You have been successfully enrolled in ${courseData[0].name}!`
-                    );
-                    await setIsOpen(true);
+                    if (!fullClass) {
+                      await setTitle('Booking successful!');
+                      await setDescription(
+                        `You have been successfully enrolled in ${courseData[0].name}!`
+                      );
+                      await setIsOpen(true);
+                    } else {
+                      await setTitle('Class unavailable');
+                      await setDescription(
+                        `${courseData[0].name} is currently full, try again later!`
+                      );
+                      await setIsOpen(true);
+                    }
                   }}
                 >
                   Book
@@ -136,7 +143,12 @@ const CoursesName = ({ slug, session }) => {
               ) : (
                 <button
                   className="bg-BLUE p-2 rounded text-WHITE"
-                  onClick={removeCourse}
+                  onClick={async () => {
+                    await removeCourse();
+                    await setTitle('You have been successfully unenrolled!');
+                    await setDescription(`Bye!`);
+                    await setIsOpen(true);
+                  }}
                 >
                   Unbook
                 </button>
