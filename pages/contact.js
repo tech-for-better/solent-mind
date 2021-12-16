@@ -4,6 +4,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaInstagram, FaTwitterSquare, FaFacebookSquare } from 'react-icons/fa';
 import SideMenu from '../components/SideMenu';
 import BackButton from '../components/BackButton';
+import Link from 'next/link';
 
 const Contact = () => {
   const [open, setOpen] = useState(false);
@@ -77,9 +78,21 @@ const Contact = () => {
           </section>
 
           <section className="flex justify-between w-96 mt-4 m-auto">
-            <FaTwitterSquare size={32} style={{ color: '#FF0071' }} />
-            <FaInstagram size={32} style={{ color: '#FF0071' }} />
-            <FaFacebookSquare size={32} style={{ color: '#FF0071' }} />
+            <Link href="https://twitter.com/SolentMind">
+              <a target="_blank">
+                <FaTwitterSquare size={32} style={{ color: '#FF0071' }} />
+              </a>
+            </Link>
+            <Link href="https://www.instagram.com/solentmind/">
+              <a target="_blank">
+                <FaInstagram size={32} style={{ color: '#FF0071' }} />
+              </a>
+            </Link>
+            <Link href="https://www.facebook.com/SolentMind1">
+              <a target="_blank">
+                <FaFacebookSquare size={32} style={{ color: '#FF0071' }} />
+              </a>
+            </Link>
           </section>
 
           <section className="flex flex-col mt-8">

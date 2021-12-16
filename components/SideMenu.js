@@ -84,9 +84,21 @@ const SideMenu = ({ open, setOpen, session }) => {
       </section>
 
       <section className="flex justify-between w-48 mt-12 m-auto">
-        <FaTwitterSquare size={32} />
-        <FaInstagram size={32} />
-        <FaFacebookSquare size={32} />
+        <Link href="https://twitter.com/SolentMind">
+          <a target="_blank">
+            <FaTwitterSquare size={32} />
+          </a>
+        </Link>
+        <Link href="https://www.instagram.com/solentmind/">
+          <a target="_blank">
+            <FaInstagram size={32} />
+          </a>
+        </Link>
+        <Link href="https://www.facebook.com/SolentMind1">
+          <a target="_blank">
+            <FaFacebookSquare size={32} />
+          </a>
+        </Link>
       </section>
     </div>
   );
