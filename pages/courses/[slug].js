@@ -5,7 +5,6 @@ import Main from '../../components/Main';
 import Image from 'next/image';
 import Modal from '../../components/Modal';
 import ModalAlert from '../../components/ModalAlert';
-import redirect from 'nextjs-redirect';
 
 const CoursesName = ({ slug, session }) => {
   const [courseData, setCourseData] = useState();
@@ -21,8 +20,6 @@ const CoursesName = ({ slug, session }) => {
   let [descriptionAlert, setDescriptionAlert] = useState('');
 
   let fullClass = false;
-
-  // const Redirect = redirect('/courses');
 
   const fetchCourseData = async () => {
     const { data, error } = await supabase
