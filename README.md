@@ -10,10 +10,13 @@ A [Tech For Better project](https://www.foundersandcoders.com/tech-for-better/) 
 
 - [Team](#team) 🪴
 - [What are we building?](#what-are-we-building) 🧱
-- [Features](#features) ⚡️
+- [Features](#features) ✨
 - [Tech Stack](#tech-stack) 🥞
+- [Database Schema](#database-schema) 📦
 - [Installation](#installation) 👓
-- [Additional Features](#additional-features) ⏱️
+- [Key Learnings](#key-learnings) 🧐
+- [Additional Features](#additional-features) ⌛
+- [Further Information](#further-information) 🔗
 
 ## Team 🪴
 
@@ -33,7 +36,7 @@ A [Tech For Better project](https://www.foundersandcoders.com/tech-for-better/) 
 - Each user can have a quick overview of the available courses, the ones they have joined and their progress, as well as make a new booking.
 - Our goal is to build an easily accessible platform for our target group, to enhance their experience, as well as facilitate the organisers in scheduling and managing the participants.
 
-## Features ⚡️
+## Features ✨
 
 [(Back to top ⬆️)](#table-of-contents)
 
@@ -48,8 +51,9 @@ How can you use the application?
 - Find contact details about the college
 
 <img src='./images/myCourses.png' width=300>
-<img src='./images/bookingModal.png' width=300>
+<img src='./images/bookingModal.png' width=250>
 <img src='./images/contactPage.png' width=300>
+<img src='./images/courses.png' width=300>
 
 ## Tech Stack 🥞
 
@@ -57,7 +61,7 @@ How can you use the application?
 
 <img src='./images/tech_stack.png' width=400>
 
-### Dependencies 🔗
+### Dependencies 🪢
 
 - react
 - react-dom
@@ -69,6 +73,12 @@ How can you use the application?
 - @supabase/supabase-js
 - @headlessui/react
 
+## Database Schema 📦
+
+[(Back to top ⬆️)](#table-of-contents)
+
+<img src='./images/supabase_schema.png' width=600>
+
 ## Installation 👓
 
 [(Back to top ⬆️)](#table-of-contents)
@@ -79,8 +89,8 @@ How can you use the application?
   - run `npm install` to install dependencies locally
   - create an `.env` file in the root folder. It should contain:
   ```
-  NEXT_PUBLIC_SUPABASE_URL=...
-  NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+  NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+  NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
   ```
   - To get your Supabase URL:
     - create an account on https://supabase.io/,
@@ -89,7 +99,22 @@ How can you use the application?
     - the anon key is on the same page, under "Project API keys"
   - run `npm run dev` to start the local server and run the app
 
-## Additional Features ⏱️
+## Key Learnings 🧐
+
+[(Back to top ⬆️)](#table-of-contents)
+
+- Collaboration with a product owner
+- Organizing architecture for a bigger in scale product and managing tasks within a larger team.
+- Code modularization and code reusability
+- Learning to use `Supabase` with `Next.js` for the backend.
+  - More profound understanding of asynchronous code
+  - Using states more efficiently and only when needed
+- Learning `Tailwind CSS`
+  - understanding how CSS customization works with the use of a framework
+  - adapting the framework to our needs
+- Debugging code, tracing code paths and refactoring code for optimization purposes
+
+## Additional Features ⌛
 
 [(Back to top ⬆️)](#table-of-contents)
 
@@ -101,3 +126,11 @@ There are a few features we would have liked to implement if we had more time. T
 - Implement the `Progress` page:
   - here, the user could find all their logged hours
   - budge system: the user is awarded a certificate based on completed hours
+
+## Further Information 🔗
+
+[(Back to top ⬆️)](#table-of-contents)
+
+- https://www.solentmind.org.uk/
+- info@solentmind.org.uk
+- https://solent-mind.vercel.app/
