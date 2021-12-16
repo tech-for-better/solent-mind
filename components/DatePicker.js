@@ -66,17 +66,19 @@ const DatePicker = ({ courses, enrolledCourses }) => {
               <Link href={`/courses/${course.slug}`} key={course.id}>
                 <a>
                   <li className="border border-BLUE bg-opacity-70 p-8 rounded-xl mb-4 cursor-pointer mb-4 shadow-md hover:bg-PEACH hover:bg-opacity-60 -z-10">
-                    <div className="flex flex-row justify-between mb-2">
+                    <div className="flex flex-row justify-between mb-2 items-center">
                       <div className="font-bold text-lg">{course.name}</div>
                       <EnrolTag enroll={enrolledArr.includes(course.id)} />
                     </div>
-                    <Image
-                      className="img"
-                      src={course.image}
-                      alt={`image of ${course.name}`}
-                      width={200}
-                      height={100}
-                    />
+                    <div className="text-center">
+                      <Image
+                        className="img"
+                        src={course.image}
+                        alt={`image of ${course.name}`}
+                        width={200}
+                        height={100}
+                      />
+                    </div>
                     <div className="mt-2 mb-2 font-bold">
                       Course date: {course.date}
                     </div>

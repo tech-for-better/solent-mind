@@ -20,19 +20,20 @@ const Header = ({ session }) => {
             />
           </a>
         </Link>
-
-        <GiHamburgerMenu
-          onClick={() => {
-            setOpen(true);
-          }}
-          className={
-            open
-              ? 'transform rotate-90 transition ease-in'
-              : 'transform rotate-0 transition ease-out' + ' cursor-pointer'
-          }
-          size={32}
-          style={open ? { color: '#FFFFFF' } : { color: '#1618be' }}
-        />
+        <div className="mr-5 md:mr-2 lg:mr-1 2xl:mr-0">
+          <GiHamburgerMenu
+            onClick={() => {
+              setOpen(true);
+            }}
+            className={
+              open
+                ? 'transform rotate-90 transition ease-in'
+                : 'transform rotate-0 transition ease-out' + ' cursor-pointer'
+            }
+            size={32}
+            style={open ? { color: '#FFFFFF' } : { color: '#1618be' }}
+          />
+        </div>
       </div>
       {/* SLIDE MENU */}
       <div
