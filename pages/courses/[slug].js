@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import Main from '../../components/Main';
 import Image from 'next/image';
 import Modal from '../../components/Modal';
+import ModalAlert from '../../components/ModalAlert';
 import redirect from 'nextjs-redirect';
 import { useRouter } from 'next/router';
 
@@ -11,9 +12,14 @@ const CoursesName = ({ slug, session }) => {
   const [courseData, setCourseData] = useState();
   const [userData, setUserData] = useState();
   const [enrolledCourses, setEnrolledCourses] = useState([]);
+
   let [isOpen, setIsOpen] = useState(false);
   let [title, setTitle] = useState('');
   let [description, setDescription] = useState('');
+
+  let [openAlert, setOpenAlert] = useState(false);
+  let [titleAlert, setTitleAlert] = useState('');
+  let [descriptionAlert, setDescriptionAlert] = useState('');
 
   let fullClass = false;
 
@@ -140,7 +146,9 @@ const CoursesName = ({ slug, session }) => {
                         `${courseData[0].name} is currently full, try again later!`
                       );
                       await setIsOpen(true);
-                      router.back();
+                      if (!isOpen) {
+                        router.back();
+                      }
                     }
                   }}
                 >
