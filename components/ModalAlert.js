@@ -1,15 +1,18 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import { useRouter } from 'next/router';
 
-const Modal = ({ isOpen, setIsOpen, title, description }) => {
+const Modal = ({ openAlert, setOpenAlert, titleAlert, descriptionAlert }) => {
+  const router = useRouter();
+
   return (
     <>
-      <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={openAlert} as={Fragment}>
         <Dialog
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
           onClose={() => {
-            setIsOpen(false);
+            setOpenAlert(false);
           }}
         >
           <div className="min-h-screen px-4 text-center">
@@ -41,27 +44,27 @@ const Modal = ({ isOpen, setIsOpen, title, description }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-BLUE shadow-xl rounded-2xl">
+              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-ROYALBLUE shadow-xl rounded-2xl">
                 <Dialog.Title
                   as="h3"
-                  className="text-lg font-medium leading-6 text-gray-900"
+                  className="text-lg font-medium leading-6 text-WHITE"
                 >
-                  {title}
+                  {titleAlert}
                 </Dialog.Title>
                 <div className="mt-2">
-                  <p className="text-sm text-gray-500">{description}</p>
+                  <p className="text-sm text-WHITE">{descriptionAlert}</p>
                 </div>
 
                 <div className="mt-4">
                   <button
                     type="button"
-                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-GREEN border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-DARKPINK border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                     onClick={async () => {
-                      await setIsOpen(false);
-                      window.location.reload();
+                      await setOpenAlert(false);
+                      router.back();
                     }}
                   >
-                    Got it, thanks!
+                   ↩ Back
                   </button>
                 </div>
               </div>

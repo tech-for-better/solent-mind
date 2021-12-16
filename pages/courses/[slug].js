@@ -4,14 +4,20 @@ import Header from '../../components/Header';
 import Main from '../../components/Main';
 import Image from 'next/image';
 import Modal from '../../components/Modal';
+import ModalAlert from '../../components/ModalAlert';
 
 const CoursesName = ({ slug, session }) => {
   const [courseData, setCourseData] = useState();
   const [userData, setUserData] = useState();
   const [enrolledCourses, setEnrolledCourses] = useState([]);
+
   let [isOpen, setIsOpen] = useState(false);
   let [title, setTitle] = useState('');
   let [description, setDescription] = useState('');
+
+  let [openAlert, setOpenAlert] = useState(false);
+  let [titleAlert, setTitleAlert] = useState('');
+  let [descriptionAlert, setDescriptionAlert] = useState('');
 
   let fullClass = false;
 
@@ -116,6 +122,12 @@ const CoursesName = ({ slug, session }) => {
                 title={title}
                 description={description}
               />
+              <ModalAlert
+                openAlert={openAlert}
+                setOpenAlert={setOpenAlert}
+                titleAlert={titleAlert}
+                descriptionAlert={descriptionAlert}
+              />
 
               {!enrolledCourses.length ||
               !enrolledArr.includes(courseData[0].id) ? (
@@ -126,15 +138,18 @@ const CoursesName = ({ slug, session }) => {
                     if (!fullClass) {
                       await setTitle('Booking successful!');
                       await setDescription(
-                        `You have been successfully enrolled in ${courseData[0].name}!`
+                        `You have been successfully enrolled in "${courseData[0].name}"!`
                       );
                       await setIsOpen(true);
                     } else {
-                      await setTitle('Class unavailable');
-                      await setDescription(
-                        `${courseData[0].name} is currently full, try again later!`
+                      await setTitleAlert('Class unavailable');
+                      await setDescriptionAlert(
+                        `"${courseData[0].name}" is currently full. Go back for more available courses!`
                       );
-                      await setIsOpen(true);
+                      await setOpenAlert(true);
+                      // if (!isOpen) {
+                      //   router.back();
+                      // }
                     }
                   }}
                 >
@@ -145,8 +160,10 @@ const CoursesName = ({ slug, session }) => {
                   className="bg-BLUE p-2 rounded text-WHITE"
                   onClick={async () => {
                     await removeCourse();
-                    await setTitle('You have been successfully unenrolled!');
-                    await setDescription(`Bye!`);
+                    await setTitle('Unenrolled!');
+                    await setDescription(
+                      `You have been successfully unenrolled from "${courseData[0].name}"`
+                    );
                     await setIsOpen(true);
                   }}
                 >
