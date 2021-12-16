@@ -10,6 +10,10 @@ describe('Example Test', () => {
   });
 });
 
+it('Visits baseUrl', () => {
+  cy.visit('/');
+});
+
 // describe('My Courses Tests', () => {
 //   it('Shows error message for user with no classes', () => {
 //     cy.visit('http://localhost:3000/myCourses');
