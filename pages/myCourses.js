@@ -25,6 +25,7 @@ const MyCourses = ({ session }) => {
         'user_id, course_id, classes("name", "description", "image", "slug")'
       )
       .eq('user_id', user.id);
+
     setEnrolData(data);
   }
 
@@ -59,26 +60,29 @@ const MyCourses = ({ session }) => {
                         key={data.course_id}
                         className="border border-BLUE p-4 rounded-xl mb-4 shadow-md cursor-pointer hover:bg-PEACH hover:bg-opacity-60"
                       >
-                        <div className="flex flex-row justify-between mb-2">
+                        <div className="flex flex-col justify-between md:flex-row mb-2">
                           <div className="font-bold">
                             {data.classes.name.length > 25
                               ? `${data.classes.name.slice(0, 25)} ...`
                               : data.classes.name}
                           </div>
-                          <span className="bg-GREEN pr-2 pl-2 rounded-full">
-                            Enrolled
-                          </span>
+                          <div className="inline-block text-right mt-2">
+                            <span className="bg-GREEN pr-2 pl-2 rounded-full ">
+                              Enrolled
+                            </span>
+                          </div>
                         </div>
-
-                        <Image
-                          className="img"
-                          src={data.classes.image}
-                          alt={`image of ${data.classes.name}`}
-                          width={200}
-                          height={100}
-                        />
+                        <div className="text-center">
+                          <Image
+                            className="img"
+                            src={data.classes.image}
+                            alt={`image of ${data.classes.name}`}
+                            width={200}
+                            height={100}
+                          />
+                        </div>
                         <div
-                          className="font-thin font-montserrat"
+                          className="font-thin font-montserrat mt-2"
                           dangerouslySetInnerHTML={{
                             __html: data.classes.description,
                           }}
