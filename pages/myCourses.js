@@ -6,6 +6,7 @@ import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
 import SignOut from '../components/SignOut';
+import BackButton from '../components/BackButton';
 import Image from 'next/image';
 
 const MyCourses = ({ session }) => {
@@ -38,6 +39,7 @@ const MyCourses = ({ session }) => {
         <>
           <Greeting user={userData ? ` ${userData.email}` : 'User'} />
           <Main>
+            <BackButton />
             <PageHeader>My Courses</PageHeader>
             <ul className=" p-4">
               {enrolData && enrolData[0]
