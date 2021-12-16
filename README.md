@@ -10,10 +10,12 @@ A [Tech For Better project](https://www.foundersandcoders.com/tech-for-better/) 
 
 - [Team](#team) 🪴
 - [What are we building?](#what-are-we-building) 🧱
-- [Features](#features) ⚡️
+- [Features](#features) ✨
 - [Tech Stack](#tech-stack) 🥞
+- [Database Schema](#database-schema) 📦
 - [Installation](#installation) 👓
-- [Additional Features](#additional-features) ⏱️
+- [Key Learnings](#key-learnings) 🧐
+- [Additional Features](#additional-features) ⌛
 
 ## Team 🪴
 
@@ -33,7 +35,7 @@ A [Tech For Better project](https://www.foundersandcoders.com/tech-for-better/) 
 - Each user can have a quick overview of the available courses, the ones they have joined and their progress, as well as make a new booking.
 - Our goal is to build an easily accessible platform for our target group, to enhance their experience, as well as facilitate the organisers in scheduling and managing the participants.
 
-## Features ⚡️
+## Features ✨
 
 [(Back to top ⬆️)](#table-of-contents)
 
@@ -69,6 +71,12 @@ How can you use the application?
 - @supabase/supabase-js
 - @headlessui/react
 
+## Database Schema 📦
+
+[(Back to top ⬆️)](#table-of-contents)
+
+<img src='./images/supabase_schema.png' width=600>
+
 ## Installation 👓
 
 [(Back to top ⬆️)](#table-of-contents)
@@ -89,7 +97,22 @@ How can you use the application?
     - the anon key is on the same page, under "Project API keys"
   - run `npm run dev` to start the local server and run the app
 
-## Additional Features ⏱️
+## Key Learnings 🧐
+
+[(Back to top ⬆️)](#table-of-contents)
+
+- Collaboration with a product owner
+- Organizing architecture for a bigger in scale product and managing tasks within a larger team.
+- Code modularization and code reusability
+- Learning to use `Supabase` with `Next.js` for the backend.
+  - More profound understanding of asynchronous code
+  - Using states more efficiently and only when needed
+- Learning `Tailwind CSS`
+  - understanding how CSS customization works with the use of a framework
+  - adapting the framework to our needs
+- Debugging code, tracing code paths and refactoring code for optimization purposes
+
+## Additional Features ⌛
 
 [(Back to top ⬆️)](#table-of-contents)
 
