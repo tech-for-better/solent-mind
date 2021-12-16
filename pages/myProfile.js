@@ -102,6 +102,7 @@ const MyProfile = ({ supabase, session }) => {
             <BackButton />
             <div className="text-center m-2">
               <Image
+                className="img"
                 src={imageLink}
                 alt={''}
                 width={100}

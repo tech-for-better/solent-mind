@@ -114,6 +114,7 @@ const CoursesName = ({ slug, session }) => {
               <h1 className="mb-5 font-bold text-2xl">{course.name}</h1>
 
               <Image
+                className="img"
                 src={course.image}
                 alt={`image of ${course.name}`}
                 width={200}

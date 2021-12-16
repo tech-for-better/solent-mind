@@ -57,7 +57,7 @@ const MyCourses = ({ session }) => {
                     >
                       <li
                         key={data.course_id}
-                        className="bg-BLUE p-4 rounded-xl mb-4 shadow-md cursor-pointer hover:bg-PEACH hover:bg-opacity-60"
+                        className="border border-BLUE p-4 rounded-xl mb-4 shadow-md cursor-pointer hover:bg-PEACH hover:bg-opacity-60"
                       >
                         <div className="flex flex-row justify-between mb-2">
                           <div className="font-bold">
@@ -71,6 +71,7 @@ const MyCourses = ({ session }) => {
                         </div>
 
                         <Image
+                          className="img"
                           src={data.classes.image}
                           alt={`image of ${data.classes.name}`}
                           width={200}
