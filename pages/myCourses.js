@@ -48,7 +48,7 @@ const MyCourses = ({ session }) => {
           <Main>
             <BackButton />
             <PageHeader>My Courses</PageHeader>
-            <ul className=" p-4">
+            <ul className=" p-2">
               {enrolData && enrolData[0]
                 ? enrolData.map((data) => (
                     <Link
