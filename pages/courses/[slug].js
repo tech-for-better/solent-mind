@@ -90,7 +90,7 @@ const CoursesName = ({ slug, session }) => {
 
   return (
     <>
-      <Header />
+      <Header session={session} />
 
       <Main>
         {courseData ? (

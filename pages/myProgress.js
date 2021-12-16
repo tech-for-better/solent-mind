@@ -19,7 +19,7 @@ const Progress = ({ session }) => {
   }, []);
   return (
     <>
-      <Header />
+      <Header session={session} />
       {!session ? (
         <Auth />
       ) : (
@@ -27,6 +27,8 @@ const Progress = ({ session }) => {
           <Greeting user={userData ? ` ${userData.email}` : 'User'} />
           <Main>
             <PageHeader>My Progress</PageHeader>
+            <p>Coming soon</p>
+            <p>Building in progress...</p>
             <SignOut />
           </Main>
         </>

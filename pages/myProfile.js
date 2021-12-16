@@ -85,7 +85,7 @@ const MyProfile = ({ supabase, session }) => {
 
   return (
     <>
-      <Header />
+      <Header session={session} />
       <Main>
         {!session ? (
           <Auth />
@@ -167,7 +167,6 @@ const MyProfile = ({ supabase, session }) => {
             <Tabs contents={contents} />
           </div>
         )}
-        <SignOut />
       </Main>
     </>
   );

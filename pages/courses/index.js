@@ -6,7 +6,7 @@ import PageHeader from '../../components/PageHeader';
 import DatePicker from '../../components/DatePicker';
 import SignOut from '../../components/SignOut';
 
-const AllCourses = ({ courses }) => {
+const AllCourses = ({ courses, session }) => {
   const [enrolledCourses, setEnrolledCourses] = useState([]);
 
   const fetchData = async () => {
@@ -24,7 +24,7 @@ const AllCourses = ({ courses }) => {
 
   return (
     <>
-      <Header />
+      <Header session={session} />
       <Main>
         <PageHeader>Upcoming courses</PageHeader>
         <DatePicker courses={courses} enrolledCourses={enrolledCourses} />

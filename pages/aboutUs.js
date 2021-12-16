@@ -3,7 +3,7 @@ import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import AboutUsTab from '../components/AboutUsTab';
 
-const AboutUs = () => {
+const AboutUs = ({ session }) => {
   const contents = [
     {
       topic: 'What we do',
@@ -24,7 +24,7 @@ const AboutUs = () => {
   ];
   return (
     <>
-      <Header />
+      <Header session={session} />
       <Main>
         <PageHeader>ABOUT US</PageHeader>
         <div className="bg-PURPLE shadow-md">
