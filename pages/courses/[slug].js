@@ -169,7 +169,7 @@ const CoursesName = ({ slug, session }) => {
                 </button>
               ) : (
                 <button
-                  className="bg-BLUE p-2 rounded text-WHITE"
+                  className="bg-BLUE p-2 rounded"
                   onClick={async () => {
                     await removeCourse();
                     await setTitle('Unenrolled!');
