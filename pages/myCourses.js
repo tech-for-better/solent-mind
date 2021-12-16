@@ -21,7 +21,7 @@ const MyCourses = ({ session }) => {
       .select('user_id, course_id, classes("name", "description")')
       .eq('user_id', user.id);
     setEnrolData(data);
-    console.log(data)
+    console.log(data);
   }
 
   useEffect(() => {
@@ -42,28 +42,28 @@ const MyCourses = ({ session }) => {
             <ul className=" p-4">
               {enrolData && enrolData[0]
                 ? enrolData.map((data) => (
-                  <Link key={data.course_id} href={`/courses/${data.slug}`}>
-                    <li
-                      key={data.course_id}
-                      className="bg-BLUE p-4 rounded-xl mb-4 shadow-md cursor-pointer hover:bg-PEACH hover:bg-opacity-60"
-                    >
-                      <div className="flex flex-row justify-between mb-2">
-                        <div className="font-bold">
-                          {data.classes.name.length > 25
-                            ? `${data.classes.name.slice(0, 25)} ...`
-                            : data.classes.name}
+                    <Link key={data.course_id} href={`/courses/${data.slug}`}>
+                      <li
+                        key={data.course_id}
+                        className="bg-BLUE p-4 rounded-xl mb-4 shadow-md cursor-pointer hover:bg-PEACH hover:bg-opacity-60"
+                      >
+                        <div className="flex flex-row justify-between mb-2">
+                          <div className="font-bold">
+                            {data.classes.name.length > 25
+                              ? `${data.classes.name.slice(0, 25)} ...`
+                              : data.classes.name}
+                          </div>
+                          <span className="bg-GREEN pr-2 pl-2 rounded-full">
+                            Enrolled
+                          </span>
                         </div>
-                        <span className="bg-GREEN pr-2 pl-2 rounded-full">
-                          Enrolled
-                        </span>
-                      </div>
-                      <div
-                        className="font-thin font-montserrat"
-                        dangerouslySetInnerHTML={{
-                          __html: data.classes.description,
-                        }}
-                      />
-                    </li>
+                        <div
+                          className="font-thin font-montserrat"
+                          dangerouslySetInnerHTML={{
+                            __html: data.classes.description,
+                          }}
+                        />
+                      </li>
                     </Link>
                   ))
                 : 'You are not enrolled in any classes!'}
