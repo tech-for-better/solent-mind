@@ -8,6 +8,8 @@
 - [Proposed Stack](#proposed-stack) 🥞
 - [Development](#development) 🧑‍💻
 - [Estimation vs Actuals](#estimation-vs-actuals) 📈
+- [Testing](#testing) 🧪
+- [Deployment to `Vercel`](#deployment-to-vercel)
 
 ## What are we building? 🧱
 
@@ -449,8 +451,23 @@ router.back();
 
 ### WEEK 2 📐
 
-- Completed tasks → E / A
+- Completed tasks → E 39 / A 32
 
 ## Testing 🧪
 
 [(Back to top ⬆️)](#table-of-contents)
+
+- We used `Cypress` for integration testing and separated the tests into different files based on what's being used
+- We have created different user scenarios and simulated user action through writing the tests
+- Specific modules are being tested individually(modularization)
+- Authentication not being tested - the tests are written, but they work manually
+
+The tests are verifying obvious bugs, but did not reveal any refined ones.
+
+## Deployment to `Vercel`
+
+[(Back to top ⬆️)](#table-of-contents)
+
+- `Vercel` is a platform for frontend frameworks and static sites, built to integrate with a database.
+- the **Solent Mind** booking application is currently deployed to `Vercel`.
+- the admin page, where you have access to deployment previews, analytics and general project settings is: https://vercel.com/solent/solent-mind
