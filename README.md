@@ -89,8 +89,8 @@ How can you use the application?
   - run `npm install` to install dependencies locally
   - create an `.env` file in the root folder. It should contain:
   ```
-  NEXT_PUBLIC_SUPABASE_URL=https://bstlldhfipmjeqohhmmo.supabase.co/
-  NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzODUyNjAxMSwiZXhwIjoxOTU0MTAyMDExfQ.NgVAnWhvgMpqkBFizohWWN0vYjm7SuiJNHzHm0taTFs
+  NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+  NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
   ```
   - To get your Supabase URL:
     - create an account on https://supabase.io/,
