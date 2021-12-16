@@ -75,7 +75,18 @@ How can you use the application?
 - Steps to use this project:
   - clone this repo on your device using the command `git clone`
   - `cd` into the `solent-mind` folder
-  - 
+  - run `npm install` to install dependencies locally
+  - create an `.env` file in the root folder. It should contain:
+  ```
+  NEXT_PUBLIC_SUPABASE_URL=...
+  NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+  ```
+  - To get your Supabase URL:
+    - create an account on https://supabase.io/,
+    - create a new project,
+    - go to Settings > API > Config > URL
+    - the anon key is on the same page, under "Project API keys"
+  - run `npm run dev` to start the local server and run the app
 
 ## Additional Features ⏱️
 
