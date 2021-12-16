@@ -2,7 +2,67 @@
 
 ## Table of contents 🔖
 
+- [What are we building?](#what-are-we-building) 🧱
+- [Research and findings](#research-and-findings) 🔎
+- [Design Process](#design-process) 🟨 🟧 🟪
+- [Proposed Stack](#proposed-stack) 🥞
+- [Development](#development) 🧑‍💻
+- [Estimation vs Actuals](#estimation-vs-actuals) 📈
+
+## What are we building? 🧱
+
+[(Back to top ⬆️)](#table-of-contents)
+
+- Our application offers a platform for the students of [_**Solent Recovery College**_](https://www.solentmind.org.uk/) to sign-up/log-in, view and book courses related to mental health.
+- Each user can have a quick overview of the available courses, the ones they have joined and their progress, as well as make a new booking.
+- Our goal is to build an easily accessible platform for our target group, to enhance their experience, as well as facilitate the organisers in scheduling and managing the participants.
+
+## Research and Findings 🔎
+
+### User testing 👤 🧪
+
+- We are testing our prototype with a sample group of users.
+- Since we strive to make a clear, simple and user-friendly application, we want to understand how a user interacts with a potential version of our app (which is our current mock-up).
+- For this, we prepare a questionnaire that will help us navigate our conversations with the users. We aim to understand a little bit about how they interact with technology and any experience they might have with similar apps.
+- Our findings will help us go back to our prototype and amend any bits and pieces that may not function the way we have predicted. This way, we have a very clear idea of what we have to build. We can decide how we want to implement certain things and save time by avoiding routes we know they are not going to work.
+
+### User journeys 🎑
+
+#### General questions
+
+- Self introduction
+- Could you describe how familiar you are with technology?
+- What kind of apps do you like using in general?
+- How much time do you usually spend online?
+- How do you usually access the internet? Do you prefer desktop or mobile applications?
+- How are you currently managing your bookings?
+
+#### Exploring the application / Questionnaire ❓
+
+- Sign-in → My Courses → Open Slide Menu → Navigate to different pages
+- Can you read everything on the page easily?
+- How could you contact the College? Where can you find that information?
+- Can you find information about the College?
+- How can you find the College's social media links?
+- How do you find the menu? Does the order make sense?
+- If you have to book a course, what would you do?
+  - How would you cancel a booking?
+- How can you go to the Resources page?
+  - If you want articles of a specific topic, what would you do?
+  - If you want to read an article, what would you do?
+- What do you expect the link `My Progress` to be about?
+  - Is it clear how to use this page?
+  - Can you add another goal?
+  - Can you tell what you have achieved so far? Where do you find that information?
+  - Is there anything else you would like/expect to see here?
+  - Do you understand what the `Total` stands for?
+- Can you change your profile information? If so, how?
+- How using the application compares with your current booking process?
+- Provide additional time at the end for any general remarks.
+
 ## Design Process 🟨 🟧 🟪
+
+[(Back to top ⬆️)](#table-of-contents)
 
 - The first week of our schedule is dedicated to design and prototyping an MVP of the product.
 - We bring all of our findings together, to wire-frame all main pages of our application, so we can test it with sample users first.
@@ -20,7 +80,7 @@
   mustard yellow: #FFB703
 - The purple is found on all pages, as it is most closely associated with the current colour scheme of the brand. Dark pink is being used for menu and action related elements.
 
-## Consistency ⚖️
+### Consistency ⚖️
 
 - We tried to make as many reusable elements as possible and keep an even design on all pages.
 - The main characteristics are: containers with softly rounded corners, bolder borders with soft glow and a rounder font as well.
@@ -30,6 +90,8 @@
 <img src='./images/contact.png'/>
 
 ## Proposed Stack 🥞
+
+[(Back to top ⬆️)](#table-of-contents)
 
 Our assumptions before usability testing were:
 
@@ -43,53 +105,53 @@ After our design process and usability testing, we have had some new considerati
 
 On the front-end, we agree on the React/Next.js frameworks, and consider some more CSS options. The combination of `Tailwind CSS` with `Headless UI` seems very interesting and we are all keen to explore it.
 
-## Analysis of our proposed stack
+### Analysis of our proposed stack 🥞
 
-### Current considerations & technical decisions
+#### Current considerations & technical decisions
 
-### Were does the data come from? 👤 → 📀
+#### Were does the data come from? 👤 → 📀
 
 - Product owner → Courses, announcements, capacity and availability info on the website, images, assets, initial user data, account creation
 - Individual users → change password, add a booking, un-enrol from a class
 
-### Need to sync data across devices? 🖥 📲
+#### Need to sync data across devices? 🖥 📲
 
 - All data is going to be stored in a database
 - Access from any device yields the same results
 - React updates any components that change based on states
 
-### Will your app run on the client or server (or both)?
+#### Will your app run on the client or server (or both)?
 
 - Almost all data comes from database.
 - The exception (for now) is who is logged in at a particular time, which is going to be client-side.
 
-### Do you need database? Could you use local storage instead? 📦
+#### Do you need database? Could you use local storage instead? 📦
 
 - Due to the nature of the application (courses booking system), we need a robust back-end.
 
-### Relational vs Non-relational
+#### Relational vs Non-relational
 
 - Relational database - we have different entities to consider with different relations forming amongst them.
 - We can avoid duplication by having a different table for the courses, users, resources, etc.
 - In each table, we have different fields of id, name, number, etc.
 
-### Do you need full control of the data? Could you use a simple hosted service like Airtable?
+#### Do you need full control of the data? Could you use a simple hosted service like Airtable?
 
-- under discussion...
+- Yes. We are using database to store information about the available `classes`, as well as information about `enrolments` and `profiles`. Every user is being assigned an id and when they enrol to a course, a new record with their id as well as the course id is being added into the `enrolments` table.
 
-### Can you build “frontend first” to validate the MVP?
+#### Can you build “frontend first” to validate the MVP?
 
 - We are going to start from the back-end first, to have a clear schema that we know we will have to work with.
 
-### Do you need help managing styling?
+#### Do you need help managing styling?
 
 - Tailwind CSS with headless
 
-### Do you need a frontend framework? ⚛
+#### Do you need a frontend framework? ⚛
 
 - Yes, we have data that needs to be updated for the user
 
-### Will you use a platform-as-a-service (like `Heroku` or `Vercel`)?
+#### Will you use a platform-as-a-service (like `Heroku` or `Vercel`)?
 
 - We will deploy to `Vercel`, the designated platform for `Next.js` projects.
 
@@ -155,9 +217,19 @@ class MyDocument extends Document {
 export default MyDocument;
 ```
 
-## Estimation vs Actuals for WEEK 1 📐
+### Passing the session from `_app.js`
 
-- Completed tasks → E 13 / A 16
+```jsx
+import 'tailwindcss/tailwind.css';
+import { supabase, session } from '../utils/supabaseClient';
+
+function MyApp({ Component, pageProps }) {
+  const { session, supabase } = useSupabase();
+  return <Component session={session} supabase={supabase} {...pageProps} />;
+}
+
+export default MyApp;
+```
 
 # BUILD - WEEK 2 🧱
 
@@ -366,3 +438,19 @@ const router = useRouter();
 ```jsx
 router.back();
 ```
+
+## Estimation vs Actuals 📈
+
+[(Back to top ⬆️)](#table-of-contents)
+
+### WEEK 1 📐
+
+- Completed tasks → E 13 / A 16
+
+### WEEK 2 📐
+
+- Completed tasks → E / A
+
+## Testing 🧪
+
+[(Back to top ⬆️)](#table-of-contents)
