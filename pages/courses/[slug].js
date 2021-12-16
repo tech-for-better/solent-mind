@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import Main from '../../components/Main';
 import Image from 'next/image';
 import Modal from '../../components/Modal';
+import BackButton from '../../components/BackButton';
 import ModalAlert from '../../components/ModalAlert';
 
 const CoursesName = ({ slug, session }) => {
@@ -93,6 +94,7 @@ const CoursesName = ({ slug, session }) => {
       <Header session={session} />
 
       <Main>
+        <BackButton />
         {courseData ? (
           courseData.map((course) => (
             <div

@@ -6,6 +6,7 @@ import { supabase } from '../utils/supabaseClient';
 import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
 import SignOut from '../components/SignOut';
+import BackButton from '../components/BackButton';
 
 const Progress = ({ session }) => {
   const [userData, setUserData] = useState(null);
@@ -26,9 +27,12 @@ const Progress = ({ session }) => {
         <>
           <Greeting user={userData ? ` ${userData.email}` : 'User'} />
           <Main>
+            <BackButton />
             <PageHeader>My Progress</PageHeader>
+
             <p>Coming soon</p>
             <p>Building in progress...</p>
+
             <SignOut />
           </Main>
         </>

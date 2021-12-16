@@ -7,6 +7,7 @@ import Auth from '../components/Auth';
 import Image from 'next/image';
 import Modal from '../components/Modal';
 import SignOut from '../components/SignOut';
+import BackButton from '../components/BackButton';
 
 const MyProfile = ({ supabase, session }) => {
   const [userData, setUserData] = useState(null);
@@ -94,6 +95,7 @@ const MyProfile = ({ supabase, session }) => {
             <div className="text-center">
               <PageHeader>My Profile</PageHeader>
             </div>
+            <BackButton />
             <div className="text-center m-2">
               <Image
                 src={imageLink}
@@ -163,10 +165,14 @@ const MyProfile = ({ supabase, session }) => {
                 </div>
               </div>
             </form>
+
             <div className="bg-PURPLE shadow-md"></div>
             <Tabs contents={contents} />
           </div>
         )}
+
+        <SignOut />
+
       </Main>
     </>
   );

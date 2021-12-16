@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaInstagram, FaTwitterSquare, FaFacebookSquare } from 'react-icons/fa';
 import SideMenu from '../components/SideMenu';
+import BackButton from '../components/BackButton';
 
 const Contact = () => {
   const [open, setOpen] = useState(false);
@@ -22,6 +23,10 @@ const Contact = () => {
             size={32}
             style={open ? { color: '#FFFFFF' } : { color: '#1618be' }}
           />
+        </div>
+        <div className="ml-20">
+          {' '}
+          <BackButton />
         </div>
 
         <section className="flex justify-center mb-8 -mt-8">

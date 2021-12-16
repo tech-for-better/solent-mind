@@ -2,6 +2,7 @@ import Header from '../components/Header';
 import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import AboutUsTab from '../components/AboutUsTab';
+import BackButton from '../components/BackButton';
 
 const AboutUs = ({ session }) => {
   const contents = [
@@ -26,6 +27,7 @@ const AboutUs = ({ session }) => {
     <>
       <Header session={session} />
       <Main>
+        <BackButton />
         <PageHeader>ABOUT US</PageHeader>
         <div className="bg-PURPLE shadow-md">
           <div className="text-WHITE p-4">
