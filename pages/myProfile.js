@@ -6,6 +6,7 @@ import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
 import Image from 'next/image';
 import Modal from '../components/Modal';
+import SignOut from '../components/SignOut';
 
 const MyProfile = ({ supabase, session }) => {
   const [userData, setUserData] = useState(null);
@@ -166,6 +167,7 @@ const MyProfile = ({ supabase, session }) => {
             <Tabs contents={contents} />
           </div>
         )}
+        <SignOut />
       </Main>
     </>
   );
