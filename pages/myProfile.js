@@ -5,6 +5,7 @@ import Tabs from '../components/Tabs';
 import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
 import Image from 'next/image';
+import Modal from '../components/Modal';
 
 const MyProfile = ({ supabase, session }) => {
   const [userData, setUserData] = useState(null);
@@ -12,6 +13,10 @@ const MyProfile = ({ supabase, session }) => {
   const [imageLink, setImageLink] = useState(
     'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png'
   );
+
+  let [isOpen, setIsOpen] = useState(false);
+  let [title, setTitle] = useState('');
+  let [description, setDescription] = useState('');
 
   const userNameRef = React.createRef();
 
@@ -53,7 +58,6 @@ const MyProfile = ({ supabase, session }) => {
         },
       ])
       .match({ id: userData.id });
-    window.location.reload();
   };
 
   async function fetchData() {
@@ -90,23 +94,34 @@ const MyProfile = ({ supabase, session }) => {
               <PageHeader>My Profile</PageHeader>
             </div>
             <div className="text-center m-2">
-              <Image src={imageLink} alt={''} width={100} height={100} />
+              <Image
+                src={imageLink}
+                alt={''}
+                width={100}
+                height={100}
+                class="rounded-full"
+              />
+              <Modal
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                title={title}
+                description={description}
+              />
             </div>
 
             <form className="flex flex-col items-center">
-              <div className="md:flex md:items-center mb-4">
-                <div className="md:w-1/3">
+              <div className="md:flex md:items-center">
+                <div className="flex flex-col md:w-1/3 mt-4">
                   <label
-                    className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4 text-center"
+                    className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4 text-center "
                     htmlFor="inline-full-name"
                   >
                     Username
                   </label>
-                </div>
-                <div className="md:w-2/3">
+
                   <input
                     className=" border border-DARKPINK pb-2 pt-2 pr-6 pl-6 focus:outline-none focus:ring-2 focus:ring-DARKPINK rounded"
-                    id="inline-full-name"
+                    id="inline-full-name text-sm"
                     type="text"
                     placeholder={
                       !userProfile ? 'Your username' : userProfile.username
@@ -115,23 +130,30 @@ const MyProfile = ({ supabase, session }) => {
                   ></input>
                 </div>
               </div>
-              <label
-                className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4 mt-6"
-                htmlFor="single"
-              >
-                Upload your profile picture
-              </label>
-              <input
-                type="file"
-                id="single"
-                accept="image/*"
-                onChange={handleUpload}
-                className="m-auto mt-2"
-              />
+              <div className="mt-6">
+                <label
+                  className=" border border-DARKPINK pb-2 pt-2 pr-6 pl-6 focus:outline-none focus:ring-2 focus:ring-DARKPINK rounded-full text-xs"
+                  htmlFor="single"
+                >
+                  Upload a profile image
+                </label>
+                <input
+                  type="file"
+                  id="single"
+                  accept="image/*"
+                  onChange={handleUpload}
+                  style={{ display: 'none' }}
+                ></input>
+              </div>
               <div className="md:flex md:items-center mb-6">
                 <div className="md:w-2/3">
                   <button
-                    onClick={updateProfileData}
+                    onClick={async () => {
+                      await updateProfileData();
+                      await setTitle('Profile updated');
+                      await setDescription("You've updated your profile");
+                      await setIsOpen(true);
+                    }}
                     className="button block bg-DARKPINK text-WHITE pb-2 pt-2 pr-4 pl-4 rounded-xl mt-6"
                     type="button"
                   >
