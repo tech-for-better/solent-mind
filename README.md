@@ -12,6 +12,7 @@ A [Tech For Better project](https://www.foundersandcoders.com/tech-for-better/) 
 - [What are we building?](#what-are-we-building) 🧱
 - [Features](#features) ⚡️
 - [Tech Stack](#tech-stack) 🥞
+- [Installation](#installation) 👓
 - [Additional Features](#additional-features) ⏱️
 
 ## Team 🪴
