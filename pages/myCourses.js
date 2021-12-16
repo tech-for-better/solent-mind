@@ -6,6 +6,7 @@ import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const MyCourses = ({ session }) => {
   const [userData, setUserData] = useState(null);
@@ -18,7 +19,7 @@ const MyCourses = ({ session }) => {
 
     const { data, error } = await supabase
       .from('enrolments')
-      .select('user_id, course_id, classes("name", "description")')
+      .select('user_id, course_id, classes("name", "description", "image")')
       .eq('user_id', user.id);
     setEnrolData(data);
     console.log(data);
@@ -57,6 +58,17 @@ const MyCourses = ({ session }) => {
                             Enrolled
                           </span>
                         </div>
+
+                        {/* <span className="bg-GREEN pr-2 pl-2 rounded-full">
+                          Enrolled
+                        </span> */}
+
+                        <Image
+                          src={data.classes.image}
+                          alt={`image of ${data.classes.name}`}
+                          width={200}
+                          height={100}
+                        />
                         <div
                           className="font-thin font-montserrat"
                           dangerouslySetInnerHTML={{
