@@ -25,7 +25,6 @@ const MyCourses = ({ session }) => {
       )
       .eq('user_id', user.id);
     setEnrolData(data);
-    console.log(data);
   }
 
   useEffect(() => {
