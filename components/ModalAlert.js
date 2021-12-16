@@ -64,7 +64,7 @@ const Modal = ({ openAlert, setOpenAlert, titleAlert, descriptionAlert }) => {
                       router.back();
                     }}
                   >
-                    Got it, thanks!
+                   ↩ Back
                   </button>
                 </div>
               </div>

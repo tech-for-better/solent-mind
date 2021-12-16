@@ -141,13 +141,13 @@ const CoursesName = ({ slug, session }) => {
                     if (!fullClass) {
                       await setTitle('Booking successful!');
                       await setDescription(
-                        `You have been successfully enrolled in ${courseData[0].name}!`
+                        `You have been successfully enrolled in "${courseData[0].name}"!`
                       );
                       await setIsOpen(true);
                     } else {
                       await setTitleAlert('Class unavailable');
                       await setDescriptionAlert(
-                        `${courseData[0].name} is currently full, try again later!`
+                        `"${courseData[0].name}" is currently full. Go back for more available courses!`
                       );
                       await setOpenAlert(true);
                       // if (!isOpen) {
@@ -163,8 +163,10 @@ const CoursesName = ({ slug, session }) => {
                   className="bg-BLUE p-2 rounded text-WHITE"
                   onClick={async () => {
                     await removeCourse();
-                    await setTitle('You have been successfully unenrolled!');
-                    await setDescription(`Bye!`);
+                    await setTitle('Unenrolled!');
+                    await setDescription(
+                      `You have been successfully unenrolled from "${courseData[0].name}"`
+                    );
                     await setIsOpen(true);
                   }}
                 >
