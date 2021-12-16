@@ -44,15 +44,15 @@ const Modal = ({ openAlert, setOpenAlert, titleAlert, descriptionAlert }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-PURPLE shadow-xl rounded-2xl">
+              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-ROYALBLUE shadow-xl rounded-2xl">
                 <Dialog.Title
                   as="h3"
-                  className="text-lg font-medium leading-6 text-gray-900"
+                  className="text-lg font-medium leading-6 text-WHITE"
                 >
                   {titleAlert}
                 </Dialog.Title>
                 <div className="mt-2">
-                  <p className="text-sm text-gray-500">{descriptionAlert}</p>
+                  <p className="text-sm text-WHITE">{descriptionAlert}</p>
                 </div>
 
                 <div className="mt-4">
