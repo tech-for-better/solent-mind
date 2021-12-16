@@ -1,47 +1,24 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
-import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaInstagram, FaTwitterSquare, FaFacebookSquare } from 'react-icons/fa';
 import SideMenu from '../components/SideMenu';
 import BackButton from '../components/BackButton';
+import Header from '../components/Header';
 import Link from 'next/link';
 import Head from 'next/head';
 
-const Contact = () => {
+const Contact = ({ session }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className="font-sans">
-      <Head>
-        <title>Contact Us</title>
-      </Head>
-      <div className="relative">
-        <div className="flex justify-end p-6 mt-4 mr-2">
-          <GiHamburgerMenu
-            onClick={() => {
-              setOpen(true);
-            }}
-            className={
-              open
-                ? 'transform rotate-90 transition ease-in'
-                : 'transform rotate-0 transition ease-out' + ' cursor-pointer'
-            }
-            size={32}
-            style={open ? { color: '#FFFFFF' } : { color: '#1618be' }}
-          />
-        </div>
+    <>
+      <div className="font-sans">
+        <Head>
+          <title>Contact Us</title>
+        </Head>
+        <Header session={session} />
+
         <div className="ml-20">
-          {' '}
           <BackButton />
         </div>
-
-        <section className="flex justify-center mb-8 -mt-8">
-          <Image
-            src="/logo/solent.png"
-            width={250}
-            height={134}
-            alt="solent mind organization logo"
-          />
-        </section>
 
         <div className="flex flex-col m-auto sm:w-2/3 lg:w-3/5">
           <section className="flex justify-center">
@@ -108,7 +85,6 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* SLIDE MENU */}
       <div
         className={
           open
@@ -118,7 +94,7 @@ const Contact = () => {
       >
         <SideMenu open={open} setOpen={setOpen} />
       </div>
-    </div>
+    </>
   );
 };
 
