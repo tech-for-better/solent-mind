@@ -16,6 +16,7 @@ A [Tech For Better project](https://www.foundersandcoders.com/tech-for-better/) 
 - [Installation](#installation) 👓
 - [Key Learnings](#key-learnings) 🧐
 - [Additional Features](#additional-features) ⌛
+- [Further Information](#further-information) 🔗
 
 ## Team 🪴
 
@@ -50,8 +51,9 @@ How can you use the application?
 - Find contact details about the college
 
 <img src='./images/myCourses.png' width=300>
-<img src='./images/bookingModal.png' width=300>
+<img src='./images/bookingModal.png' width=250>
 <img src='./images/contactPage.png' width=300>
+<img src='./images/courses.png' width=300>
 
 ## Tech Stack 🥞
 
@@ -59,7 +61,7 @@ How can you use the application?
 
 <img src='./images/tech_stack.png' width=400>
 
-### Dependencies 🔗
+### Dependencies 🪢
 
 - react
 - react-dom
@@ -87,8 +89,8 @@ How can you use the application?
   - run `npm install` to install dependencies locally
   - create an `.env` file in the root folder. It should contain:
   ```
-  NEXT_PUBLIC_SUPABASE_URL=...
-  NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+  NEXT_PUBLIC_SUPABASE_URL=https://bstlldhfipmjeqohhmmo.supabase.co/
+  NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzODUyNjAxMSwiZXhwIjoxOTU0MTAyMDExfQ.NgVAnWhvgMpqkBFizohWWN0vYjm7SuiJNHzHm0taTFs
   ```
   - To get your Supabase URL:
     - create an account on https://supabase.io/,
@@ -124,3 +126,11 @@ There are a few features we would have liked to implement if we had more time. T
 - Implement the `Progress` page:
   - here, the user could find all their logged hours
   - budge system: the user is awarded a certificate based on completed hours
+
+## Further Information 🔗
+
+[(Back to top ⬆️)](#table-of-contents)
+
+- https://www.solentmind.org.uk/
+- info@solentmind.org.uk
+- https://solent-mind.vercel.app/
