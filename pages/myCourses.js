@@ -5,7 +5,7 @@ import { supabase } from '../utils/supabaseClient';
 import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
-import Link from 'next/link';
+import SignOut from '../components/SignOut';
 import Image from 'next/image';
 
 const MyCourses = ({ session }) => {
@@ -22,7 +22,6 @@ const MyCourses = ({ session }) => {
       .select('user_id, course_id, classes("name", "description", "image")')
       .eq('user_id', user.id);
     setEnrolData(data);
-    console.log(data);
   }
 
   useEffect(() => {
@@ -74,6 +73,7 @@ const MyCourses = ({ session }) => {
                   ))
                 : 'You are not enrolled in any classes!'}
             </ul>
+            <SignOut />
           </Main>
         </>
       )}

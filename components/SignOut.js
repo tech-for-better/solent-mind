@@ -2,11 +2,10 @@ import { supabase } from '../utils/supabaseClient';
 
 const SignOut = () => {
   return (
-    <button
-      className="bg-PURPLE text-WHITE font-bold w-32 px-5 py-2 rounded"
-      onClick={() => supabase.auth.signOut()}
-    >
-      Sign Out
+    <button className="" onClick={() => supabase.auth.signOut()}>
+      <span className="bg-DARKPINK bg-opacity-90 p-4 rounded-full text-WHITE">
+        Sign Out
+      </span>
     </button>
   );
 };
