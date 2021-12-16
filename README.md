@@ -12,6 +12,7 @@ A [Tech For Better project](https://www.foundersandcoders.com/tech-for-better/) 
 - [What are we building?](#what-are-we-building) 🧱
 - [Features](#features) ⚡️
 - [Tech Stack](#tech-stack) 🥞
+- [Additional Features](#additional-features) ⏱️
 
 ## Team 🪴
 
@@ -66,3 +67,25 @@ How can you use the application?
 - cypress
 - @supabase/supabase-js
 - @headlessui/react
+
+## Installation 👓
+
+[(Back to top ⬆️)](#table-of-contents)
+
+- Steps to use this project:
+  - clone this repo on your device using the command `git clone`
+  - `cd` into the `solent-mind` folder
+  - 
+
+## Additional Features ⏱️
+
+[(Back to top ⬆️)](#table-of-contents)
+
+There are a few features we would have liked to implement if we had more time. These include:
+
+- Implement the `Resources` page:
+  - this would be a space for teachers to upload material they usually hand out to the students after they have completed a course
+  - filtering the material by tag, as well as a search option
+- Implement the `Progress` page:
+  - here, the user could find all their logged hours
+  - budge system: the user is awarded a certificate based on completed hours
