@@ -149,7 +149,7 @@ class MyDocument extends Document {
 export default MyDocument;
 ```
 
-## Estimation vs Actuals 📐
+## Estimation vs Actuals for WEEK 1 📐
 
 - Completed tasks → E 13 / A 16
 
@@ -184,7 +184,7 @@ const Tabs = ({ contents, url, children }) => {
 
 our `Tabs` component ended up having lots of information that is currently making less reusable. We are considering restructuring our code to move this info in the respective pages (About Us & Courses)
 
-### 👑 Implementing Booking functionality
+## Implementing Booking functionality 🎟️
 
 - we check the courses the user is currently enrolled in:
 
@@ -216,3 +216,97 @@ const enrolledArr = enrolledCourses.map(Object.values).flat();
 ```jsx
 <EnrolTag enroll={enrolledArr.includes(course.id)} />
 ```
+
+- if the user can book into the course, the `enrolments` table is being update, as well as the current capacity of the course
+
+```jsx
+const bookCourse = async () => {
+  if (
+    courseData.length &&
+    courseData[0].cur_capacity < courseData[0].max_capacity
+  ) {
+    const { data, error } = await supabase.from('enrolments').insert([
+      {
+        user_id: `${userData.id}`,
+        course_id: courseData[0].id,
+        user_course_id: `${userData.id}${courseData[0].id}`,
+      },
+    ]);
+
+    const { capacityData, capacityError } = await supabase
+      .from('classes')
+      .update({ cur_capacity: courseData[0].cur_capacity + 1 })
+      .match({ id: courseData[0].id });
+    fullClass = false;
+  } else {
+    fullClass = true;
+  }
+};
+```
+
+## Profile page 👤
+
+The profile page is the user's personal space. They can update their details, as well as upload their own avatar image.
+
+<img src='./images/profile.png' width=300>
+
+- for the image upload, we are using the `storage` functionality provided by `Supabase`. We store the images in the `avatars` bucket:
+
+```jsx
+const { data, error } = await supabase.storage
+  .from('avatars')
+  .upload(`public/${avatarFile.name}`, avatarFile, {
+    cacheControl: '3600',
+    upsert: false,
+  });
+```
+
+- then, we update the field in the `profiles` table:
+
+```jsx
+const { imageData, imageError } = await supabase
+  .from('profiles')
+  .update([
+    {
+      avatar: `https://bstlldhfipmjeqohhmmo.supabase.in/storage/v1/object/public/avatars/public/${avatarFile.name}`,
+    },
+  ])
+  .match({ id: userData.id });
+```
+
+## Creating and implementing modals using `Headless UI` 🎨
+
+<img src='./images/bookingModal.png' width=250>
+
+- to use `headless ui`, we first installed the dependency:
+  `npm install @headlessui/react`
+- we created two separate modal components, one for general _validation_ as well one that serves as an _alert_
+- both modals receive as props the **open/close** state from their parent component, in this case `[slug].js`
+- in the parent component, `[slug].js` we have 2 different groups of states (for both different types of modals):
+
+```jsx
+let [isOpen, setIsOpen] = useState(false);
+let [title, setTitle] = useState('');
+let [description, setDescription] = useState('');
+
+let [openAlert, setOpenAlert] = useState(false);
+let [titleAlert, setTitleAlert] = useState('');
+let [descriptionAlert, setDescriptionAlert] = useState('');
+```
+
+- inside the modals, we pass the states as `props`:
+  `Modal.js`
+
+```jsx
+const Modal = ({ openAlert, setOpenAlert, titleAlert, descriptionAlert }) => { ...
+
+```
+
+`ModalAlert.js`
+
+```jsx
+const Modal = ({ openAlert, setOpenAlert, titleAlert, descriptionAlert }) => { ...
+
+```
+
+- this way, the opening of a modal is being controlled through the `[slug].js` page, and the closing is being controlled through the modal itself.
