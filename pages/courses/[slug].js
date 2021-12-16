@@ -4,6 +4,8 @@ import Header from '../../components/Header';
 import Main from '../../components/Main';
 import Image from 'next/image';
 import Modal from '../../components/Modal';
+import redirect from 'nextjs-redirect';
+import { useRouter } from 'next/router';
 
 const CoursesName = ({ slug, session }) => {
   const [courseData, setCourseData] = useState();
@@ -14,6 +16,9 @@ const CoursesName = ({ slug, session }) => {
   let [description, setDescription] = useState('');
 
   let fullClass = false;
+
+  // const Redirect = redirect('/courses');
+  const router = useRouter();
 
   const fetchCourseData = async () => {
     const { data, error } = await supabase
@@ -135,6 +140,7 @@ const CoursesName = ({ slug, session }) => {
                         `${courseData[0].name} is currently full, try again later!`
                       );
                       await setIsOpen(true);
+                      router.back();
                     }
                   }}
                 >
