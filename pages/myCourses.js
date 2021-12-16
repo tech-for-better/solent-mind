@@ -5,7 +5,7 @@ import { supabase } from '../utils/supabaseClient';
 import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
-import SignOut from '../components/SignOut';
+
 import BackButton from '../components/BackButton';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -84,7 +84,6 @@ const MyCourses = ({ session }) => {
                   ))
                 : 'You are not enrolled in any classes!'}
             </ul>
-            <SignOut />
           </Main>
         </>
       )}

@@ -2,11 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 import { FaInstagram, FaTwitterSquare, FaFacebookSquare } from 'react-icons/fa';
 import { IoIosClose } from 'react-icons/io';
+import SignOut from './SignOut';
 
 const SideMenu = ({ open, setOpen, session }) => {
   return (
     <div className="flex flex-col place-content-end h-screen w-80 bg-PEACH bg-opacity-90 z-10 rounded-l-lg text-BLACK">
-      <section className="flex flex-row place-content-end p-6 mt-2 sm:mr-0 md:mr-4">
+      <section className="flex flex-row justify-between place-content-end p-6 mt-2 sm:mr-0 md:mr-4">
+        {session ? <SignOut /> : <div></div>}
         <IoIosClose
           onClick={() => {
             setOpen(false);

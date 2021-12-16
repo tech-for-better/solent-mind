@@ -5,7 +5,6 @@ import Main from '../components/Main';
 import { supabase } from '../utils/supabaseClient';
 import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
-import SignOut from '../components/SignOut';
 import BackButton from '../components/BackButton';
 
 const Progress = ({ session }) => {
@@ -32,8 +31,6 @@ const Progress = ({ session }) => {
 
             <p>Coming soon</p>
             <p>Building in progress...</p>
-
-            <SignOut />
           </Main>
         </>
       )}
