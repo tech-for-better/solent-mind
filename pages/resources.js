@@ -4,14 +4,17 @@ import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import BackButton from '../components/BackButton';
 
-const Resources = () => {
+const Resources = ({ session }) => {
   return (
     <>
-      <Header />
+
+      <Header session={session} />
 
       <Main>
         <BackButton />
         <PageHeader>Resources</PageHeader>
+        <p>Coming soon</p>
+        <p>Building in progress...</p>
       </Main>
     </>
   );

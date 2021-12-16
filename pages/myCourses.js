@@ -8,6 +8,7 @@ import Auth from '../components/Auth';
 import SignOut from '../components/SignOut';
 import BackButton from '../components/BackButton';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const MyCourses = ({ session }) => {
   const [userData, setUserData] = useState(null);
@@ -20,7 +21,9 @@ const MyCourses = ({ session }) => {
 
     const { data, error } = await supabase
       .from('enrolments')
-      .select('user_id, course_id, classes("name", "description", "image")')
+      .select(
+        'user_id, course_id, classes("name", "description", "image", "slug")'
+      )
       .eq('user_id', user.id);
     setEnrolData(data);
   }
@@ -31,7 +34,7 @@ const MyCourses = ({ session }) => {
 
   return (
     <>
-      <Header />
+      <Header session={session} />
 
       {!session ? (
         <Auth />
@@ -44,34 +47,40 @@ const MyCourses = ({ session }) => {
             <ul className=" p-4">
               {enrolData && enrolData[0]
                 ? enrolData.map((data) => (
-                    <li
+                    <Link
                       key={data.course_id}
-                      className="bg-BLUE p-4 rounded-xl mb-4 shadow-md cursor-pointer hover:bg-PEACH hover:bg-opacity-60"
+                      href={`/courses/${data.classes.slug}`}
+                      passHref
                     >
-                      <div className="flex flex-row justify-between mb-2">
-                        <div className="font-bold">
-                          {data.classes.name.length > 25
-                            ? `${data.classes.name.slice(0, 25)} ...`
-                            : data.classes.name}
+                      <li
+                        key={data.course_id}
+                        className="bg-BLUE p-4 rounded-xl mb-4 shadow-md cursor-pointer hover:bg-PEACH hover:bg-opacity-60"
+                      >
+                        <div className="flex flex-row justify-between mb-2">
+                          <div className="font-bold">
+                            {data.classes.name.length > 25
+                              ? `${data.classes.name.slice(0, 25)} ...`
+                              : data.classes.name}
+                          </div>
+                          <span className="bg-GREEN pr-2 pl-2 rounded-full">
+                            Enrolled
+                          </span>
                         </div>
-                        <span className="bg-GREEN pr-2 pl-2 rounded-full">
-                          Enrolled
-                        </span>
-                      </div>
 
-                      <Image
-                        src={data.classes.image}
-                        alt={`image of ${data.classes.name}`}
-                        width={200}
-                        height={100}
-                      />
-                      <div
-                        className="font-thin font-montserrat"
-                        dangerouslySetInnerHTML={{
-                          __html: data.classes.description,
-                        }}
-                      />
-                    </li>
+                        <Image
+                          src={data.classes.image}
+                          alt={`image of ${data.classes.name}`}
+                          width={200}
+                          height={100}
+                        />
+                        <div
+                          className="font-thin font-montserrat"
+                          dangerouslySetInnerHTML={{
+                            __html: data.classes.description,
+                          }}
+                        />
+                      </li>
+                    </Link>
                   ))
                 : 'You are not enrolled in any classes!'}
             </ul>

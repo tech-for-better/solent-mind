@@ -3,10 +3,10 @@ import Header from '../components/Header';
 import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 
-const Announcements = () => {
+const Announcements = ({ session }) => {
   return (
     <>
-      <Header />
+      <Header session={session} />
       <Main>
         <PageHeader>Announcements 🔊</PageHeader>
       </Main>

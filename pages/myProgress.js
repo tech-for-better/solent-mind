@@ -20,7 +20,7 @@ const Progress = ({ session }) => {
   }, []);
   return (
     <>
-      <Header />
+      <Header session={session} />
       {!session ? (
         <Auth />
       ) : (
@@ -29,6 +29,9 @@ const Progress = ({ session }) => {
           <Main>
             <BackButton />
             <PageHeader>My Progress</PageHeader>
+
+            <p>Coming soon</p>
+            <p>Building in progress...</p>
 
             <SignOut />
           </Main>

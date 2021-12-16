@@ -4,7 +4,7 @@ import PageHeader from '../components/PageHeader';
 import AboutUsTab from '../components/AboutUsTab';
 import BackButton from '../components/BackButton';
 
-const AboutUs = () => {
+const AboutUs = ({ session }) => {
   const contents = [
     {
       topic: 'What we do',
@@ -25,7 +25,7 @@ const AboutUs = () => {
   ];
   return (
     <>
-      <Header />
+      <Header session={session} />
       <Main>
         <BackButton />
         <PageHeader>ABOUT US</PageHeader>
