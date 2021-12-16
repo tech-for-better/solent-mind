@@ -1,10 +1,13 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import { useRouter } from 'next/router';
 
 const Modal = ({ openAlert, setOpenAlert, titleAlert, descriptionAlert }) => {
+  const router = useRouter();
+
   return (
     <>
-      <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={openAlert} as={Fragment}>
         <Dialog
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
@@ -58,7 +61,7 @@ const Modal = ({ openAlert, setOpenAlert, titleAlert, descriptionAlert }) => {
                     className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-DARKPINK border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                     onClick={async () => {
                       await setOpenAlert(false);
-                      window.location.reload();
+                      router.back();
                     }}
                   >
                     Got it, thanks!

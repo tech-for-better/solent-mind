@@ -6,7 +6,6 @@ import Image from 'next/image';
 import Modal from '../../components/Modal';
 import ModalAlert from '../../components/ModalAlert';
 import redirect from 'nextjs-redirect';
-import { useRouter } from 'next/router';
 
 const CoursesName = ({ slug, session }) => {
   const [courseData, setCourseData] = useState();
@@ -24,7 +23,6 @@ const CoursesName = ({ slug, session }) => {
   let fullClass = false;
 
   // const Redirect = redirect('/courses');
-  const router = useRouter();
 
   const fetchCourseData = async () => {
     const { data, error } = await supabase
@@ -127,6 +125,12 @@ const CoursesName = ({ slug, session }) => {
                 title={title}
                 description={description}
               />
+              <ModalAlert
+                openAlert={openAlert}
+                setOpenAlert={setOpenAlert}
+                titleAlert={titleAlert}
+                descriptionAlert={descriptionAlert}
+              />
 
               {!enrolledCourses.length ||
               !enrolledArr.includes(courseData[0].id) ? (
@@ -141,14 +145,14 @@ const CoursesName = ({ slug, session }) => {
                       );
                       await setIsOpen(true);
                     } else {
-                      await setTitle('Class unavailable');
-                      await setDescription(
+                      await setTitleAlert('Class unavailable');
+                      await setDescriptionAlert(
                         `${courseData[0].name} is currently full, try again later!`
                       );
-                      await setIsOpen(true);
-                      if (!isOpen) {
-                        router.back();
-                      }
+                      await setOpenAlert(true);
+                      // if (!isOpen) {
+                      //   router.back();
+                      // }
                     }
                   }}
                 >
