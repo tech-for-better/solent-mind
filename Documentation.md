@@ -1,5 +1,7 @@
 # Solent Mind 🧠 - Project Documentation
 
+## Table of contents 🔖
+
 ## Design Process 🟨 🟧 🟪
 
 - The first week of our schedule is dedicated to design and prototyping an MVP of the product.
@@ -98,7 +100,11 @@ On the front-end, we agree on the React/Next.js frameworks, and consider some mo
 - magic link option → the product owner provides the users with sign-up, log-in links instead
 - third party authorisation → the user signs-up through another provider (Google, Facebook, Github)
 
-# BUILD - WEEK 1 🧱
+# Development 🧑‍💻
+
+[(Back to top ⬆️)](#table-of-contents)
+
+## BUILD - WEEK 1 🧱
 
 <img src='./images/build_1.png'/>
 
@@ -310,3 +316,53 @@ const Modal = ({ openAlert, setOpenAlert, titleAlert, descriptionAlert }) => { .
 ```
 
 - this way, the opening of a modal is being controlled through the `[slug].js` page, and the closing is being controlled through the modal itself.
+
+### Controlling order in execution 🔄
+
+- we had to be very careful on when we execute any database transaction, since database code is asynchronous - when we click on the `Book` button, things have to happen in the following order:
+
+```jsx
+onClick={async () => {
+  await bookCourse();
+  if (!fullClass) {
+    await setTitle('Booking successful!');
+    await setDescription(
+      `You have been successfully enrolled in "${courseData[0].name}"!`
+    );
+    await setIsOpen(true);
+  } else {
+    await setTitleAlert('Class unavailable');
+    await setDescriptionAlert(
+      `"${courseData[0].name}" is currently full. Go back for more available courses!`
+    );
+    await setOpenAlert(true);
+    // if (!isOpen) {
+    //   router.back();
+    // }
+  }
+}}
+```
+
+- the database is being contacted first
+- if the addition is successful, the first part of the `if` happens:
+  - we're passing the `title` and `description` props into our modal
+  - we're opening the modal
+- if the addition to the database is NOT successful, the second part of the `if` happens:
+  - we're passing the `title` and `description` props into our _alert_ modal
+  - we're opening the _alert_ modal
+  - closing the modal, redirects as back to the previous page (this is happening inside the _alert_ modal)
+
+## Using `next/router` 📍
+
+- we used the `next/router` to implement the `back` button, which is supposed to take us to the previous page
+- to use the router:
+
+```jsx
+const router = useRouter();
+```
+
+- to call the router, we simply do:
+
+```jsx
+router.back();
+```
