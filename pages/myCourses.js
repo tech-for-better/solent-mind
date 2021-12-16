@@ -5,10 +5,10 @@ import { supabase } from '../utils/supabaseClient';
 import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
-
 import BackButton from '../components/BackButton';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const MyCourses = ({ session }) => {
   const [userData, setUserData] = useState(null);
@@ -34,6 +34,9 @@ const MyCourses = ({ session }) => {
 
   return (
     <>
+      <Head>
+        <title>My Courses</title>
+      </Head>
       <Header session={session} />
 
       {!session ? (

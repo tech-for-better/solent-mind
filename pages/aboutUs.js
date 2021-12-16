@@ -3,6 +3,7 @@ import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import AboutUsTab from '../components/AboutUsTab';
 import BackButton from '../components/BackButton';
+import Head from 'next/head';
 
 const AboutUs = ({ session }) => {
   const contents = [
@@ -25,6 +26,9 @@ const AboutUs = ({ session }) => {
   ];
   return (
     <>
+      <Head>
+        <title>About Us</title>
+      </Head>
       <Header session={session} />
       <Main>
         <BackButton />

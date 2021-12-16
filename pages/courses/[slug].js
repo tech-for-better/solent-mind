@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Modal from '../../components/Modal';
 import BackButton from '../../components/BackButton';
 import ModalAlert from '../../components/ModalAlert';
+import Head from 'next/head';
 
 const CoursesName = ({ slug, session }) => {
   const [courseData, setCourseData] = useState();
@@ -91,6 +92,15 @@ const CoursesName = ({ slug, session }) => {
 
   return (
     <>
+      <Head>
+        {courseData ? (
+          courseData.map((course) => (
+            <title key={course.id}>{course.name}</title>
+          ))
+        ) : (
+          <title>Solent Mind Recovery College</title>
+        )}
+      </Head>
       <Header session={session} />
 
       <Main>

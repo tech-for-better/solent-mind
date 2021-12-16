@@ -6,6 +6,7 @@ import { supabase } from '../utils/supabaseClient';
 import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
 import BackButton from '../components/BackButton';
+import Head from 'next/head';
 
 const Progress = ({ session }) => {
   const [userData, setUserData] = useState(null);
@@ -19,6 +20,9 @@ const Progress = ({ session }) => {
   }, []);
   return (
     <>
+      <Head>
+        <title>My Progress</title>
+      </Head>
       <Header session={session} />
       {!session ? (
         <Auth />

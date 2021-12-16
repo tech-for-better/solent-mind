@@ -5,11 +5,15 @@ import { FaInstagram, FaTwitterSquare, FaFacebookSquare } from 'react-icons/fa';
 import SideMenu from '../components/SideMenu';
 import BackButton from '../components/BackButton';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const Contact = () => {
   const [open, setOpen] = useState(false);
   return (
     <div className="font-sans">
+      <Head>
+        <title>Contact Us</title>
+      </Head>
       <div className="relative">
         <div className="flex justify-end p-6 mt-4 mr-2">
           <GiHamburgerMenu

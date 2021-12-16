@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Modal from '../components/Modal';
 import SignOut from '../components/SignOut';
 import BackButton from '../components/BackButton';
+import Head from 'next/head';
 
 const MyProfile = ({ supabase, session }) => {
   const [userData, setUserData] = useState(null);
@@ -86,6 +87,9 @@ const MyProfile = ({ supabase, session }) => {
 
   return (
     <>
+      <Head>
+        <title>My Profile</title>
+      </Head>
       <Header session={session} />
       <Main>
         {!session ? (
@@ -170,9 +174,6 @@ const MyProfile = ({ supabase, session }) => {
             <Tabs contents={contents} />
           </div>
         )}
-
-        <SignOut />
-
       </Main>
     </>
   );
