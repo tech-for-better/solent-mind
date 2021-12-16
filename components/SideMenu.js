@@ -9,17 +9,19 @@ const SideMenu = ({ open, setOpen, session }) => {
     <div className="flex flex-col place-content-end h-screen w-80 bg-PEACH bg-opacity-90 z-10 rounded-l-lg text-BLACK">
       <section className="flex flex-row justify-between place-content-end p-6 mt-2 sm:mr-0 md:mr-4">
         {session ? <SignOut /> : <div></div>}
-        <IoIosClose
-          onClick={() => {
-            setOpen(false);
-          }}
-          size={58}
-          className={
-            open
-              ? 'transform rotate-0 transition ease-in cursor-pointer'
-              : 'transform rotate-45 transition ease-out'
-          }
-        />
+        <div className="2xl:mr-14">
+          <IoIosClose
+            onClick={() => {
+              setOpen(false);
+            }}
+            size={58}
+            className={
+              open
+                ? 'transform rotate-0 transition ease-in cursor-pointer'
+                : 'transform rotate-45 transition ease-out'
+            }
+          />
+        </div>
       </section>
       <section className="flex flex-col p-6 space-y-8 text-lg">
         <Link href={session ? '/myProfile' : '/'}>
