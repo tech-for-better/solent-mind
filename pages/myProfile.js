@@ -167,7 +167,6 @@ const MyProfile = ({ supabase, session }) => {
             <Tabs contents={contents} />
           </div>
         )}
-        <SignOut />
       </Main>
     </>
   );
