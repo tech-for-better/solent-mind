@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SideMenu from '../components/SideMenu';
 
-const Header = () => {
+const Header = ({ session }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -42,7 +42,7 @@ const Header = () => {
             : 'hidden top-0 right-0 transition ease-in'
         }
       >
-        <SideMenu open={open} setOpen={setOpen} />
+        <SideMenu open={open} setOpen={setOpen} session={session} />
       </div>
     </div>
   );

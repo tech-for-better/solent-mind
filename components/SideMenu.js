@@ -25,7 +25,9 @@ const SideMenu = ({ open, setOpen, session }) => {
             className="hover:text-ROYALBLUE"
             onClick={async () => {
               await setOpen(false);
-              window.location.reload();
+              if (!session) {
+                window.location.reload();
+              }
             }}
           >
             Profile
@@ -36,7 +38,9 @@ const SideMenu = ({ open, setOpen, session }) => {
             className="hover:text-ROYALBLUE"
             onClick={async () => {
               await setOpen(false);
-              window.location.reload();
+              if (!session) {
+                window.location.reload();
+              }
             }}
           >
             My Courses
@@ -47,7 +51,9 @@ const SideMenu = ({ open, setOpen, session }) => {
             className="hover:text-ROYALBLUE"
             onClick={async () => {
               await setOpen(false);
-              window.location.reload();
+              if (!session) {
+                window.location.reload();
+              }
             }}
           >
             Book Course
@@ -59,9 +65,17 @@ const SideMenu = ({ open, setOpen, session }) => {
         <Link href="/aboutUs">
           <a className="hover:text-ROYALBLUE">About Us</a>
         </Link>
-        <Link href="/myProgress">
-          <a className="hover:text-ROYALBLUE">My Progress</a>
+        <Link href={session ? '/myProgress' : '/'}>
+          <a
+            className="hover:text-ROYALBLUE"
+            onClick={async () => {
+              await setOpen(false);
+            }}
+          >
+            My Progress
+          </a>
         </Link>
+
         <Link href="/contact">
           <a className="hover:text-ROYALBLUE">Contact</a>
         </Link>

@@ -30,7 +30,7 @@ const MyCourses = ({ session }) => {
 
   return (
     <>
-      <Header />
+      <Header session={session} />
 
       {!session ? (
         <Auth />
