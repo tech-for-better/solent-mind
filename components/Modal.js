@@ -41,7 +41,7 @@ const Modal = ({ isOpen, setIsOpen, title, description }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-PURPLE shadow-xl rounded-2xl">
+              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-BLUE shadow-xl rounded-2xl">
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
@@ -55,7 +55,7 @@ const Modal = ({ isOpen, setIsOpen, title, description }) => {
                 <div className="mt-4">
                   <button
                     type="button"
-                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-DARKPINK border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-GREEN border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                     onClick={async () => {
                       await setIsOpen(false);
                       window.location.reload();
