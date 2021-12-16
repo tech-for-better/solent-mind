@@ -43,40 +43,34 @@ const MyCourses = ({ session }) => {
             <ul className=" p-4">
               {enrolData && enrolData[0]
                 ? enrolData.map((data) => (
-                    <Link key={data.course_id} href={`/courses/${data.slug}`}>
-                      <li
-                        key={data.course_id}
-                        className="bg-BLUE p-4 rounded-xl mb-4 shadow-md cursor-pointer hover:bg-PEACH hover:bg-opacity-60"
-                      >
-                        <div className="flex flex-row justify-between mb-2">
-                          <div className="font-bold">
-                            {data.classes.name.length > 25
-                              ? `${data.classes.name.slice(0, 25)} ...`
-                              : data.classes.name}
-                          </div>
-                          <span className="bg-GREEN pr-2 pl-2 rounded-full">
-                            Enrolled
-                          </span>
+                    <li
+                      key={data.course_id}
+                      className="bg-BLUE p-4 rounded-xl mb-4 shadow-md cursor-pointer hover:bg-PEACH hover:bg-opacity-60"
+                    >
+                      <div className="flex flex-row justify-between mb-2">
+                        <div className="font-bold">
+                          {data.classes.name.length > 25
+                            ? `${data.classes.name.slice(0, 25)} ...`
+                            : data.classes.name}
                         </div>
-
-                        {/* <span className="bg-GREEN pr-2 pl-2 rounded-full">
+                        <span className="bg-GREEN pr-2 pl-2 rounded-full">
                           Enrolled
-                        </span> */}
+                        </span>
+                      </div>
 
-                        <Image
-                          src={data.classes.image}
-                          alt={`image of ${data.classes.name}`}
-                          width={200}
-                          height={100}
-                        />
-                        <div
-                          className="font-thin font-montserrat"
-                          dangerouslySetInnerHTML={{
-                            __html: data.classes.description,
-                          }}
-                        />
-                      </li>
-                    </Link>
+                      <Image
+                        src={data.classes.image}
+                        alt={`image of ${data.classes.name}`}
+                        width={200}
+                        height={100}
+                      />
+                      <div
+                        className="font-thin font-montserrat"
+                        dangerouslySetInnerHTML={{
+                          __html: data.classes.description,
+                        }}
+                      />
+                    </li>
                   ))
                 : 'You are not enrolled in any classes!'}
             </ul>
