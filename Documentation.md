@@ -158,7 +158,7 @@ On the front-end, we agree on the React/Next.js frameworks, and consider some mo
 
 #### Do you need help managing styling?
 
-- Tailwind CSS with headless
+- `Tailwind CSS` with `Headless UI`
 
 #### Do you need a frontend framework? ⚛
 
@@ -173,7 +173,12 @@ On the front-end, we agree on the React/Next.js frameworks, and consider some mo
 - due to GDPR concerns, we have to re-think our first assumption to login users with their e-mails
 - we want to provide a solution, in which we never receive or store users' email addresses in our database
 - magic link option → the product owner provides the users with sign-up, log-in links instead
-- third party authorisation → the user signs-up through another provider (Google, Facebook, Github)
+- third party authentication → the user signs-up through another provider (Google, Facebook, Github)
+
+### Week 1 Update 🪜
+
+Our final decision included the following technologies:
+<img src='./images/tech_stack.png' width=500>
 
 # Development 🧑‍💻
 
