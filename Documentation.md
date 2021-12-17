@@ -492,10 +492,15 @@ router.back();
 
 [(Back to top ⬆️)](#table-of-contents)
 
+<img src='./images/cypress_1.png' width=550>
+<img src='./images/cypress_2.png' width=550>
+
 - We used `Cypress` for integration testing and separated the tests into different files based on what's being used
 - We have created different user scenarios and simulated user action through writing the tests
 - Specific modules are being tested individually (modularization)
+
   <img src='./images/cypressModules.png' width=300>
+
 - Authentication not being tested - the tests are written, but they work manually
 
 ```js
