@@ -7,9 +7,12 @@
 - [Design Process](#design-process) 🟨 🟧 🟪
 - [Proposed Stack](#proposed-stack) 🥞
 - [Development](#development) 🧑‍💻
+  - [WEEK 1](#week-1) 🧱
+  - [WEEK 2](#week-2) 🧱
 - [Estimation vs Actuals](#estimation-vs-actuals) 📈
 - [Testing](#testing) 🧪
 - [Deployment to `Vercel`](#deployment-to-vercel)
+- [Maintenance](#maintenance) 🧰
 
 ## What are we building? 🧱
 
@@ -40,6 +43,8 @@
 - How are you currently managing your bookings?
 
 #### Exploring the application / Questionnaire ❓
+
+<img src='./images/researchScripting.png' width=500>
 
 - Sign-in → My Courses → Open Slide Menu → Navigate to different pages
 - Can you read everything on the page easily?
@@ -88,8 +93,14 @@
 - The main characteristics are: containers with softly rounded corners, bolder borders with soft glow and a rounder font as well.
 - The main elements on each page are placed in containers, whereas secondary information is left plain.
 
-<img src='./images/resources.png'/>
-<img src='./images/contact.png'/>
+<img src='./images/resources.png' width=250/>
+<img src='./images/contact.png'width=270/>
+
+### Week 2 Update 🪜
+
+Following the feedback of our product owner after the first week build, we changed the colours slightly to fit more the existing `Mind Solent` colour scheme.
+
+<img src='./images/solentPalette.png' width=500>
 
 ## Proposed Stack 🥞
 
@@ -147,7 +158,7 @@ On the front-end, we agree on the React/Next.js frameworks, and consider some mo
 
 #### Do you need help managing styling?
 
-- Tailwind CSS with headless
+- `Tailwind CSS` with `Headless UI`
 
 #### Do you need a frontend framework? ⚛
 
@@ -162,15 +173,22 @@ On the front-end, we agree on the React/Next.js frameworks, and consider some mo
 - due to GDPR concerns, we have to re-think our first assumption to login users with their e-mails
 - we want to provide a solution, in which we never receive or store users' email addresses in our database
 - magic link option → the product owner provides the users with sign-up, log-in links instead
-- third party authorisation → the user signs-up through another provider (Google, Facebook, Github)
+- third party authentication → the user signs-up through another provider (Google, Facebook, Github)
+
+### Week 1 Update 🪜
+
+Our final decision included the following technologies:
+<img src='./images/tech_stack.png' width=500>
 
 # Development 🧑‍💻
 
 [(Back to top ⬆️)](#table-of-contents)
 
-## BUILD - WEEK 1 🧱
+## WEEK 1 🧱
 
 <img src='./images/build_1.png'/>
+
+### Some of the technical problems of WEEK 1 were the following:
 
 ## `Supabase` 📦
 
@@ -233,7 +251,17 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 ```
 
-# BUILD - WEEK 2 🧱
+# WEEK 2 🧱
+
+[(Back to top ⬆️)](#table-of-contents)
+
+this was our project board at the end of second week:
+
+<img src='./images/build_2.png'>
+
+### Some of the technical problems of WEEK 2 were the following:
+
+<img src='./images/booking.png' width=300>
 
 - passing the `url` in the `Tabs` component
 
@@ -266,7 +294,9 @@ our `Tabs` component ended up having lots of information that is currently makin
 
 ## Implementing Booking functionality 🎟️
 
-- we check the courses the user is currently enrolled in:
+- we check the courses the user is currently enrolled in querying the `enrolments` table:
+
+<img src='./images/enrolments.png' width=250>
 
 ```jsx
 const fetchData = async () => {
@@ -291,7 +321,10 @@ useEffect(() => {
 const enrolledArr = enrolledCourses.map(Object.values).flat();
 ```
 
-- and we pass the `includes()` statement into the `EnrolTag`:
+- and we pass the `includes()` statement into the `EnrolTag`. This way, if the user is booked, the statement will be true and the tag will change to `Enrolled` - if not, the tag shows `Book`:
+
+<img src='./images/enrolled.png' width=135>
+<img src='./images/book.png' width=100>
 
 ```jsx
 <EnrolTag enroll={enrolledArr.includes(course.id)} />
@@ -329,6 +362,7 @@ const bookCourse = async () => {
 The profile page is the user's personal space. They can update their details, as well as upload their own avatar image.
 
 <img src='./images/profile.png' width=300>
+<img src='./images/avatar.png' width=280>
 
 - for the image upload, we are using the `storage` functionality provided by `Supabase`. We store the images in the `avatars` bucket:
 
@@ -357,6 +391,7 @@ const { imageData, imageError } = await supabase
 ## Creating and implementing modals using `Headless UI` 🎨
 
 <img src='./images/bookingModal.png' width=250>
+<img src='./images/fullCourseAlert.png' width=300>
 
 - to use `headless ui`, we first installed the dependency:
   `npm install @headlessui/react`
@@ -459,8 +494,27 @@ router.back();
 
 - We used `Cypress` for integration testing and separated the tests into different files based on what's being used
 - We have created different user scenarios and simulated user action through writing the tests
-- Specific modules are being tested individually(modularization)
+- Specific modules are being tested individually (modularization)
+  <img src='./images/cypressModules.png' width=300>
 - Authentication not being tested - the tests are written, but they work manually
+
+```js
+describe('Shows logged in user stuff', () => {
+  it('Displays courses for authenticated users', () => {
+    cy.visit('/courses');
+    cy.contains('h1').should('be.visible', 'Upcoming courses');
+  });
+  it('Displays user profile for authenticated users', () => {
+    cy.visit('/myProfile');
+    cy.contains('h1').should('be.visible', 'My Profile');
+  });
+  it('Displays user courses for authenticated users', () => {
+    cy.visit('/myCourses');
+    cy.contains('p').should('be visible', 'Hello,');
+    cy.contains('h1').should('be.visible', 'My Courses');
+  });
+});
+```
 
 The tests are verifying obvious bugs, but did not reveal any refined ones.
 
@@ -468,6 +522,21 @@ The tests are verifying obvious bugs, but did not reveal any refined ones.
 
 [(Back to top ⬆️)](#table-of-contents)
 
-- `Vercel` is a platform for frontend frameworks and static sites, built to integrate with a database.
+<img src='./images/vercel.png' width=600>
+
+- `Vercel` is a platform for frontend frameworks and static sites, built to integrate with a database and designated deployment platform for `Next.js` projects.
 - the **Solent Mind** booking application is currently deployed to `Vercel`.
 - the admin page, where you have access to deployment previews, analytics and general project settings is: https://vercel.com/solent/solent-mind
+
+## Maintenance 🧰
+
+[(Back to top ⬆️)](#table-of-contents)
+
+- Our project folder structure is clear and indicative of the architecture of the project.
+- All routes are inside the `pages` folders and all components inside a separate `components` folder.
+- We are using `Tailwind CSS` for styling, so we have one configuration file `tailwind.config.js`:
+  - we apply different pre-made CSS classes inside the js or jsx files to apply styling
+- All tests are placed in a separate `cypress` folder.
+- In the root folder, we have a `README.md` and `DOCUMENTATION.md` file that provide extensive information on how the application was built, from the design process till the end of the first two-week sprint.
+
+We believe it would be relatively easy for another developer to make changes in the codebase. A new person could quickly be onboarded to contribute to future changes on the project.
