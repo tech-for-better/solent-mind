@@ -7,6 +7,8 @@
 - [Design Process](#design-process) 🟨 🟧 🟪
 - [Proposed Stack](#proposed-stack) 🥞
 - [Development](#development) 🧑‍💻
+  - [WEEK 1](#week-1) 🧱
+  - [WEEK 2](#week-2) 🧱
 - [Estimation vs Actuals](#estimation-vs-actuals) 📈
 - [Testing](#testing) 🧪
 - [Deployment to `Vercel`](#deployment-to-vercel)
@@ -168,9 +170,11 @@ On the front-end, we agree on the React/Next.js frameworks, and consider some mo
 
 [(Back to top ⬆️)](#table-of-contents)
 
-## BUILD - WEEK 1 🧱
+## WEEK 1 🧱
 
 <img src='./images/build_1.png'/>
+
+### Some of the technical problems of WEEK 1 were the following:
 
 ## `Supabase` 📦
 
@@ -233,7 +237,17 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 ```
 
-# BUILD - WEEK 2 🧱
+# WEEK 2 🧱
+
+[(Back to top ⬆️)](#table-of-contents)
+
+this was our project board at the end of second week:
+
+<img src='./images/build_2.png'>
+
+### Some of the technical problems of WEEK 2 were the following:
+
+<img src='./images/booking.png' width=300>
 
 - passing the `url` in the `Tabs` component
 
@@ -266,7 +280,9 @@ our `Tabs` component ended up having lots of information that is currently makin
 
 ## Implementing Booking functionality 🎟️
 
-- we check the courses the user is currently enrolled in:
+- we check the courses the user is currently enrolled in querying the `enrolments` table:
+
+<img src='./images/enrolments.png' width=250>
 
 ```jsx
 const fetchData = async () => {
@@ -291,7 +307,10 @@ useEffect(() => {
 const enrolledArr = enrolledCourses.map(Object.values).flat();
 ```
 
-- and we pass the `includes()` statement into the `EnrolTag`:
+- and we pass the `includes()` statement into the `EnrolTag`. This way, if the user is booked, the statement will be true and the tag will change to `Enrolled` - if not, the tag shows `Book`:
+
+<img src='./images/enrolled.png' width=135>
+<img src='./images/book.png' width=100>
 
 ```jsx
 <EnrolTag enroll={enrolledArr.includes(course.id)} />
@@ -329,6 +348,7 @@ const bookCourse = async () => {
 The profile page is the user's personal space. They can update their details, as well as upload their own avatar image.
 
 <img src='./images/profile.png' width=300>
+<img src='./images/avatar.png' width=280>
 
 - for the image upload, we are using the `storage` functionality provided by `Supabase`. We store the images in the `avatars` bucket:
 
@@ -357,6 +377,7 @@ const { imageData, imageError } = await supabase
 ## Creating and implementing modals using `Headless UI` 🎨
 
 <img src='./images/bookingModal.png' width=250>
+<img src='./images/fullCourseAlert.png' width=300>
 
 - to use `headless ui`, we first installed the dependency:
   `npm install @headlessui/react`
