@@ -6,7 +6,6 @@ import PageHeader from '../components/PageHeader';
 import Auth from '../components/Auth';
 import Image from 'next/image';
 import Modal from '../components/Modal';
-import SignOut from '../components/SignOut';
 import BackButton from '../components/BackButton';
 import Head from 'next/head';
 

@@ -8,7 +8,7 @@ const Tabs = ({ contents, url, children }) => {
           href={content.url ? content.url : `/courses/${content.name}`}
           key={content.topic}
         >
-          <a target={content.url ? '_blank' : ''}>
+          <a>
             <li className="border border-BLUE p-2 rounded mb-4 shadow-md">
               <div className="flex flex-row justify-between font-bold items-center">
                 <div>
