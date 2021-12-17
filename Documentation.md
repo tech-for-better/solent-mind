@@ -12,6 +12,7 @@
 - [Estimation vs Actuals](#estimation-vs-actuals) 📈
 - [Testing](#testing) 🧪
 - [Deployment to `Vercel`](#deployment-to-vercel)
+- [Maintenance](#maintenance) 🧰
 
 ## What are we building? 🧱
 
@@ -42,6 +43,8 @@
 - How are you currently managing your bookings?
 
 #### Exploring the application / Questionnaire ❓
+
+<img src='./images/researchScripting.png' width=500>
 
 - Sign-in → My Courses → Open Slide Menu → Navigate to different pages
 - Can you read everything on the page easily?
@@ -90,8 +93,14 @@
 - The main characteristics are: containers with softly rounded corners, bolder borders with soft glow and a rounder font as well.
 - The main elements on each page are placed in containers, whereas secondary information is left plain.
 
-<img src='./images/resources.png'/>
-<img src='./images/contact.png'/>
+<img src='./images/resources.png' width=250/>
+<img src='./images/contact.png'width=270/>
+
+### Week 2 Update 🪜
+
+Following the feedback of our product owner after the first week build, we changed the colours slightly to fit more the existing `Mind Solent` colour scheme.
+
+<img src='./images/solentPalette.png' width=500>
 
 ## Proposed Stack 🥞
 
@@ -480,8 +489,27 @@ router.back();
 
 - We used `Cypress` for integration testing and separated the tests into different files based on what's being used
 - We have created different user scenarios and simulated user action through writing the tests
-- Specific modules are being tested individually(modularization)
+- Specific modules are being tested individually (modularization)
+  <img src='./images/cypressModules.png' width=300>
 - Authentication not being tested - the tests are written, but they work manually
+
+```js
+describe('Shows logged in user stuff', () => {
+  it('Displays courses for authenticated users', () => {
+    cy.visit('/courses');
+    cy.contains('h1').should('be.visible', 'Upcoming courses');
+  });
+  it('Displays user profile for authenticated users', () => {
+    cy.visit('/myProfile');
+    cy.contains('h1').should('be.visible', 'My Profile');
+  });
+  it('Displays user courses for authenticated users', () => {
+    cy.visit('/myCourses');
+    cy.contains('p').should('be visible', 'Hello,');
+    cy.contains('h1').should('be.visible', 'My Courses');
+  });
+});
+```
 
 The tests are verifying obvious bugs, but did not reveal any refined ones.
 
@@ -489,6 +517,21 @@ The tests are verifying obvious bugs, but did not reveal any refined ones.
 
 [(Back to top ⬆️)](#table-of-contents)
 
-- `Vercel` is a platform for frontend frameworks and static sites, built to integrate with a database.
+<img src='./images/vercel.png' width=600>
+
+- `Vercel` is a platform for frontend frameworks and static sites, built to integrate with a database and designated deployment platform for `Next.js` projects.
 - the **Solent Mind** booking application is currently deployed to `Vercel`.
 - the admin page, where you have access to deployment previews, analytics and general project settings is: https://vercel.com/solent/solent-mind
+
+## Maintenance 🧰
+
+[(Back to top ⬆️)](#table-of-contents)
+
+- Our project folder structure is clear and indicative of the architecture of the project.
+- All routes are inside the `pages` folders and all components inside a separate `components` folder.
+- We are using `Tailwind CSS` for styling, so we have one configuration file `tailwind.config.js`:
+  - we apply different pre-made CSS classes inside the js or jsx files to apply styling
+- All tests are placed in a separate `cypress` folder.
+- In the root folder, we have a `README.md` and `DOCUMENTATION.md` file that provide extensive information on how the application was built, from the design process till the end of the first two-week sprint.
+
+We believe it would be relatively easy for another developer to make changes in the codebase. A new person could quickly be onboarded to contribute to future changes on the project.
