@@ -22,7 +22,7 @@ const Contact = ({ session }) => {
 
         <div className="flex flex-col m-auto sm:w-2/3 lg:w-3/5">
           <section className="flex justify-center">
-            <p>
+            <p className="ml-4">
               If you feel low, anxious or need someone to talk to, speak to
               trained mental health advisors through our support line:
             </p>
@@ -53,7 +53,7 @@ const Contact = ({ session }) => {
           </section>
 
           <section className="flex justify-center mt-4">
-            <p className="text-xs">
+            <p className="text-xs ml-4">
               *Please do not send any confidential information to us via email.
             </p>
           </section>
@@ -76,7 +76,7 @@ const Contact = ({ session }) => {
             </Link>
           </section>
 
-          <section className="flex flex-col mt-8">
+          <section className="flex flex-col mt-8 ml-4 mb-4">
             <p>Solent Mind</p>
             <p>15-16 The Avenue</p>
             <p>Southampton</p>
