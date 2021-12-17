@@ -193,7 +193,10 @@ Our final decision included the following technologies:
 ## `Supabase` 📦
 
 - authentication happens with `supabase` magic link
-- after we sign-up a new user, we trigger the creation of the same user to the `users` table
+- after we sign-up a new user, we trigger the creation of the same user to the `users` table:
+  - we use the **SQL Editor** in `Supabase` to add a new query that achieves that
+
+<img src='./images/SQLEditor.png' width=600>
 
 ### Rendering the courses somebody is currently enrolled in
 
